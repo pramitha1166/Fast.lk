@@ -1,5 +1,5 @@
 {
-  "name": "emailservice",
+  "name": "productservice",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -16,8 +16,6 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.12.7",
-    "node-fetch": "^2.6.1",
-    "nodemailer": "^6.6.0"
+    "mongoose": "^5.12.7"
   }
 }
