@@ -12,17 +12,17 @@ const emailValidate = require("./../util/emailValidation");
  */
 const sendEmail = (email) => {
   return new Promise((resolve, reject) => {
+    //validate inputs
+    const validate = emailValidate(email);
+    if (validate.error !== undefined) {
+      reject(validate.error.details[0].message); //reject if there is any validation error
+    }
+    
     //extract data from the instance of model email
     const receiver = email.receiver;
     const title = email.title;
     const subject = email.subject;
     const details = email.details;
-
-    //validate inputs
-    const validate = emailValidate(email);
-    if (validate.error !== undefined) {
-      reject(validate.error.details[0].message); //reject if there is any validation s
-    }
 
     try {
       //email service configuration

@@ -12,6 +12,10 @@ env.config();
 
 DBConnection();
 
+const productRoute = require('./src/controller/productController');
+
 const PORT = process.env.PORT || 5003;
 
 app.listen(PORT, () => console.log(`Server Started on port: ${PORT}`));
+
+app.use('/api/product', productRoute);
