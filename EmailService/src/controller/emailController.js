@@ -2,9 +2,8 @@
 
 const express = require("express");
 const router = express.Router();
-const email = require("../model/email");
+const Email = require("../model/email");
 const { sendEmail } = require("./../service/emailService");
-
 /**
  * This function is only for accepting /api/email/sendemail requests
  * The request body must contain all the attributes of model email 
@@ -18,9 +17,9 @@ const { sendEmail } = require("./../service/emailService");
  * @return {json} {result given by the email service implementation || or any errors}
  */
 router.post("/sendemail", async (req, res) => {
-  const Email = new email(req.body);
+  const email = new Email(req.body);
   try{
-    const result = await sendEmail(Email);
+    const result = await sendEmail(email);
     res.json({result});
   }catch(err){
     res.json(err);

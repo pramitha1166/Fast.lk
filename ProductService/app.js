@@ -4,16 +4,14 @@ const express = require("express");
 const env = require("dotenv");
 const cors = require("cors");
 const app = express();
-const mongoose = require('mongoose');
+const DBConnection = require("./src/repository/DBConnection");
 
 app.use(express.json());
 app.use(cors());
 env.config();
 
-const PORT = process.env.PORT || 5003; 
+DBConnection();
 
-mongoose.connect(process.env.DATABASE_CREDENTIALS, () => {
-  console.log("Database connected");
-});
+const PORT = process.env.PORT || 5003;
 
 app.listen(PORT, () => console.log(`Server Started on port: ${PORT}`));
