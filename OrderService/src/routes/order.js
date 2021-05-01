@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const {getAllOrders} = require('../controller/order')
+const {getAllOrders,createOrder} = require('../controller/order')
 
-router.get('/products', getAllOrders)
+router.get('/order', getAllOrders)
+router.post('/order', createOrder)
 
 module.exports = router
