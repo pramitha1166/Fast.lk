@@ -7,6 +7,8 @@ const cookieParser = require('cookie-parser')
 const morgan = require('morgan')
 const mogoose = require('mongoose')
 
+/** */
+
 /**DB connection */
 mogoose.connect(process.env.DATABASE, (err) => {
     if(err) {
