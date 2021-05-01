@@ -1,5 +1,4 @@
 "use strict";
-//https://ei.docs.wso2.com/en/latest/micro-integrator/develop/integration-development-kickstart/
 const mongoose = require("mongoose");
 
 const productSchema = new mongoose.Schema({

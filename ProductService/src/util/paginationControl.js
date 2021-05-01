@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * Pagination controll
+ * Pagination control
  *
  * @params {Array of objects - data}
  * @params {Integer page - page number}

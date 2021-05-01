@@ -33,8 +33,8 @@ const addProduct = (productData) => {
  * Current implementation for view all products from the mongodb database
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {url query data for pagination control}
- * @return {promise} {resolve all products or reject if there is any error}
+ * @params {object query - that contains page number and item limit for pagination}
+ * @return {promise} {resolve all products with pagination or reject if there is any error}
  */
 const getProducts = (query) => {
   //extract url params for control pagination
@@ -56,8 +56,8 @@ const getProducts = (query) => {
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
  * @params {integer sellerId}
- * @params {object - url query data for pagination control}
- * @return {promise} {resolve allproducts of a specific seller or reject if there is any error}
+ * @params {object query - that contains page number and item limit for pagination}
+ * @return {promise} {resolve allproducts of a specific seller with pagination or reject if there is any error}
  */
 const getSellerProducts = (sellerId, query) => {
   //extract url params for control pagination

@@ -12,7 +12,7 @@ const { addProduct, getProducts, getSellerProducts } = require("./../service/Pro
  * @method { HTTP POST }
  * @url {/api/product/add}
  * @urlparams {none}
- * @return {json} {result given by the addProduct(...) method implementation in the service layer || or any errors}
+ * @return {json} {Newly added product}
  */
 router.post("/add", async (req, res) => {
   try {
@@ -32,9 +32,9 @@ router.post("/add", async (req, res) => {
  *
  * @method { HTTP GET }
  * @url {/api/product/view?page=m&limit=n}
- * @urlparams {integer m - page number} - These numbers used for pagination control 
- * @urlparams {integer n - limit} - These numbers used for pagination control
- * @return {json} {result given by the getProducts(...) method implementation in the service layer || or any errors}
+ * @urlparams {integer m - page number} - pagination page number 
+ * @urlparams {integer n - limit} -  pagination item limit
+ * @return {json} {All products with pagination}
  */
 router.get("/view", async (req, res) => {
   try {
@@ -55,9 +55,9 @@ router.get("/view", async (req, res) => {
  * @method { HTTP GET }
  * @url {/api/product/view/:sellerid?page=m&limit=n}
  * @urlparams {integer sellerid}
- * @urlparams {integer m - page number} - These numbers used for pagination control 
- * @urlparams {integer n - limit} - These numbers used for pagination control
- * @return {json} {result given by the getSellerProducts(...) method implementation in the service layer || or any errors}
+ * @urlparams {integer m - page number} - pagination page number 
+ * @urlparams {integer n - limit} -  pagination item limit
+ * @return {json} {All products for the specified sellerId with pagination}
  */
 router.get("/view/:sellerid", async (req, res) => {
     try{
@@ -67,5 +67,6 @@ router.get("/view/:sellerid", async (req, res) => {
         res.status(400).json(err);
     }
 });
+
 
 module.exports = router;
