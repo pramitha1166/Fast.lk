@@ -2,6 +2,7 @@
 
 const productValidate = require("./../util/productValidation");
 const Product = require("./../model/product");
+const { paginationControl } = require("./../util/paginationControl");
 
 /**
  * Current implementation for add product to mopngodb using mongoose
@@ -28,43 +29,50 @@ const addProduct = (productData) => {
   });
 };
 
-
 /**
  * Current implementation for view all products from the mongodb database
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {nonel}
+ * @params {url query data for pagination control}
  * @return {promise} {resolve all products or reject if there is any error}
  */
-const getProducts = () => {
-  return new Promise( async (resolve, reject) => {
-      try{
-        const allProducts = await Product.find();
-        resolve(allProducts);
-      }catch(err){
-        reject(err);
-      }
+const getProducts = (query) => {
+  //extract url params for control pagination
+  const page = query.page;
+  const limit = query.limit;
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const allProducts = await Product.find(); //get all products
+      resolve(paginationControl(allProducts, page, limit));
+    } catch (err) {
+      reject(err);
+    }
   });
 };
-
 
 /**
  * Current implementation for view all products of a specific seller from the mongodb database
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
  * @params {integer sellerId}
+ * @params {object - url query data for pagination control}
  * @return {promise} {resolve allproducts of a specific seller or reject if there is any error}
  */
-const getSellerProducts = (sellerId) => {
-    return new Promise( async (resolve, reject) => {
-        try{
-          const allSellerProducts = await Product.find({ownerRef: sellerId});
-          resolve(allSellerProducts);
-        }catch(err){
-          reject(err);
-        }
-    });
-  };
+const getSellerProducts = (sellerId, query) => {
+  //extract url params for control pagination
+  const page = query.page;
+  const limit = query.limit;
+
+  return new Promise(async (resolve, reject) => {
+    try {
+      const allSellerProducts = await Product.find({ ownerRef: sellerId }); //get products for a specific seller
+      resolve(paginationControl(allSellerProducts, page, limit));
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
 
 module.exports.addProduct = addProduct;
 module.exports.getProducts = getProducts;
