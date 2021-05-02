@@ -1,6 +1,7 @@
 'use strict'
 
 const Order = require('../model/order')
+const {createOrderService} = require('../service/order')
 
 exports.getAllOrders = (req,res) => {
 
@@ -21,18 +22,17 @@ exports.getAllOrders = (req,res) => {
         })
 }
 
-exports.createOrder = (req,res) => {
-    console.log(req.body)
-    const order = new Order(req.body)
-    order.save((err,order)=> {
-        if(err) {
-            return res.status(400).json({
-                error: err
-            })
-        }else {
-            res.json({order})
-        }
-    })
+exports.createOrder = async(req,res) => {
+   
+    try {
+        const result = await createOrderService(req.body)
+        res.json({result})
+    } catch (err) {
+        return res.status(400).json({
+            error: err
+        })
+    }
+
 }
 
 exports.getOrderById = (req,res,next,id) => {
