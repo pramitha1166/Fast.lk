@@ -1,6 +1,7 @@
 "use strict";
 
 const nodemailer = require("nodemailer");
+const emailValidate = require("./../util/emailValidation");
 
 /**
  * Current implementation for email service
@@ -11,7 +12,12 @@ const nodemailer = require("nodemailer");
  */
 const sendEmail = (email) => {
   return new Promise((resolve, reject) => {
-
+    //validate inputs
+    const validate = emailValidate(email);
+    if (validate.error !== undefined) {
+      reject(validate.error.details[0].message); //reject if there is any validation error
+    }
+    
     //extract data from the instance of model email
     const receiver = email.receiver;
     const title = email.title;
@@ -44,13 +50,13 @@ const sendEmail = (email) => {
       //sending the email
       transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-          reject("Something went wrong during email service");//reject if there is any error
+          reject(error); //reject if there is any error
         } else {
-          resolve(info.response);//resolve after successfull email sent
+          resolve(info.response); //resolve after successfull email sent
         }
       });
     } catch (err) {
-      reject("Something went wrong during email service");//reject if there is any error
+      reject(err); //reject if there is any error
     }
   });
 };
