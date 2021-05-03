@@ -1,11 +1,17 @@
 'use strict'
 
 const Order = require('../model/order')
+const {validateOrder} = require('../validation/index')
 
 exports.createOrderService = (order_item) => {
     return new Promise((resolve,reject) => {
         const order = new Order(order_item)
-           
+        
+        const validate = validateOrder(order)
+        if(validate.error!==undefined) {
+            reject(validate.error.details[0].message)
+        }
+
         order.save((err,order) => {
             if(err) {
                 reject(err) 
