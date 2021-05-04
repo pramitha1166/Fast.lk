@@ -12,6 +12,7 @@ env.config();
 
 const PORT = process.env.PORT || 5005; 
 
+//DB Connection
 mongoose.connect(process.env.DB_URL, {
     useNewUrlParser: true, useUnifiedTopology: true
   }, () => { console.log("Database connected") });

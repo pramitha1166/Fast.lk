@@ -2,6 +2,7 @@
 
 const Buyer = require("../model/buyer");
 
+//adding buyer
 const addBuyer = async (req, res) => {
     const buyer = req.body;
     const newBuyer = new Buyer(buyer);
@@ -14,6 +15,7 @@ const addBuyer = async (req, res) => {
     }
 }
 
+//retrieve all buyers
 const getAllBuyers = async (req, res) => {
     try {
      const allBuyers = await Buyer.find(); 
@@ -23,6 +25,7 @@ const getAllBuyers = async (req, res) => {
     }
  }
 
+ //get buyer by id
 const getBuyer = async (req, res) => {
     try {
      const currentBuyer = await Buyer.findById(req.params.id); 
@@ -32,6 +35,7 @@ const getBuyer = async (req, res) => {
     }
  }
 
+ //update buyer details
  const updateBuyer = async (req, res) => {
     try {
         const currentBuyer = await Buyer.findById(req.params.id);
@@ -50,6 +54,7 @@ const getBuyer = async (req, res) => {
     }
 }
 
+//delete buyer
 const deleteBuyer = async (req, res) => {
     try {
         const currentBuyer = await Buyer.findById(req.params.id);

@@ -2,6 +2,7 @@
 
 const mongoose = require('mongoose')
 
+//buyer schema
 const buyer_Schema = new mongoose.Schema({
     firstName: {
         type: String,
