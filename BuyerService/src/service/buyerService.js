@@ -1,17 +1,26 @@
 "use strict";
 
 const Buyer = require("../model/buyer");
+const { validateBuyer } = require('./buyerValidation');
+const bcrypt = require('bcryptjs');
 
 //adding buyer
 const addBuyer = async (req, res) => {
     const buyer = req.body;
-    const newBuyer = new Buyer(buyer);
-    console.log(newBuyer);
+    let newBuyer = await validateBuyer(buyer);
     try {
-        await newBuyer.save();  
-        res.status(201).json(newBuyer); 
+        if(newBuyer === 0){
+            res.status(400).json({msg: 'Please Enter All Fields!'});
+        }else if(newBuyer === 1){
+            res.status(400).json({msg: 'User Already Exists!'});
+        }else{
+            newBuyer = new Buyer(buyer);
+            newBuyer.password = bcrypt.hashSync(newBuyer.password, 10);
+            await newBuyer.save();  
+            res.status(201).json({msg:'added'}); 
+        }    
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        res.status(409).json({ message:'Buyer Not Created!'});
     }
 }
 
@@ -44,13 +53,13 @@ const getBuyer = async (req, res) => {
         currentBuyer.lastName = req.body.lastName;
         currentBuyer.userName = req.body.userName;
         currentBuyer.email = req.body.email;
-        currentBuyer.password = req.body.password;
+        currentBuyer.password = bcrypt.hashSync(req.body.password, 10);
         currentBuyer.phoneNumber = req.body.phoneNumber;
         currentBuyer.address = req.body.address;
         await currentBuyer.save();
         res.status(201).json(currentBuyer); 
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        res.status(409).json({ msg: 'No Such Buyer!' });
     }
 }
 
@@ -61,7 +70,7 @@ const deleteBuyer = async (req, res) => {
         await currentBuyer.remove();
         res.status(201).json("deleted"); 
     } catch (error) {
-        res.status(409).json({ message: error.message });
+        res.status(409).json({ msg: 'Could Not Delete!' });
     }
  }
 
