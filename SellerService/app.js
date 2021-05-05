@@ -11,7 +11,7 @@ env.config();
 const PORT = process.env.PORT || 5003; 
 
 mongoose.connect(process.env.CONNECTION_URL, {
-  useNewUrlParser: true, useUnifiedTopology: true
+  useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true
 }, () => { console.log("Database connected") });
 
 const sellerRoute = require('./src/controller/sellerController');
