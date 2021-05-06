@@ -7,19 +7,23 @@ const app = express();
 const fetch = require('node-fetch');
 const emailRoute = require('./src/controller/emailController');
 
+const PORT = process.env.PORT || 5001; 
+
 //enable environment varbiable file
 env.config();
+
+//app middlewares
 
 app.use(express.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 5001; 
+//route middlewares
+app.use('/api/email', emailRoute);
 
 app.listen(PORT, () => {
     console.log(`email service started on port : ${PORT}`);
 });
 
-app.use('/api/email', emailRoute);
 
 
 
