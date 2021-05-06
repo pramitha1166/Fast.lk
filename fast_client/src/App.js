@@ -1,7 +1,7 @@
-import { React, useEffect } from "react";
+import { React } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { io } from "socket.io-client";
+//import { io } from "socket.io-client";
 
 //const socket = io("http://localhost:5003");
 
