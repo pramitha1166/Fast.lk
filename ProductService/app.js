@@ -5,24 +5,35 @@ const env = require("dotenv");
 const cors = require("cors");
 const app = express();
 
+const server = require("http").createServer(app);
+const io = require("socket.io")(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
+
 //db connection
 const DBConnection = require("./src/repository/DBConnection");
 //routes
-const productRoute = require('./src/controller/productController');
+const productRoute = require("./src/controller/productController");
 
 const PORT = process.env.PORT || 5003;
 
 //enable environment varbiables file
 env.config();
 
-//create DB connection
-DBConnection();
-
 //app middlewares
 app.use(express.json());
 app.use(cors());
 
-//route middlewares
-app.use('/api/product', productRoute);
+//create DB connection
+DBConnection(io);
 
-app.listen(PORT, () => console.log(`Server Started on port: ${PORT}`));
+//route middlewares
+app.use("/api/product", productRoute);
+
+io.on("connection", () => {
+  console.log("A new connection has been established");
+});
+server.listen(PORT, () => console.log(`Server Started on port: ${PORT}`));
