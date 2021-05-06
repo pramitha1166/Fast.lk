@@ -3,14 +3,14 @@ import logo from "./logo.svg";
 import "./App.css";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:5003");
+//const socket = io("http://localhost:5003");
 
 function App() {
-  useEffect(() => {
-    socket.on("hello", (arg) => {
-      console.log(arg); // world
-    });
-  });
+  // useEffect(() => {
+  //   socket.on("hello", (arg) => {
+  //     console.log(arg); // world
+  //   });
+  // });
 
   return (
     <div className="App">
