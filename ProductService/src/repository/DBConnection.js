@@ -15,12 +15,11 @@ const DBConnection = (io) => {
 
       io.on("connection", (socket) => {
         console.log("user connected");
-        socket.emit("hello", "world");
       });
 
       Product.watch().on("change", (change) => {
         console.log("Something has changed");
-        io.to(change.fullDocument._id).emit("changes", change.fullDocument);
+        io.sockets.emit("dbupdated", change.fullDocument); 
       });
     }
   );
