@@ -1,0 +1,22 @@
+{
+  "name": "smsservice",
+  "version": "1.0.0",
+  "description": "SMS service for payment confirmation",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "ChandulaM",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6",
+    "mongoose": "^5.12.7",
+    "twilio": "^3.62.0"
+  }
+}
