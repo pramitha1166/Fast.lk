@@ -1,6 +1,6 @@
 "use strict";
 
-const productValidate = require("./../util/productValidation");
+const {productValidateAdd, productValidateUpdate} = require("./../util/productValidation");
 const Product = require("./../model/product");
 const { paginationControl } = require("./../util/paginationControl");
 
@@ -14,7 +14,7 @@ const { paginationControl } = require("./../util/paginationControl");
 const addProduct = (productData) => {
   return new Promise(async (resolve, reject) => {
     //validate inputs
-    const validate = productValidate(productData);
+    const validate = productValidateAdd(productData);
     if (validate.error !== undefined) {
       reject(validate.error.details[0].message); //reject if there is any validation error
     }
@@ -52,6 +52,24 @@ const getProducts = (query) => {
 };
 
 /**
+ * Current implementation for view product by id from the mongodb database
+ * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
+ *
+ * @params {item id}
+ * @return {promise} {resolve product data reject if there is any error}
+ */
+ const viewProductById = (itemId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const productData = await Product.findOne({_id: itemId}); //get all products
+      resolve(productData);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+/**
  * Current implementation for view all products of a specific seller from the mongodb database
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
@@ -74,6 +92,115 @@ const getSellerProducts = (sellerId, query) => {
   });
 };
 
+/**
+ * Current implementation for delete product from mopngodb using it's id
+ * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
+ *
+ * @params {product id}
+ * @return {promise} {delected product data}
+ */
+const deleteProduct = (productId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const delectedProduct = await Product.deleteOne({ _id: productId });
+      resolve(delectedProduct);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+/**
+ * Current implementation for update product from mopngodb using mongoose
+ * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
+ *
+ * @params {An instance of product model}
+ * @return {promise} {resolve upon successfull product add or reject if there is any error}
+ */
+const updateProduct = (productData, itemId) => {
+  return new Promise(async (resolve, reject) => {
+    //validate inputs
+    const validate = productValidateUpdate(productData);
+    if (validate.error !== undefined) {
+      reject(validate.error.details[0].message); //reject if there is any validation error
+    }
+
+    try {
+      const updatedProduct = await Product.updateOne(
+        { _id: itemId },
+        {
+          $set: {
+            name: productData.name,
+            discription: productData.discription,
+            category: productData.category,
+            quantity: productData.quantity,
+            price: productData.price,
+            updatedAt: productData.updatedAt,
+          },
+        }
+      );
+      resolve(updatedProduct);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+/**
+ * Current implementation for add new image for a product to mopngodb using mongoose
+ * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
+ *
+ * @params {itemid and image URL}
+ * @return {promise} {resolve upon successfull image add or reject if there is any error}
+ */
+ const addImage = (imageURL, itemId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const updatedProduct = await Product.updateOne(
+        { _id: itemId },
+        {
+          $push: {
+            images: imageURL.url
+          },
+        }
+      );
+      resolve(updatedProduct);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
+/**
+ * Current implementation for remove existing image from a product to mopngodb using mongoose
+ * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
+ *
+ * @params {itemid and image URL}
+ * @return {promise} {resolve upon successfull image add or reject if there is any error}
+ */
+ const removeImage = (imageURL, itemId) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const updatedProduct = await Product.updateOne(
+        { _id: itemId },
+        {
+          $pull: {
+            images: imageURL.url
+          },
+        }
+      );
+      resolve(updatedProduct);
+    } catch (err) {
+      reject(err);
+    }
+  });
+};
+
 module.exports.addProduct = addProduct;
 module.exports.getProducts = getProducts;
+module.exports.addImage = addImage;
+module.exports.removeImage = removeImage;
 module.exports.getSellerProducts = getSellerProducts;
+module.exports.deleteProduct = deleteProduct;
+module.exports.updateProduct = updateProduct;
+module.exports.viewProductById = viewProductById;
