@@ -7,9 +7,18 @@ const socket = io("http://localhost:5003");
 
 function App() {
   useEffect(() => {
-      socket.on("dbupdated", (arg) => {
-        console.log(arg);
-      });
+    socket.on("dbupdated", (arg) => {
+      console.log(arg);
+    });
+  });
+
+  useEffect(() => {
+    const dd = async () => {
+      const s = await fetch("http://localhost:8080/api/v2/cart/view/2");
+      const r = await s.json();
+      console.log(r);
+    };
+    dd();
   });
 
   return (

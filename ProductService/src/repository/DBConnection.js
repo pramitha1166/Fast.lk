@@ -6,7 +6,7 @@ const Product = require("./../model/product");
 const DBConnection = (io) => {
   mongoose.connect(
     process.env.DATABASE_CREDENTIALS,
-    { useNewUrlParser: true, useUnifiedTopology: true },
+    { useNewUrlParser: true },
     function (err) {
       if (err) {
         throw err;
