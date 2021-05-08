@@ -7,3 +7,5 @@ OrderService : PORT 5003
 ==========================
 SellerService : PORT 5004
 ==========================
+PaymentService : PORT 5005
+==========================
