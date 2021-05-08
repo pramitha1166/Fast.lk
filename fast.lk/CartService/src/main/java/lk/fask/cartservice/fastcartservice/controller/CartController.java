@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 
 @Controller
 @RestController
-@RequestMapping("/api/v2/cart/")
+@RequestMapping("/api/cart/")
 @Transactional
 public class CartController {
     private final CartService cartService;

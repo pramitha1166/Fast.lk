@@ -30,7 +30,7 @@ app.use(cookieParser())
 app.use(CORS())
 
 /**routing mddlewares */
-app.use('/api', order_api)
+app.use('/api/orders', order_api)
 
 
 app.listen(PORT, () => {

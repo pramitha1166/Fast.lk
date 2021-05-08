@@ -18,7 +18,7 @@ const DBConnection = require("./src/repository/DBConnection");
 //routes
 const productRoute = require("./src/controller/productController");
 
-const PORT = process.env.PORT || 5003;
+const PORT = process.env.PORT || 5002;
 
 //enable environment varbiables file
 env.config();
@@ -31,7 +31,7 @@ app.use(cors());
 DBConnection(io);
 
 //route middlewares
-app.use("/api/product", productRoute);
+app.use("/api/products", productRoute);
 
 io.on("connection", () => {
   console.log("A new connection has been established");
