@@ -22,8 +22,8 @@ const buyer_Schema = new mongoose.Schema({
     password: {
         type: String,
         required: true, 
-        min: 1,
-        max: 6
+        min: 8,
+        max: 1024
     },
     address: {
         houseNo: {

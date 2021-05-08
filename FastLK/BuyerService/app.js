@@ -18,9 +18,11 @@ mongoose.connect(process.env.DB_URL, {
   }, () => { console.log("Database connected") });
 
 const buyerRoute = require('./src/controller/buyerController');
+const authRoute = require('./src/controller/authenticationController');
 
 app.listen(PORT, () => {
     console.log(`Buyer service started on port : ${PORT}`);
 });
 
 app.use('/api/buyers', buyerRoute);
+app.use('/api/buyerauth', authRoute);
