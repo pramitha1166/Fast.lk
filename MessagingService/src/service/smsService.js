@@ -1,11 +1,11 @@
 'use strict';
 const Sms = require('../model/sms');
 const { sendSMS } = require('./sendMessage');
-require('dotenv').config();
+const { MOBILE_NUMBER } = require('../util/twilio_crendentials');
 
 const sendMessage = async (req, res) => {
     try{
-        const messageRecipient = process.env.MOBILE_NUMBER;
+        const messageRecipient = MOBILE_NUMBER;
         const messageBody = 
         `Your mobile account ${messageRecipient} has been debited for your purchase at FastLK`;
     
@@ -13,7 +13,6 @@ const sendMessage = async (req, res) => {
             messageRecipient,
             messageBody
         });
-        await newSms.save();
         
         sendSMS(newSms);
 

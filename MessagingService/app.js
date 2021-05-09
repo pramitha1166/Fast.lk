@@ -6,6 +6,7 @@ const cors = require('cors');
 const app = express();
 const fetch = require('node-fetch');
 const emailRoute = require('./src/controller/emailController');
+const smsRoute = require('./src/controller/smsController');
 
 const PORT = process.env.PORT || 5001; 
 
@@ -19,11 +20,8 @@ app.use(cors());
 
 //route middlewares
 app.use('/api/email', emailRoute);
+app.use('/api/sms', smsRoute);
 
 app.listen(PORT, () => {
-    console.log(`email service started on port : ${PORT}`);
+    console.log(`Messaging service started on port : ${PORT}`);
 });
-
-
-
-
