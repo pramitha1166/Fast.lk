@@ -1,73 +1,49 @@
 'use strict'
 
-const {createPaymetService,getPaymentsService,getPaymentByIdService,deletePaymentService,updatePaymentService} = require('../service/payments')
+const {createPaymentService} = require('../service/payment')
+const {Customer,CheckoutParams,CurrencyType,PayhereCheckout} = require('payhere-js-sdk')
 
 exports.createPayment = async(req,res) => {
     try {
-        const result = await createPaymetService(req.body)
-        res.json(result)   
-    } catch (err) {
-        res.status(400).json({
-            "error": err
-        })
-    }
-}
-
-exports.getPayments = async(req,res) => {
-    try {
-        const result = await getPaymentsService(req.query)
-        res.json(result)
-    } catch (err) {
-        res.status(400).json({
-            "error": err
-        })
-    }    
-}
-
-
-exports.getPaymentById = async(req,res,next,id) => {
-    try {
-        const result = await getPaymentByIdService(id)
-        req.payment = result
-        next()
-    } catch (err) {
-        res.status(400).json({
-            "error": "error with get item "+ err
-        })
-    }
-}
-
-exports.getSinglePayment = (req,res) => {
-    res.json(req.payment)
-}
-
-exports.deletePayment = async(req,res) => {
-    try {
-        const result = await deletePaymentService(req.payment)
+        
+       
+        const result = await createPaymentService(custoer,checkoutData)
         res.json({
-            'message': 'Item has been deleted successfully',
-            result
+            'message': 'payment success'
         })
-    } catch (err) {
-        res.status(400).json({
-            "error": err
-        })
-    }
-}
 
-exports.updatePayment = async(req,res) => {
-    try {
-        const result = await updatePaymentService(req.payment,req.body)
+    } catch (err) {
         res.json({
-            'message': 'Item has been updated successfully',
-            result
-        })
-    } catch (err) {
-        res.status(400).json({
-            "error": err
+            err
         })
     }
 }
 
+exports.createPayments = (req,res) => {
+    const customer = new Customer({
+        first_name: "Pavindu",
+        last_name: "Lakshan",
+        phone: "+94771234567",
+        email: "plumberhl@gmail.com",
+        address: "No. 50, Highlevel Road",
+        city: "Panadura",
+        country: "Sri Lanka",
+    })
 
+    const checkoutData = new CheckoutParams({
+        returnUrl: 'http://localhost:3000/return',
+        cancelUrl: 'http://localhost:3000/cancel',
+        notifyUrl: 'http://localhost:8080/notify',
+        order_id: '1234234',
+        itemTitle: 'Demo item 2',
+        amount:200,
+        currency: CurrencyType.LKR,
+    })
 
+    const checkout = new PayhereCheckout(customer,checkoutData,(err) => {
+        //res.json({'error':err})
+    })
+    checkout.start()
+    res.json({'message':'payment success'})
+
+}

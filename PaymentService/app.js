@@ -1,47 +1,24 @@
 'use strict'
 
 const express = require('express')
-const app = express()
 require('dotenv').config()
-const CORS = require('cors')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
-const morgan = require('morgan')
-const mogoose = require('mongoose')
+const app = express()
 
-const PORT = process.env.PORT || 5005
+const {Payhere,AccountCategory} = require('payhere-js-sdk')
 
-/**import routes */
-const payment_router = require('./src/routes/payment')
+const paymentRouter = require('./src/routes/payment')
 
-/**connect with DB */
-mogoose.connect(process.env.DATABASE, (err) => {
-    if(err) {
-        console.log(err)
-    }else {
-        console.log('Connected with DB')
-    }
-})
+const PORT = process.env.PORT | 5003
 
-/**app middlewares */
-app.use(morgan('dev'))
-app.use(bodyParser())
-app.use(cookieParser())
-app.use(CORS())
+Payhere.init("1217233",AccountCategory.SANDBOX)
 
-/**routing middlewares */
-app.use('/api', payment_router)
 
-app.get('/api', (req,res) => {
-    res.json({
-        'Hello': 'Payment Service'
-    })
-})
+app.use('/api', paymentRouter)
 
 app.listen(PORT, (err) => {
     if(err) {
         console.log(err)
     }else {
-        console.log(`App Listning on PORT: ${PORT}`)
+        console.log(`App listing on PORT ${PORT}`)
     }
 })
