@@ -19,8 +19,8 @@ app.use(express.json());
 app.use(cors());
 
 //route middlewares
-app.use('/api/email', emailRoute);
-app.use('/api/sms', smsRoute);
+app.use('/api/messaging/email', emailRoute);
+app.use('/api/messaging/sms', smsRoute);
 
 app.listen(PORT, () => {
     console.log(`Messaging service started on port : ${PORT}`);
