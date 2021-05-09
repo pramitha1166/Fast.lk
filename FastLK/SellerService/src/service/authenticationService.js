@@ -1,0 +1,32 @@
+const mongoose = require("mongoose");
+const seller = require("../model/seller");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+
+const login = async (req, res) => {
+  const emailValue = req.body.email;
+  const password = req.body.password;
+
+  try {
+    const getUser = await seller.find({ email: emailValue });
+    if (!getUser) {
+      res.send("Invalid email");
+    }
+
+    const passwordCheck = bcrypt.compareSync(password, getUser[0].password);
+    if (passwordCheck) {
+      const token = jwt.sign(
+        { _id: getUser[0]._id, email: getUser[0].email },
+        process.env.TOKENSCRET,
+        { expiresIn: '24h' }
+      );
+      res.send(token);
+    } else {
+      res.send("Invalid password");
+    }
+  } catch (err) {
+    res.send(err);
+  }
+};
+
+module.exports.login = login;

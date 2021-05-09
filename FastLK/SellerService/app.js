@@ -15,7 +15,9 @@ mongoose.connect(process.env.CONNECTION_URL, {
 }, () => { console.log("Database connected") });
 
 const sellerRoute = require('./src/controller/sellerController');
+const authRoute = require('./src/controller/authenticationController');
 
 app.listen(PORT, () => console.log(`Server Started on port: ${PORT}`));
 
 app.use('/api/sellers', sellerRoute);
+app.use('/api/sellerauth', authRoute);

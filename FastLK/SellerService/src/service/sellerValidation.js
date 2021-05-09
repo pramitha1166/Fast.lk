@@ -1,3 +1,4 @@
+const Seller = require("../model/seller");
 
 const validateSeller = async (seller) => {
     const { firstName, lastName, username, password, email, address, mobileNo } = seller;
