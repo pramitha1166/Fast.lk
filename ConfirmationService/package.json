@@ -1,24 +1,25 @@
 {
-  "name": "emailservice",
+  "name": "confirmationservice",
   "version": "1.0.0",
-  "description": "",
+  "description": "servie to confirm payments by email and sms",
   "main": "app.js",
   "scripts": {
     "start": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Shihara-Dilshan",
-  "license": "MIT",
-  "devDependencies": {
-    "nodemon": "^2.0.7"
-  },
+  "author": "ChandulaM",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
+    "dotenv": "^9.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.0",
     "mongoose": "^5.12.7",
     "node-fetch": "^2.6.1",
-    "nodemailer": "^6.6.0"
+    "nodemailer": "^6.6.0",
+    "twilio": "^3.62.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
