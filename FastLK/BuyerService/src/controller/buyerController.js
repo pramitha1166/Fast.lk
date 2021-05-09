@@ -1,13 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const validateToken = require('./../util/validateToken');
-const { addBuyer, getBuyer, getAllBuyers, updateBuyer, deleteBuyer } = require("../service/buyerService");
+const { addBuyer, getBuyer, getAllBuyers, updateBuyer, deleteBuyer ,addToCart, removeFromCart } = require("../service/buyerService");
 
 router.post('/addBuyer', addBuyer);
 router.get('/getAllBuyers', validateToken ,getAllBuyers);
 router.get('/getBuyer/:id', validateToken, getBuyer);
 router.put('/updateBuyer/:id', validateToken, updateBuyer);
 router.delete('/removeBuyer/:id', validateToken, deleteBuyer);
+router.post('/add-to-cart/:id/:productId',validateToken, addToCart);
+router.post('/remove-from-cart/:id/:productId',validateToken, removeFromCart);
 
 module.exports = router;
 
