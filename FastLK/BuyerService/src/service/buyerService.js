@@ -85,6 +85,58 @@ const deleteBuyer = async (req, res) => {
   }
 };
 
+
+//adding items to cart
+const addToCart = async function(req, res) {
+  const productId = req.params.productId;
+  const product = {productId: 'Apple', qty: 1};
+  if (product) {
+      //const cart = this.cart;
+      const currentBuyer = await Buyer.findById(req.params.id);
+      const { cart } = currentBuyer;
+      const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product.productId).trim());
+      if (isExisting >= 0) {
+          cart.items[isExisting].qty += 1;
+      } else {
+          cart.items.push({ productId: product.productId, qty: 1 });
+      }
+      // if (!cart.totalPrice) {
+      //     cart.totalPrice = 0;
+      // }
+      // cart.totalPrice += product.price;
+      try{
+          currentBuyer.save();
+          res.status(201).json(currentBuyer); 
+      }catch(e){
+          res.status(409).json('failed')
+      }
+     
+  }
+
+};
+
+//removing items from cart
+const removeFromCart = function(req, res) {
+  const currentBuyer = await Buyer.findById(req.params.id);
+  const { cart } = currentBuyer;
+  const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(productId).trim());
+  if (isExisting >= 0) {
+      cart.items.splice(isExisting, 1);
+      try{
+        currentBuyer.save();
+        res.status(201).json(currentBuyer); 
+    }catch(e){
+        res.status(409).json('failed')
+    }
+  }
+}
+
+
+
+module.exports.addToCart = addToCart;
+module.exports.removeFromCart = removeFromCart;
+
+
 module.exports.addBuyer = addBuyer;
 module.exports.getAllBuyers = getAllBuyers;
 module.exports.getBuyer = getBuyer;
