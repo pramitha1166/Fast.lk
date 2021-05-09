@@ -22,3 +22,4 @@ spring:
         - id: SELLER-SERVICE
           uri: http://localhost:5004
           predicates: Path=/api/sellers/**
+        
