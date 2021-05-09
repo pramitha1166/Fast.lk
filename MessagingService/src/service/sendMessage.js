@@ -1,9 +1,7 @@
 require('dotenv').config();
-const { TWILIO_ACCOUNT_SID,
-    TWILIO_AUTH_TOKEN } = require('../util/twilio_crendentials');
 
-const accountSid = TWILIO_ACCOUNT_SID;
-const authToken = TWILIO_AUTH_TOKEN;
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 const sendSMS = (smsObj) => {

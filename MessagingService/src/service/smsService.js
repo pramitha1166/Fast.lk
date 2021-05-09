@@ -1,11 +1,10 @@
 'use strict';
 const Sms = require('../model/sms');
 const { sendSMS } = require('./sendMessage');
-const { MOBILE_NUMBER } = require('../util/twilio_crendentials');
 
 const sendMessage = async (req, res) => {
     try{
-        const messageRecipient = MOBILE_NUMBER;
+        const messageRecipient = process.env.MOBILE_NUMBER;
         const messageBody = 
         `Your mobile account ${messageRecipient} has been debited for your purchase at FastLK`;
     

@@ -19,8 +19,9 @@ app.use(express.json());
 app.use(cors());
 
 //route middlewares
-app.use('/api/confirmations', emailRoute, smsRoute);
+app.use('/api/email', emailRoute);
+app.use('/api/sms', smsRoute);
 
 app.listen(PORT, () => {
-    console.log(`Confirmation service started on port : ${PORT}`);
+    console.log(`Messaging service started on port : ${PORT}`);
 });
