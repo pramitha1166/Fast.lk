@@ -39,10 +39,10 @@ const getBuyer = async (req, res) => {
   try {
     if (req.params.id != req.user._id) {
       throw new Error("Unauthorized access");
+    } else {
+      const currentBuyer = await Buyer.findById(req.params.id);
+      res.json(currentBuyer);
     }
-
-    const currentBuyer = await Buyer.findById(req.params.id);
-    res.json(currentBuyer);
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -53,18 +53,18 @@ const updateBuyer = async (req, res) => {
   try {
     if (req.params.id != req.user._id) {
       throw new Error("Unauthorized access");
+    } else {
+      const currentBuyer = await Buyer.findById(req.params.id);
+      currentBuyer.firstName = req.body.firstName;
+      currentBuyer.lastName = req.body.lastName;
+      currentBuyer.userName = req.body.userName;
+      currentBuyer.email = req.body.email;
+      currentBuyer.password = bcrypt.hashSync(req.body.password, 10);
+      currentBuyer.phoneNumber = req.body.phoneNumber;
+      currentBuyer.address = req.body.address;
+      await currentBuyer.save();
+      res.status(201).json(currentBuyer);
     }
-
-    const currentBuyer = await Buyer.findById(req.params.id);
-    currentBuyer.firstName = req.body.firstName;
-    currentBuyer.lastName = req.body.lastName;
-    currentBuyer.userName = req.body.userName;
-    currentBuyer.email = req.body.email;
-    currentBuyer.password = bcrypt.hashSync(req.body.password, 10);
-    currentBuyer.phoneNumber = req.body.phoneNumber;
-    currentBuyer.address = req.body.address;
-    await currentBuyer.save();
-    res.status(201).json(currentBuyer);
   } catch (error) {
     res.status(409).json({ msg: "No Such Buyer!" });
   }
@@ -75,67 +75,68 @@ const deleteBuyer = async (req, res) => {
   try {
     if (req.params.id != req.user._id) {
       throw new Error("Unauthorized access");
+    } else {
+      const currentBuyer = await Buyer.findById(req.params.id);
+      await currentBuyer.remove();
+      res.status(201).json("deleted");
     }
-    
-    const currentBuyer = await Buyer.findById(req.params.id);
-    await currentBuyer.remove();
-    res.status(201).json("deleted");
   } catch (error) {
     res.status(409).json({ msg: "Could Not Delete!" });
   }
 };
 
-
 //adding items to cart
-const addToCart = async function(req, res) {
+const addToCart = async function (req, res) {
   const productId = req.params.productId;
-  const product = {productId: 'Apple', qty: 1};
+  const product = { productId: "Apple", qty: 1 };
   if (product) {
-      //const cart = this.cart;
-      const currentBuyer = await Buyer.findById(req.params.id);
-      const { cart } = currentBuyer;
-      const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(product.productId).trim());
-      if (isExisting >= 0) {
-          cart.items[isExisting].qty += 1;
-      } else {
-          cart.items.push({ productId: product.productId, qty: 1 });
-      }
-      // if (!cart.totalPrice) {
-      //     cart.totalPrice = 0;
-      // }
-      // cart.totalPrice += product.price;
-      try{
-          currentBuyer.save();
-          res.status(201).json(currentBuyer); 
-      }catch(e){
-          res.status(409).json('failed')
-      }
-     
+    //const cart = this.cart;
+    const currentBuyer = await Buyer.findById(req.params.id);
+    const { cart } = currentBuyer;
+    const isExisting = cart.items.findIndex(
+      (objInItems) =>
+        new String(objInItems.productId).trim() ===
+        new String(product.productId).trim()
+    );
+    if (isExisting >= 0) {
+      cart.items[isExisting].qty += 1;
+    } else {
+      cart.items.push({ productId: product.productId, qty: 1 });
+    }
+    // if (!cart.totalPrice) {
+    //     cart.totalPrice = 0;
+    // }
+    // cart.totalPrice += product.price;
+    try {
+      currentBuyer.save();
+      res.status(201).json(currentBuyer);
+    } catch (e) {
+      res.status(409).json("failed");
+    }
   }
-
 };
 
 //removing items from cart
-const removeFromCart = function(req, res) {
+const removeFromCart = async (req, res) => {
   const currentBuyer = await Buyer.findById(req.params.id);
   const { cart } = currentBuyer;
-  const isExisting = cart.items.findIndex(objInItems => new String(objInItems.productId).trim() === new String(productId).trim());
+  const isExisting = cart.items.findIndex(
+    (objInItems) =>
+      new String(objInItems.productId).trim() === new String(productId).trim()
+  );
   if (isExisting >= 0) {
-      cart.items.splice(isExisting, 1);
-      try{
-        currentBuyer.save();
-        res.status(201).json(currentBuyer); 
-    }catch(e){
-        res.status(409).json('failed')
+    cart.items.splice(isExisting, 1);
+    try {
+      currentBuyer.save();
+      res.status(201).json(currentBuyer);
+    } catch (e) {
+      res.status(409).json("failed");
     }
   }
-}
-
-
+};
 
 module.exports.addToCart = addToCart;
 module.exports.removeFromCart = removeFromCart;
-
 
 module.exports.addBuyer = addBuyer;
 module.exports.getAllBuyers = getAllBuyers;
