@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <api context="/api/messaging" name="MessagingAPI" xmlns="http://ws.apache.org/ns/synapse">
-    <resource methods="POST">
+    <resource methods="POST GET">
         <inSequence>
-            <log description="MessageLog">
-                <property name="message" value="Messaging service"/>
+            <log description="log">
+                <property name="message" value="welcome to messaging API"/>
             </log>
             <send>
-                <endpoint key="MessagingServiceEP"/>
+                <endpoint key="MessageService"/>
             </send>
         </inSequence>
         <outSequence>

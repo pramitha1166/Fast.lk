@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/api" name="FastlkAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="DELETE POST PUT PATCH GET">
+        <inSequence>
+            <log description="log">
+                <property name="FaskAPI" value="Welcome to fast backend API"/>
+            </log>
+            <send>
+                <endpoint key="FaskLKBackend"/>
+            </send>
+        </inSequence>
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

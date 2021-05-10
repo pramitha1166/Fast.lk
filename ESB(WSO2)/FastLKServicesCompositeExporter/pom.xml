@@ -3,17 +3,31 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>FastLKCompositeExporter</artifactId>
+  <artifactId>FastLKServicesCompositeExporter</artifactId>
   <version>1.0.0</version>
   <packaging>carbon/application</packaging>
-  <name>FastLKCompositeExporter</name>
-  <description>FastLKCompositeExporter</description>
+  <name>FastLKServicesCompositeExporter</name>
+  <description>FastLKServicesCompositeExporter</description>
   <properties>
+    <com.example.endpoint_._FaskLKBackend>capp/EnterpriseServiceBus</com.example.endpoint_._FaskLKBackend>
+    <com.example.api_._FastlkAPI>capp/EnterpriseServiceBus</com.example.api_._FastlkAPI>
+    <com.example.endpoint_._MessageService>capp/EnterpriseServiceBus</com.example.endpoint_._MessageService>
     <com.example.api_._MessagingAPI>capp/EnterpriseServiceBus</com.example.api_._MessagingAPI>
-    <com.example.endpoint_._MessagingServiceEP>capp/EnterpriseServiceBus</com.example.endpoint_._MessagingServiceEP>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
   </properties>
   <dependencies>
+    <dependency>
+      <groupId>com.example.api</groupId>
+      <artifactId>FastlkAPI</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>FaskLKBackend</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
     <dependency>
       <groupId>com.example.api</groupId>
       <artifactId>MessagingAPI</artifactId>
@@ -22,7 +36,7 @@
     </dependency>
     <dependency>
       <groupId>com.example.endpoint</groupId>
-      <artifactId>MessagingServiceEP</artifactId>
+      <artifactId>MessageService</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

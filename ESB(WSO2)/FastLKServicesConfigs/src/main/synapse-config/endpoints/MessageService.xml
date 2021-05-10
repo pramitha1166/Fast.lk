@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<endpoint name="MessagingServiceEP" xmlns="http://ws.apache.org/ns/synapse">
-    <address uri="http://localhost:5001/api/messaging">
+<endpoint name="MessageService" xmlns="http://ws.apache.org/ns/synapse">
+    <address uri="http://localhost:5003/api/messaging">
         <suspendOnFailure>
             <initialDuration>-1</initialDuration>
             <progressionFactor>1.0</progressionFactor>

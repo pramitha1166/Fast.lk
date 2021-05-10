@@ -3,16 +3,15 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.example</groupId>
-  <artifactId>FastLK</artifactId>
+  <artifactId>FastLKServices</artifactId>
   <version>1.0.0</version>
   <packaging>pom</packaging>
-  <name>FastLK</name>
-  <description>FastLK</description>
+  <name>FastLKServices</name>
+  <description>FastLKServices</description>
   <modules>
-    <module>FastLKRegistryResources</module>
-    <module>FastLKConnectorExporter</module>
-    <module>FastLKConfigs</module>
-    <module>FastLKCompositeExporter</module>
+    <module>FastLKServicesRegistryResources</module>
+    <module>FastLKServicesConfigs</module>
+    <module>FastLKServicesCompositeExporter</module>
   </modules>
   <build />
   <profiles>
