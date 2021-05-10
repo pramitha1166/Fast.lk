@@ -1,6 +1,9 @@
 "use strict";
 
-const {productValidateAdd, productValidateUpdate} = require("./../util/productValidation");
+const {
+  productValidateAdd,
+  productValidateUpdate,
+} = require("./../util/productValidation");
 const Product = require("./../model/product");
 const { paginationControl } = require("./../util/paginationControl");
 
@@ -8,10 +11,11 @@ const { paginationControl } = require("./../util/paginationControl");
  * Current implementation for add product to mopngodb using mongoose
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {An instance of product model}
+ * @params {productData - An instance of product model}
+ * @params {payload - payload given by the JWT vertification}
  * @return {promise} {resolve upon successfull product add or reject if there is any error}
  */
-const addProduct = (productData) => {
+const addProduct = (productData, payload) => {
   return new Promise(async (resolve, reject) => {
     //validate inputs
     const validate = productValidateAdd(productData);
@@ -20,9 +24,14 @@ const addProduct = (productData) => {
     }
 
     try {
-      const product = new Product(productData);
-      const savedData = await product.save();
-      resolve(savedData);
+      const itemData = await Product.find({ _id: itemId });
+      if (itemData[0].ownerRef !== payload._id) {
+        reject("unauthorized access");
+      } else {
+        const product = new Product(productData);
+        const savedData = await product.save();
+        resolve(savedData);
+      }
     } catch (err) {
       reject(err);
     }
@@ -58,10 +67,10 @@ const getProducts = (query) => {
  * @params {item id}
  * @return {promise} {resolve product data reject if there is any error}
  */
- const viewProductById = (itemId) => {
+const viewProductById = (itemId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const productData = await Product.findOne({_id: itemId}); //get all products
+      const productData = await Product.findOne({ _id: itemId }); //get all products
       resolve(productData);
     } catch (err) {
       reject(err);
@@ -96,14 +105,20 @@ const getSellerProducts = (sellerId, query) => {
  * Current implementation for delete product from mopngodb using it's id
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {product id}
+ * @params {productId - product id}
+ * @params {payload - payload given by the JWT vertification}
  * @return {promise} {delected product data}
  */
-const deleteProduct = (productId) => {
+const deleteProduct = (productId, payload) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const delectedProduct = await Product.deleteOne({ _id: productId });
-      resolve(delectedProduct);
+      const itemData = await Product.find({ _id: itemId });
+      if (itemData[0].ownerRef !== payload._id) {
+        reject("unauthorized access");
+      } else {
+        const delectedProduct = await Product.deleteOne({ _id: productId });
+        resolve(delectedProduct);
+      }
     } catch (err) {
       reject(err);
     }
@@ -114,10 +129,12 @@ const deleteProduct = (productId) => {
  * Current implementation for update product from mopngodb using mongoose
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {An instance of product model}
+ * @params {productData - An instance of product model}
+ * @params {itemId - item id}
+ * @params {payload - payload given by the JWT vertification}
  * @return {promise} {resolve upon successfull product add or reject if there is any error}
  */
-const updateProduct = (productData, itemId) => {
+const updateProduct = (productData, itemId, payload) => {
   return new Promise(async (resolve, reject) => {
     //validate inputs
     const validate = productValidateUpdate(productData);
@@ -126,20 +143,25 @@ const updateProduct = (productData, itemId) => {
     }
 
     try {
-      const updatedProduct = await Product.updateOne(
-        { _id: itemId },
-        {
-          $set: {
-            name: productData.name,
-            discription: productData.discription,
-            category: productData.category,
-            quantity: productData.quantity,
-            price: productData.price,
-            updatedAt: productData.updatedAt,
-          },
-        }
-      );
-      resolve(updatedProduct);
+      const itemData = await Product.find({ _id: itemId });
+      if (itemData[0].ownerRef !== payload._id) {
+        reject("unauthorized access");
+      } else {
+        const updatedProduct = await Product.updateOne(
+          { _id: itemId },
+          {
+            $set: {
+              name: productData.name,
+              discription: productData.discription,
+              category: productData.category,
+              quantity: productData.quantity,
+              price: productData.price,
+              updatedAt: productData.updatedAt,
+            },
+          }
+        );
+        resolve(updatedProduct);
+      }
     } catch (err) {
       reject(err);
     }
@@ -150,21 +172,23 @@ const updateProduct = (productData, itemId) => {
  * Current implementation for add new image for a product to mopngodb using mongoose
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {itemid and image URL}
+ * @params {imageURL - item id}
+ * @params {imageURL - image URL}
+ * @params {payload - payload given by the JWT vertification}
  * @return {promise} {resolve upon successfull image add or reject if there is any error}
  */
- const addImage = (imageURL, itemId, payload) => {
+const addImage = (imageURL, itemId, payload) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const itemData = await Product.find({_id: itemId});
-      if(itemData[0].ownerRef !== payload._id){
+      const itemData = await Product.find({ _id: itemId });
+      if (itemData[0].ownerRef !== payload._id) {
         reject("unauthorized access");
-      }else{
+      } else {
         const updatedProduct = await Product.updateOne(
           { _id: itemId },
           {
             $push: {
-              images: imageURL.url
+              images: imageURL.url,
             },
           }
         );
@@ -180,21 +204,28 @@ const updateProduct = (productData, itemId) => {
  * Current implementation for remove existing image from a product to mopngodb using mongoose
  * uses mongoose @visit {https://www.npmjs.com/package/mongoose} for object mappping
  *
- * @params {itemid and image URL}
+ * @params {imageURL - item id}
+ * @params {imageURL - image URL}
+ * @params {payload - payload given by the JWT vertification}
  * @return {promise} {resolve upon successfull image add or reject if there is any error}
  */
- const removeImage = (imageURL, itemId) => {
+const removeImage = (imageURL, itemId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const updatedProduct = await Product.updateOne(
-        { _id: itemId },
-        {
-          $pull: {
-            images: imageURL.url
-          },
-        }
-      );
-      resolve(updatedProduct);
+      const itemData = await Product.find({ _id: itemId });
+      if (itemData[0].ownerRef !== payload._id) {
+        reject("unauthorized access");
+      } else {
+        const updatedProduct = await Product.updateOne(
+          { _id: itemId },
+          {
+            $pull: {
+              images: imageURL.url,
+            },
+          }
+        );
+        resolve(updatedProduct);
+      }
     } catch (err) {
       reject(err);
     }

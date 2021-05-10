@@ -109,7 +109,7 @@ router.get("/view/:sellerid", async (req, res) => {
  */
 router.delete("/delete/:itemid", validateToken, async (req, res) => {
   try {
-    const result = await deleteProduct(req.params.itemid);
+    const result = await deleteProduct(req.params.itemid, req.data);
     res.status(200).json({ result });
   } catch (err) {
     res.status(400).json(err);
@@ -130,7 +130,7 @@ router.delete("/delete/:itemid", validateToken, async (req, res) => {
  */
 router.patch("/update/:itemid", validateToken, async (req, res) => {
   try {
-    const result = await updateProduct(req.body, req.params.itemid);
+    const result = await updateProduct(req.body, req.params.itemid, req.data);
     res.status(201).json({ result });
   } catch (err) {
     res.status(400).json(err);
@@ -170,7 +170,7 @@ router.patch("/addimage/:itemid", validateToken, async (req, res) => {
  */
 router.patch("/removeimage/:itemid", validateToken, async (req, res) => {
   try {
-    const result = await removeImage(req.body, req.params.itemid);
+    const result = await removeImage(req.body, req.params.itemid, req.data);
     res.status(201).json({ result });
   } catch (err) {
     res.status(400).json(err);
