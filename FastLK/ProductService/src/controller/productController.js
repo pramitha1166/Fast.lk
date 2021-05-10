@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const validateToken = require("./../util/validateToken");
 const {
   addProduct,
   getProducts,
@@ -8,7 +9,7 @@ const {
   updateProduct,
   viewProductById,
   addImage,
-  removeImage
+  removeImage,
 } = require("./../service/ProductService");
 
 /**
@@ -23,7 +24,7 @@ const {
  * @urlparams {none}
  * @return {json} {Newly added product}
  */
-router.post("/add", async (req, res) => {
+router.post("/add", validateToken, async (req, res) => {
   try {
     const result = await addProduct(req.body);
     res.status(201).json({ result });
@@ -106,7 +107,7 @@ router.get("/view/:sellerid", async (req, res) => {
  * @urlparams {integer itemid}
  * @return {json} {delected product data}
  */
-router.delete("/delete/:itemid", async (req, res) => {
+router.delete("/delete/:itemid", validateToken, async (req, res) => {
   try {
     const result = await deleteProduct(req.params.itemid);
     res.status(200).json({ result });
@@ -119,7 +120,7 @@ router.delete("/delete/:itemid", async (req, res) => {
  * This function is only for accepting /api/product/update/itemid requests for updating products
  * The request body must contain all the attributes of model product expect images
  * see model product @path {src/model/product.js}
- * This function can use any method implementation inside the service layer for upding products 
+ * This function can use any method implementation inside the service layer for upding products
  * see productService @path {src/service/productService.js}
  *
  * @method { HTTP UPDATE }
@@ -127,7 +128,7 @@ router.delete("/delete/:itemid", async (req, res) => {
  * @urlparams {itemid}
  * @return {json} {updated product}
  */
-router.patch("/update/:itemid", async (req, res) => {
+router.patch("/update/:itemid", validateToken, async (req, res) => {
   try {
     const result = await updateProduct(req.body, req.params.itemid);
     res.status(201).json({ result });
@@ -136,11 +137,10 @@ router.patch("/update/:itemid", async (req, res) => {
   }
 });
 
-
 /**
  * This function is only for accepting /api/product/addimage/itemid requests for adding images
  * The request body must contain a URL for a image
- * This function can use any method implementation inside the service layer for adding images 
+ * This function can use any method implementation inside the service layer for adding images
  * see productService @path {src/service/productService.js}
  *
  * @method { HTTP PATCH }
@@ -148,9 +148,9 @@ router.patch("/update/:itemid", async (req, res) => {
  * @urlparams {itemid}
  * @return {json} {updated product}
  */
- router.patch("/addimage/:itemid", async (req, res) => {
+router.patch("/addimage/:itemid", validateToken, async (req, res) => {
   try {
-    const result = await addImage(req.body, req.params.itemid);
+    const result = await addImage(req.body, req.params.itemid, req.data);
     res.status(201).json({ result });
   } catch (err) {
     res.status(400).json(err);
@@ -160,7 +160,7 @@ router.patch("/update/:itemid", async (req, res) => {
 /**
  * This function is only for accepting /api/product/removeimage/itemid requests for removing images
  * The request body must contain a URL for a image
- * This function can use any method implementation inside the service layer for adding images 
+ * This function can use any method implementation inside the service layer for adding images
  * see productService @path {src/service/productService.js}
  *
  * @method { HTTP PATCH }
@@ -168,7 +168,7 @@ router.patch("/update/:itemid", async (req, res) => {
  * @urlparams {itemid}
  * @return {json} {updated product}
  */
- router.patch("/removeimage/:itemid", async (req, res) => {
+router.patch("/removeimage/:itemid", validateToken, async (req, res) => {
   try {
     const result = await removeImage(req.body, req.params.itemid);
     res.status(201).json({ result });

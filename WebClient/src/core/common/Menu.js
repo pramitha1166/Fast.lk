@@ -10,7 +10,7 @@ const Menu = ({history}) => {
         if(history.location.pathname===path) {
             return {color:"#ffffff"}
         }else {
-            return {color:"#000000"}
+            return {color:"#ffffff"}
         }
     }
 
@@ -20,7 +20,7 @@ const Menu = ({history}) => {
 
     return (
         <div>
-            <MDBNavbar color="default-color" dark expand="md">
+            <MDBNavbar color="elegant-color-dark" dark expand="md">
                 <MDBNavbarBrand>
                     <Link className="nav-link white-text" to="/">Fast.Lk</Link>
                 </MDBNavbarBrand>

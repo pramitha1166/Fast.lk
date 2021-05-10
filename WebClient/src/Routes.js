@@ -1,7 +1,7 @@
 import React from 'react'
 import {BrowserRouter,Switch,Route} from 'react-router-dom'
 import Contact from './core/Contact'
-import Home from './core/Home'
+import Home from './core/Home/Home'
 
 const Routes = () => {
     return (

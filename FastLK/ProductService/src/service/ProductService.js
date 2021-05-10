@@ -153,18 +153,23 @@ const updateProduct = (productData, itemId) => {
  * @params {itemid and image URL}
  * @return {promise} {resolve upon successfull image add or reject if there is any error}
  */
- const addImage = (imageURL, itemId) => {
+ const addImage = (imageURL, itemId, payload) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const updatedProduct = await Product.updateOne(
-        { _id: itemId },
-        {
-          $push: {
-            images: imageURL.url
-          },
-        }
-      );
-      resolve(updatedProduct);
+      const itemData = await Product.find({_id: itemId});
+      if(itemData[0].ownerRef !== payload._id){
+        reject("unauthorized access");
+      }else{
+        const updatedProduct = await Product.updateOne(
+          { _id: itemId },
+          {
+            $push: {
+              images: imageURL.url
+            },
+          }
+        );
+        resolve(updatedProduct);
+      }
     } catch (err) {
       reject(err);
     }

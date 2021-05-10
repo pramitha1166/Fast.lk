@@ -2,6 +2,8 @@ import React from 'react'
 import Footer from './Footer'
 import Menu from './Menu'
 
+import './../../App.css'
+
 import { MDBJumbotron} from "mdbreact";
 
 
@@ -9,13 +11,12 @@ const Layout = ({className, title='Title', description='Enter description', chil
     return (
         <div>
             <Menu />
-
-            <MDBJumbotron>
+            {/* <MDBJumbotron>
                 <h2 className="h1 display-3">{title}</h2>
                 <p className="lead">
                     {description}
                 </p>
-            </MDBJumbotron>
+            </MDBJumbotron> */}
 
             <div className={className}>
                 {children}

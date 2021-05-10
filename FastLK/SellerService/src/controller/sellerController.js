@@ -11,6 +11,6 @@ router.put('/update/:id', validateToken, updateSeller);
 
 router.delete('/delete/:id', validateToken, deleteSeller);
 
-router.get('/viewall', validateToken  ,viewAll);
+router.get('/viewall'  ,viewAll);
 
 module.exports = router;
