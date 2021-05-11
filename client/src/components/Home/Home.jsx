@@ -1,17 +1,19 @@
 import React from "react";
 
+import "./../../App.css";
+
 const Home = () => {
   return (
     <>
       <div
-        class="page-header header-filter"
+        className="page-header header-filter smooth_load"
         data-parallax="true"
         style={{backgroundImage: "url('../assets/img/profile_city.jpg')"}}
       >
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6">
-              <h1 class="title">Your Story Starts With Us.</h1>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-6">
+              <h1 className="title">Your Story Starts With Us.</h1>
               <h4>
                 Every landing page needs a small description after the big bold
                 title, that&apos;s why we added this text here. Add here all the
@@ -23,21 +25,21 @@ const Home = () => {
                 href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
                 target="_blank"
                 rel="noreferrer"
-                class="btn btn-danger btn-raised btn-lg"
+                className="btn btn-danger btn-raised btn-lg"
               >
-                <i class="fa fa-play"></i> Watch video
+                <i className="fa fa-play"></i> Watch video
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="main main-raised">
-        <div class="container">
-          <div class="section text-center">
-            <div class="row">
-              <div class="col-md-8 ml-auto mr-auto">
-                <h2 class="title">Let&apos;s talk product</h2>
-                <h5 class="description">
+      <div className="main main-raised">
+        <div className="container">
+          <div className="section text-center">
+            <div className="row">
+              <div className="col-md-8 ml-auto mr-auto">
+                <h2 className="title">Let&apos;s talk product</h2>
+                <h5 className="description">
                   This is the paragraph where you can write more details about
                   your product. Keep you user engaged by providing meaningful
                   information. Remember that by this time, the user is curious,
@@ -46,14 +48,14 @@ const Home = () => {
                 </h5>
               </div>
             </div>
-            <div class="features">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="info">
-                    <div class="icon icon-info">
-                      <i class="material-icons">chat</i>
+            <div className="features">
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="info">
+                    <div className="icon icon-info">
+                      <i className="material-icons">chat</i>
                     </div>
-                    <h4 class="info-title">Free Chat</h4>
+                    <h4 className="info-title">Free Chat</h4>
                     <p>
                       Divide details about your product or agency work into
                       parts. Write a few lines about each one. A paragraph
@@ -61,12 +63,12 @@ const Home = () => {
                     </p>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="info">
-                    <div class="icon icon-success">
-                      <i class="material-icons">verified_user</i>
+                <div className="col-md-4">
+                  <div className="info">
+                    <div className="icon icon-success">
+                      <i className="material-icons">verified_user</i>
                     </div>
-                    <h4 class="info-title">Verified Users</h4>
+                    <h4 className="info-title">Verified Users</h4>
                     <p>
                       Divide details about your product or agency work into
                       parts. Write a few lines about each one. A paragraph
@@ -74,12 +76,12 @@ const Home = () => {
                     </p>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="info">
-                    <div class="icon icon-danger">
-                      <i class="material-icons">fingerprint</i>
+                <div className="col-md-4">
+                  <div className="info">
+                    <div className="icon icon-danger">
+                      <i className="material-icons">fingerprint</i>
                     </div>
-                    <h4 class="info-title">Fingerprint</h4>
+                    <h4 className="info-title">Fingerprint</h4>
                     <p>
                       Divide details about your product or agency work into
                       parts. Write a few lines about each one. A paragraph
@@ -90,27 +92,27 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div class="section text-center">
-            <h2 class="title">Here is our team</h2>
-            <div class="team">
-              <div class="row">
-                <div class="col-md-4">
-                  <div class="team-player">
-                    <div class="card card-plain">
-                      <div class="col-md-6 ml-auto mr-auto">
+          <div className="section text-center">
+            <h2 className="title">Here is our team</h2>
+            <div className="team">
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="team-player">
+                    <div className="card card-plain">
+                      <div className="col-md-6 ml-auto mr-auto">
                         <img
                           src="../assets/img/faces/avatar.jpg"
                           alt="TODO : fsdkhsjdhsjhdjks"
-                          class="img-raised rounded-circle img-fluid"
+                          className="img-raised rounded-circle img-fluid"
                         />
                       </div>
-                      <h4 class="card-title">
+                      <h4 className="card-title">
                         Gigi Hadid
                         <br />
-                        <small class="card-description text-muted">Model</small>
+                        <small className="card-description text-muted">Model</small>
                       </h4>
-                      <div class="card-body">
-                        <p class="card-description">
+                      <div className="card-body">
+                        <p className="card-description">
                           You can write here details about one of your team
                           members. You can give more details about what they do.
                           Feel free to add some
@@ -118,39 +120,39 @@ const Home = () => {
                           them outside the site.
                         </p>
                       </div>
-                      <div class="card-footer justify-content-center">
-                        <a href="#pablo" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-twitter"></i>
+                      <div className="card-footer justify-content-center">
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-twitter"></i>
                         </a>
-                        <a href="#pablo" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-instagram"></i>
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-instagram"></i>
                         </a>
-                        <a href="#pablo" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-facebook-square"></i>
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-facebook-square"></i>
                         </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="team-player">
-                    <div class="card card-plain">
-                      <div class="col-md-6 ml-auto mr-auto">
+                <div className="col-md-4">
+                  <div className="team-player">
+                    <div className="card card-plain">
+                      <div className="col-md-6 ml-auto mr-auto">
                         <img
                           src="../assets/img/faces/christian.jpg"
                           alt="Tfdfdfdfd"
-                          class="img-raised rounded-circle img-fluid"
+                          className="img-raised rounded-circle img-fluid"
                         />
                       </div>
-                      <h4 class="card-title">
+                      <h4 className="card-title">
                         Christian Louboutin
                         <br />
-                        <small class="card-description text-muted">
+                        <small className="card-description text-muted">
                           Designer
                         </small>
                       </h4>
-                      <div class="card-body">
-                        <p class="card-description">
+                      <div className="card-body">
+                        <p className="card-description">
                           You can write here details about one of your team
                           members. You can give more details about what they do.
                           Feel free to add some
@@ -158,34 +160,34 @@ const Home = () => {
                           them outside the site.
                         </p>
                       </div>
-                      <div class="card-footer justify-content-center">
-                        <a href="#pablo" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-twitter"></i>
+                      <div className="card-footer justify-content-center">
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-twitter"></i>
                         </a>
-                        <a href="#pablo" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-linkedin"></i>
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-linkedin"></i>
                         </a>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
-                  <div class="team-player">
-                    <div class="card card-plain">
-                      <div class="col-md-6 ml-auto mr-auto">
+                <div className="col-md-4">
+                  <div className="team-player">
+                    <div className="card card-plain">
+                      <div className="col-md-6 ml-auto mr-auto">
                         <img
                           src="../assets/img/faces/kendall.jpg"
                           alt="dsdsdsdsdsdsdsd"
-                          class="img-raised rounded-circle img-fluid"
+                          className="img-raised rounded-circle img-fluid"
                         />
                       </div>
-                      <h4 class="card-title">
+                      <h4 className="card-title">
                         Kendall Jenner
                         <br />
-                        <small class="card-description text-muted">Model</small>
+                        <small className="card-description text-muted">Model</small>
                       </h4>
-                      <div class="card-body">
-                        <p class="card-description">
+                      <div className="card-body">
+                        <p className="card-description">
                           You can write here details about one of your team
                           members. You can give more details about what they do.
                           Feel free to add some
@@ -193,15 +195,15 @@ const Home = () => {
                           them outside the site.
                         </p>
                       </div>
-                      <div class="card-footer justify-content-center">
-                        <a href="!#" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-twitter"></i>
+                      <div className="card-footer justify-content-center">
+                        <a href="!#" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-twitter"></i>
                         </a>
-                        <a href="!#" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-instagram"></i>
+                        <a href="!#" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-instagram"></i>
                         </a>
-                        <a href="#pablo" class="btn btn-link btn-just-icon">
-                          <i class="fa fa-facebook-square"></i>
+                        <a href="#pablo" className="btn btn-link btn-just-icon">
+                          <i className="fa fa-facebook-square"></i>
                         </a>
                       </div>
                     </div>
@@ -210,45 +212,45 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div class="section section-contacts">
-            <div class="row">
-              <div class="col-md-8 ml-auto mr-auto">
-                <h2 class="text-center title">Work with us</h2>
-                <h4 class="text-center description">
+          <div className="section section-contacts">
+            <div className="row">
+              <div className="col-md-8 ml-auto mr-auto">
+                <h2 className="text-center title">Work with us</h2>
+                <h4 className="text-center description">
                   Divide details about your product or agency work into parts.
                   Write a few lines about each one and contact us about any
                   further collaboration. We will responde get back to you in a
                   couple of hours.
                 </h4>
-                <form class="contact-form">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="bmd-label-floating">Your Name</label>
-                        <input type="email" class="form-control" />
+                <form className="contact-form">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <label className="bmd-label-floating">Your Name</label>
+                        <input type="email" className="form-control" />
                       </div>
                     </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label class="bmd-label-floating">Your Email</label>
-                        <input type="email" class="form-control" />
+                    <div className="col-md-6">
+                      <div className="form-group">
+                        <label className="bmd-label-floating">Your Email</label>
+                        <input type="email" className="form-control" />
                       </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="exampleMessage" class="bmd-label-floating">
+                  <div className="form-group">
+                    <label htmlFor="exampleMessage" className="bmd-label-floating">
                       Your Message
                     </label>
                     <textarea
                       type="email"
-                      class="form-control"
+                      className="form-control"
                       rows="4"
                       id="exampleMessage"
                     ></textarea>
                   </div>
-                  <div class="row">
-                    <div class="col-md-4 ml-auto mr-auto text-center">
-                      <button class="btn btn-primary btn-raised">
+                  <div className="row">
+                    <div className="col-md-4 ml-auto mr-auto text-center">
+                      <button className="btn btn-primary btn-raised">
                         Send Message
                       </button>
                     </div>
