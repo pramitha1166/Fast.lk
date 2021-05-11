@@ -4,8 +4,8 @@ const express = require('express')
 
 const router = express.Router()
 
-const {createPayment,createPayments} = require('../controller/payment')
+const {generateClientToken} = require('../controller/payment')
 
-router.get('/payment', createPayments)
+router.get('/payment/client_token', generateClientToken)
 
 module.exports = router

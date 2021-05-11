@@ -4,14 +4,10 @@ const express = require('express')
 require('dotenv').config()
 const app = express()
 
-const {Payhere,AccountCategory} = require('payhere-js-sdk')
+
+const PORT = process.env.PORT | 5007
 
 const paymentRouter = require('./src/routes/payment')
-
-const PORT = process.env.PORT | 5003
-
-Payhere.init("1217233",AccountCategory.SANDBOX)
-
 
 app.use('/api', paymentRouter)
 

@@ -1,15 +1,27 @@
 'use srtict'
 
-const {PayhereCheckout} = require('payhere-js-sdk')
+const braintree = require('braintree')
+require('dotenv').config()
 
-exports.createPaymentService = (customer_data,checkoutData_data) => {
+exports.generateClientTokenService = () => {
+  
     return new Promise((resolve,reject) => {
-
-        const checkout = new PayhereCheckout(customer_data,checkoutData_data,(err) => {
-            reject(err)
+        const gateway = new braintree.BraintreeGateway({
+            environment: braintree.Environment.Sandbox,
+            merchantId: process.env.MERCHANTID,
+            publicKey: process.env.PUBLICKEY,
+            privateKey: process.env.PRIVATEKEY
         })
-        checkout.start()
-        resolve()
 
+        gateway.clientToken.generate({}, (err,res) => {
+            if(err) {
+                reject(err)
+            }else {
+                resolve(res)
+            }
+        })
     })
+
+
+
 }
