@@ -4,7 +4,7 @@
 
 <div align="center">
 
-![Electron Boilerplate Demo](https://raw.githubusercontent.com/Shihara-Dilshan/Fast.lk/main/architeccturalview.PNG)
+![Electron Boilerplate Demo](https://raw.githubusercontent.com/Shihara-Dilshan/Fast.lk/main/architeccturalviewupdated.PNG)
 
 </div>
 
