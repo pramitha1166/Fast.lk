@@ -4,7 +4,9 @@
 
 <div align="center">
 
-![Electron Boilerplate Demo](https://raw.githubusercontent.com/Shihara-Dilshan/Fast.lk/main/architeccturalviewupdated.png)
+![architecture](https://raw.githubusercontent.com/Shihara-Dilshan/Fast.lk/main/architeccturalviewupdated.png)
+
+![landingpage](https://raw.githubusercontent.com/Shihara-Dilshan/Fast.lk/main/landingpage.png.png)
 
 </div>
 
