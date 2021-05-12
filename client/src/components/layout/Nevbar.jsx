@@ -1,9 +1,80 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, {useState} from "react";
+import { Link, withRouter } from "react-router-dom";
+import './Navbar.css'
 
-const Navbar = () => {
+const Navbar = ({history}) => {
+
+  const [showCart,setShowCart] = useState(false)
+  const [cartItems,setCartItems] = useState([
+    {
+      _id: 1,
+      img: 'https://th.bing.com/th/id/OIP.wycFRpdMjTifD1dm4v2S9wHaE8?w=277&h=185&c=7&o=5&pid=1.7',
+      price: 50,
+      quantity: 2
+    },
+    {
+      _id: 2,
+      img: 'https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?w=249&h=191&c=7&o=5&pid=1.7',
+      price: 20,
+      quantity: 3
+    },
+    {
+      _id: 3,
+      img: 'https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7',
+      price: 40,
+      quantity: 5
+    }
+  ])
+
+  const buttonClickCart = () => {
+    setShowCart(!showCart)
+  }
+
+  const isActive = (history,path) => {
+    if(history.location.pathname===path) {
+      return {color:'#ff9900'}
+    }else {
+      return {color:'#000000'}
+    }
+  }
+
+  const isShowCart = () => {
+    if(showCart) {
+      return {left: '0px'}
+    }else {
+      return {left: '-450px'}
+    }
+  }
+
+  const cart = () => (
+    <div>
+      <div className="cart" style={isShowCart()}>
+        <div className="cart-container">
+          <h3>Shopping Cart</h3>
+          <ul>
+            {cartItems.map((item,id) => (
+               <li>
+               <div className="image">
+                 <img src={item.img}></img>
+               </div>
+               <div className="content">
+                 <p>{item.quantity} item | {item.quantity*item.price}$ </p>
+               </div>
+               <div className="price">
+                 <button className="btn btn-danger btn-sm">remove</button>
+               </div>
+             </li>
+            ))}
+          </ul>
+        </div> 
+        <span><a href="#" onClick={buttonClickCart}><i class="fa fa-times" aria-hidden="true"></i></a></span>
+      </div>
+    </div>
+  )  
+
   return (
     <>
+    {cart()}
       <nav
         className="navbar navbar-transparent navbar-color-on-scroll fixed-top navbar-expand-lg"
         color-on-scroll="100"
@@ -11,9 +82,7 @@ const Navbar = () => {
       >
         <div className="container">
           <div className="navbar-translate">
-            <Link to="/">
-              <h3 style={{color: 'white'}}>Fast.lk</h3>
-            </Link>
+            <Link to="/" style={{textDecoration:'none',color:'black'}}><a className="navbar-brand"><strong>Fast.Lk</strong></a></Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -28,72 +97,45 @@ const Navbar = () => {
             </button>
           </div>
           <div className="collapse navbar-collapse">
-            <ul className="navbar-nav ml-auto">
-              <li className="dropdown nav-item">
-                <a
-                  href="!#"
-                  className="dropdown-toggle nav-link"
-                  data-toggle="dropdown"
-                >
-                  <i className="material-icons">apps</i> Components
-                </a>
-                <div className="dropdown-menu dropdown-with-icons">
-                  <a href="../index.html" className="dropdown-item">
-                    <i className="material-icons">layers</i> All Components
-                  </a>
+            <ul className="navbar-nav ml-5">
+               <li className="nav-item">
+                  <a href="#" className="nav-link"><Link to="/" style={isActive(history,'/')}>Home</Link></a>
+               </li>
+               <li className="dropdown nav-item">
                   <a
-                    href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html"
-                    className="dropdown-item"
-                  >
-                    <i className="material-icons">content_paste</i>{" "}
-                    Documentation
-                  </a>
-                </div>
-              </li>
+                    href="!#"
+                    className="dropdown-toggle nav-link"
+                    data-toggle="dropdown">
+                      Shop
+                  </a>  
+                  <div className="dropdown-menu">
+                    <a className="dropdown-item">
+                      Shoes
+                    </a>
+                    <a className="dropdown-item">
+                      Bags
+                    </a>
+                  </div>
+               </li>
+               <li className="nav-item">
+                  <a href="" className="nav-link"><Link to="/contact" style={isActive(history,'/contact')}>Contact</Link></a>
+               </li>
+            </ul>
+            <ul className="navbar-nav ml-auto">
+             
+         
               <li className="nav-item">
-                <a
-                  className="nav-link"
-                  href="https://www.creative-tim.com/product/material-kit-pro"
-                >
-                  <i className="material-icons">unarchive</i> Upgrade to PRO
+                <a className="nav-link" onClick={buttonClickCart}>
+                  <i className="fa fa-shopping-basket"></i><span class="badge badge-default">4</span>
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  rel="tooltip"
-                  title=""
-                  data-placement="bottom"
-                  href="https://twitter.com/CreativeTim"
-                  data-original-title="Follow us on Twitter"
-                >
-                  <i className="fa fa-twitter"></i>
+
+              <li className="nav-item"> 
+                <a className="nav-link">
+                  <i class="fa fa-user" aria-hidden="true"></i>
                 </a>
               </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  rel="tooltip"
-                  title=""
-                  data-placement="bottom"
-                  href="https://www.facebook.com/CreativeTim"
-                  data-original-title="Like us on Facebook"
-                >
-                  <i className="fa fa-facebook-square"></i>
-                </a>
-              </li>
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  rel="tooltip"
-                  title=""
-                  data-placement="bottom"
-                  href="https://www.instagram.com/CreativeTimOfficial"
-                  data-original-title="Follow us on Instagram"
-                >
-                  <i className="fa fa-instagram"></i>
-                </a>
-              </li>
+
             </ul>
           </div>
         </div>
@@ -102,4 +144,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);
