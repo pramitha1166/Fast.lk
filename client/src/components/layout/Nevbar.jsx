@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -10,12 +11,9 @@ const Navbar = () => {
       >
         <div className="container">
           <div className="navbar-translate">
-            <a
-              className="navbar-brand"
-              href="https://demos.creative-tim.com/material-kit/index.html"
-            >
-              Material Kit{" "}
-            </a>
+            <Link to="/">
+              <h3 style={{color: 'white'}}>Fast.lk</h3>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -34,20 +32,21 @@ const Navbar = () => {
               <li className="dropdown nav-item">
                 <a
                   href="!#"
-                  class="dropdown-toggle nav-link"
+                  className="dropdown-toggle nav-link"
                   data-toggle="dropdown"
                 >
                   <i className="material-icons">apps</i> Components
                 </a>
                 <div className="dropdown-menu dropdown-with-icons">
-                  <a href="../index.html" class="dropdown-item">
+                  <a href="../index.html" className="dropdown-item">
                     <i className="material-icons">layers</i> All Components
                   </a>
                   <a
                     href="https://demos.creative-tim.com/material-kit/docs/2.0/getting-started/introduction.html"
                     className="dropdown-item"
                   >
-                    <i className="material-icons">content_paste</i> Documentation
+                    <i className="material-icons">content_paste</i>{" "}
+                    Documentation
                   </a>
                 </div>
               </li>

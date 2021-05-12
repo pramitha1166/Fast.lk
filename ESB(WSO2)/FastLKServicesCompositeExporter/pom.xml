@@ -9,7 +9,9 @@
   <name>FastLKServicesCompositeExporter</name>
   <description>FastLKServicesCompositeExporter</description>
   <properties>
+    <com.example.api_._LocationAPI>capp/EnterpriseServiceBus</com.example.api_._LocationAPI>
     <com.example.endpoint_._FaskLKBackend>capp/EnterpriseServiceBus</com.example.endpoint_._FaskLKBackend>
+    <com.example.endpoint_._LocationService>capp/EnterpriseServiceBus</com.example.endpoint_._LocationService>
     <com.example.api_._FastlkAPI>capp/EnterpriseServiceBus</com.example.api_._FastlkAPI>
     <com.example.endpoint_._MessageService>capp/EnterpriseServiceBus</com.example.endpoint_._MessageService>
     <com.example.api_._MessagingAPI>capp/EnterpriseServiceBus</com.example.api_._MessagingAPI>
@@ -23,12 +25,6 @@
       <type>xml</type>
     </dependency>
     <dependency>
-      <groupId>com.example.endpoint</groupId>
-      <artifactId>FaskLKBackend</artifactId>
-      <version>1.0.0</version>
-      <type>xml</type>
-    </dependency>
-    <dependency>
       <groupId>com.example.api</groupId>
       <artifactId>MessagingAPI</artifactId>
       <version>1.0.0</version>
@@ -37,6 +33,24 @@
     <dependency>
       <groupId>com.example.endpoint</groupId>
       <artifactId>MessageService</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.api</groupId>
+      <artifactId>LocationAPI</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>LocationService</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>FaskLKBackend</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>
