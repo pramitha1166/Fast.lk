@@ -54,3 +54,10 @@
     align-items: center;
 }
 
+.cart .cart-container .cart-bottum {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
