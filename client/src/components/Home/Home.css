@@ -1,0 +1,72 @@
+.best-selling .row .content {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+.best-selling .row .content h4 {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.best-selling .row .content h4::after {
+    background: #fc846b;
+    content: '';
+    display: inline-block;
+    width: 50px;
+    height: 1px;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.best-selling .row .content h2 {
+    font-size: 30px;
+    color: #fc846b;
+    text-transform: inherit;
+}
+
+
+.best-selling .row .content h3 {
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+.best-selling .row .content button {
+    width: 100px;
+}
+
+.best-selling .row .content h3 span {
+    margin-left: 10px;
+}
+
+.best-selling .row .img-section img {
+    width: auto;
+    height: 300px;
+}
+
+.list-product-by {
+    margin-top: 100px;
+}
+
+.list-product-by .products {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.list-product-by .product {
+    height: 300px;
+    padding: 20px 20px;
+}
+
+
+.list-product-by .product .card {
+  width: 18rem;
+}
+
+@media(max-width:768px) {
+    .list-product-by .product {
+        margin-bottom: 300px;
+    }
+}

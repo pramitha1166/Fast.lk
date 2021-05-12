@@ -23,6 +23,12 @@ const Navbar = ({history}) => {
       img: 'https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7',
       price: 40,
       quantity: 5
+    },
+    {
+      _id: 4,
+      img: 'https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7',
+      price: 40,
+      quantity: 5
     }
   ])
 
@@ -32,7 +38,7 @@ const Navbar = ({history}) => {
 
   const isActive = (history,path) => {
     if(history.location.pathname===path) {
-      return {color:'#ff9900'}
+      return {color:'#e11b0c'}
     }else {
       return {color:'#000000'}
     }
@@ -46,14 +52,20 @@ const Navbar = ({history}) => {
     }
   }
 
+  let total = 0;
+  let total_items = 0;
+
   const cart = () => (
     <div>
       <div className="cart" style={isShowCart()}>
         <div className="cart-container">
           <h3>Shopping Cart</h3>
           <ul>
-            {cartItems.map((item,id) => (
-               <li>
+            {cartItems.map((item,id) => {
+              total = total + item.quantity*item.price
+              total_items = total_items + item.quantity
+              return (
+                <li>
                <div className="image">
                  <img src={item.img}></img>
                </div>
@@ -64,8 +76,14 @@ const Navbar = ({history}) => {
                  <button className="btn btn-danger btn-sm">remove</button>
                </div>
              </li>
-            ))}
+              )
+            })}
           </ul>
+          <div className="cart-bottum">
+              <h4>Total {total}$</h4>
+              <button className="btn btn-warning">Clear</button>
+              <button className="btn btn-info">Checkout</button>
+          </div>
         </div> 
         <span><a href="#" onClick={buttonClickCart}><i class="fa fa-times" aria-hidden="true"></i></a></span>
       </div>
@@ -126,7 +144,7 @@ const Navbar = ({history}) => {
          
               <li className="nav-item">
                 <a className="nav-link" onClick={buttonClickCart}>
-                  <i className="fa fa-shopping-basket"></i><span class="badge badge-default">4</span>
+                  <i className="fa fa-shopping-basket"></i><span class="badge badge-default">{total_items}</span>
                 </a>
               </li>
 

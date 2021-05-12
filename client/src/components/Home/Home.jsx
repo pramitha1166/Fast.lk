@@ -1,6 +1,7 @@
 import React from "react";
 
 import "./../../App.css";
+import "./Home.css"
 
 const Home = () => {
   return (
@@ -36,186 +37,124 @@ const Home = () => {
       <div className="main main-raised">
         <div className="container">
           <div className="section text-center">
+
+            <div className="best-selling">
+              <div className="row">
+                <div className="col-md-6 img-section">
+                  <img src="https://th.bing.com/th/id/OIP.wycFRpdMjTifD1dm4v2S9wHaE8?w=277&h=185&c=7&o=5&pid=1.7" />
+                </div>
+                <div className="col-md-6 content">
+                  <h4>Best Selling Product</h4>
+                  <h2>Nike Hyperdunk 2017 Men Basketball Shoes Royal Blue Gold</h2>
+                  <p>
+                    Sed viverra ipsum nunc aliquet bibendum. Viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper.
+                  </p>
+                  <h3>100$<span class="badge badge-danger">10% off</span></h3>
+                  <button className="btn btn-primary">Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+            <div style={{marginTop: '150px'}} className="best-selling">
+              <div className="row">
+                  <div className="col-md-6 content">
+                    <h4>Featuring Product</h4>
+                    <h2>Nike Hyperdunk 2017 Men Basketball Shoes Royal Blue Gold</h2>
+                    <p>
+                      Sed viverra ipsum nunc aliquet bibendum. Viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper.
+                    </p>
+                    <h3>100$<span class="badge badge-danger">10% off</span></h3>
+                    <button className="btn btn-primary">Buy Now</button>
+                  </div>
+                  <div className="col-md-6 img-section">
+                    <img src="https://n4.sdlcdn.com/imgs/a/m/h/Reebok-Brown-Sport-Shoes-SDL436874765-5-be26c.JPG" />
+                  </div>
+                </div>
+            </div>
+
+            <div className="list-product-by">
+              <div>
+                <h2 className="title">Newst Arrival Products</h2>
+                <div className="row">
+                  <div className="col-md-4 product">
+                    <div class="card" >
+                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" rel="nofollow" alt="Card image cap" />
+                      <div class="card-body">
+                      <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card" >
+                      <img class="card-img-top" src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw" rel="nofollow" alt="Card image cap" />
+                      <div class="card-body">
+                      <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card" >
+                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1" rel="nofollow" alt="Card image cap" />
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+            <div className="list-product-by" style={{marginTop:'300px'}}>
+              <div>
+                <h2 className="title">Best Selling Products</h2>
+                <div className="row">
+                  <div className="col-md-4 product">
+                    <div class="card" >
+                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" rel="nofollow" alt="Card image cap" />
+                      <div class="card-body">
+                      <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card" >
+                      <img class="card-img-top" src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw" rel="nofollow" alt="Card image cap" />
+                      <div class="card-body">
+                      <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card" >
+                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1" rel="nofollow" alt="Card image cap" />
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+         
+          <div className="section section-contacts" style={{marginTop:'150px'}}>
             <div className="row">
               <div className="col-md-8 ml-auto mr-auto">
-                <h2 className="title">Let&apos;s talk product</h2>
-                <h5 className="description">
-                  This is the paragraph where you can write more details about
-                  your product. Keep you user engaged by providing meaningful
-                  information. Remember that by this time, the user is curious,
-                  otherwise he wouldn&apos;t scroll to get here. Add a button if
-                  you want the user to see more.
-                </h5>
-              </div>
-            </div>
-            <div className="features">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="info">
-                    <div className="icon icon-info">
-                      <i className="material-icons">chat</i>
-                    </div>
-                    <h4 className="info-title">Free Chat</h4>
-                    <p>
-                      Divide details about your product or agency work into
-                      parts. Write a few lines about each one. A paragraph
-                      describing a feature will be enough.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="info">
-                    <div className="icon icon-success">
-                      <i className="material-icons">verified_user</i>
-                    </div>
-                    <h4 className="info-title">Verified Users</h4>
-                    <p>
-                      Divide details about your product or agency work into
-                      parts. Write a few lines about each one. A paragraph
-                      describing a feature will be enough.
-                    </p>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="info">
-                    <div className="icon icon-danger">
-                      <i className="material-icons">fingerprint</i>
-                    </div>
-                    <h4 className="info-title">Fingerprint</h4>
-                    <p>
-                      Divide details about your product or agency work into
-                      parts. Write a few lines about each one. A paragraph
-                      describing a feature will be enough.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="section text-center">
-            <h2 className="title">Here is our team</h2>
-            <div className="team">
-              <div className="row">
-                <div className="col-md-4">
-                  <div className="team-player">
-                    <div className="card card-plain">
-                      <div className="col-md-6 ml-auto mr-auto">
-                        <img
-                          src="../assets/img/faces/avatar.jpg"
-                          alt="TODO : fsdkhsjdhsjhdjks"
-                          className="img-raised rounded-circle img-fluid"
-                        />
-                      </div>
-                      <h4 className="card-title">
-                        Gigi Hadid
-                        <br />
-                        <small className="card-description text-muted">Model</small>
-                      </h4>
-                      <div className="card-body">
-                        <p className="card-description">
-                          You can write here details about one of your team
-                          members. You can give more details about what they do.
-                          Feel free to add some
-                          <a href="!#">links</a> for people to be able to follow
-                          them outside the site.
-                        </p>
-                      </div>
-                      <div className="card-footer justify-content-center">
-                        <a href="#pablo" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                        <a href="#pablo" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-instagram"></i>
-                        </a>
-                        <a href="#pablo" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-facebook-square"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="team-player">
-                    <div className="card card-plain">
-                      <div className="col-md-6 ml-auto mr-auto">
-                        <img
-                          src="../assets/img/faces/christian.jpg"
-                          alt="Tfdfdfdfd"
-                          className="img-raised rounded-circle img-fluid"
-                        />
-                      </div>
-                      <h4 className="card-title">
-                        Christian Louboutin
-                        <br />
-                        <small className="card-description text-muted">
-                          Designer
-                        </small>
-                      </h4>
-                      <div className="card-body">
-                        <p className="card-description">
-                          You can write here details about one of your team
-                          members. You can give more details about what they do.
-                          Feel free to add some
-                          <a href="!#">links</a> for people to be able to follow
-                          them outside the site.
-                        </p>
-                      </div>
-                      <div className="card-footer justify-content-center">
-                        <a href="#pablo" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                        <a href="#pablo" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-linkedin"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-4">
-                  <div className="team-player">
-                    <div className="card card-plain">
-                      <div className="col-md-6 ml-auto mr-auto">
-                        <img
-                          src="../assets/img/faces/kendall.jpg"
-                          alt="dsdsdsdsdsdsdsd"
-                          className="img-raised rounded-circle img-fluid"
-                        />
-                      </div>
-                      <h4 className="card-title">
-                        Kendall Jenner
-                        <br />
-                        <small className="card-description text-muted">Model</small>
-                      </h4>
-                      <div className="card-body">
-                        <p className="card-description">
-                          You can write here details about one of your team
-                          members. You can give more details about what they do.
-                          Feel free to add some
-                          <a href="!#">links</a> for people to be able to follow
-                          them outside the site.
-                        </p>
-                      </div>
-                      <div className="card-footer justify-content-center">
-                        <a href="!#" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-twitter"></i>
-                        </a>
-                        <a href="!#" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-instagram"></i>
-                        </a>
-                        <a href="#pablo" className="btn btn-link btn-just-icon">
-                          <i className="fa fa-facebook-square"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="section section-contacts">
-            <div className="row">
-              <div className="col-md-8 ml-auto mr-auto">
-                <h2 className="text-center title">Work with us</h2>
+                <h2 className="text-center title">Contact us</h2>
                 <h4 className="text-center description">
                   Divide details about your product or agency work into parts.
                   Write a few lines about each one and contact us about any
