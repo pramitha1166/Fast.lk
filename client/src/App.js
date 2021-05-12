@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Nevbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/layout/Footer";
 import Login from "./components/Login/Login";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
+          <Route path="/contact" exact component={Contact}></Route>
         </Switch>
         <Route path="/" exec component={Footer} />
       </div>

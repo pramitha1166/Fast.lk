@@ -8,12 +8,12 @@ const Home = () => {
       <div
         className="page-header header-filter smooth_load"
         data-parallax="true"
-        style={{backgroundImage: "url('../assets/img/profile_city.jpg')"}}
+        style={{backgroundImage: "url('https://cdn.shopify.com/s/files/1/0437/0454/9536/files/slider_2000x.png?v=1595597573"}}
       >
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <h1 className="title">Your Story Starts With Us.</h1>
+              <h1 className="title">Leading Shopping Plaform.</h1>
               <h4>
                 Every landing page needs a small description after the big bold
                 title, that&apos;s why we added this text here. Add here all the
@@ -27,7 +27,7 @@ const Home = () => {
                 rel="noreferrer"
                 className="btn btn-danger btn-raised btn-lg"
               >
-                <i className="fa fa-play"></i> Watch video
+                <i style={{marginRight:'5px'}} class="fa fa-shopping-bag" aria-hidden="true"></i> Shop Now
               </a>
             </div>
           </div>
