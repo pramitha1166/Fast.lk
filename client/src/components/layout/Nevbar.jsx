@@ -82,7 +82,7 @@ const Navbar = ({history}) => {
           <div className="cart-bottum">
               <h4>Total {total}$</h4>
               <button className="btn btn-warning">Clear</button>
-              <button className="btn btn-info">Checkout</button>
+              <button className="btn btn-info"><Link to="/checkout">Checkout</Link></button>
           </div>
         </div> 
         <span><a href="#" onClick={buttonClickCart}><i class="fa fa-times" aria-hidden="true"></i></a></span>
