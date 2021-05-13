@@ -16,8 +16,9 @@ import "./../../App.css";
 import "./../../styles/Buy.css";
 
 const BuyItem = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [items, setItems] = useState([]);
+  useEffect( () => {
+    window.scroll(0,0);
+  },[]);
 
   return (
     <>
