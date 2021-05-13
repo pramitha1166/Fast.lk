@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from 'react-router-dom';
 import "./../../App.css";
 import "./Home.css"
 
@@ -22,14 +22,16 @@ const Home = () => {
                 impression.
               </h4>
               <br />
+              <Link to="/products">
               <a
-                href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+                href="!#"
                 target="_blank"
                 rel="noreferrer"
                 className="btn btn-danger btn-raised btn-lg"
               >
                 <i style={{marginRight:'5px'}} class="fa fa-shopping-bag" aria-hidden="true"></i> Shop Now
               </a>
+              </Link>
             </div>
           </div>
         </div>
