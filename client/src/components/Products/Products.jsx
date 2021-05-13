@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import LoaderSpinner from "./../Comman/LoaderSpinner";
 import ProductCard from "./ProdcutCard";
-import Pagination from "./../Comman/Pagination";
 import { FaUndo } from "react-icons/fa";
 import Slider, { Range } from "rc-slider";
 import axios from "axios";
 import "rc-slider/assets/index.css";
+
+import Pagination from "./../Comman/Pagination";
+import PriceSelect from "./PriceSelect";
+import CategoryList from "./CategoryList";
 
 import "./../../App.css";
 import "./../../styles/Product.css";
@@ -15,6 +18,7 @@ const Products = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    window.scroll(0,0);
     axios
       .get("/api/products/view?page=1&limit=4")
       .then((res) => {
@@ -27,30 +31,31 @@ const Products = () => {
   return (
     <>
       <div
-        class="page-header header-filter"
+        class="page-header header-filter smooth_load"
         data-parallax="true"
         style={{
           backgroundImage: "url('../assets/img/clark-street-merc.jpg')",
           height: 400,
         }}
-      ></div>
+      >
+        <div className="container">
+          <h1 className="title">Leading Shopping Plaform.</h1>
+          <h4>
+            Every landing page needs a small description after the big bold
+            title, that&apos;s why we added this text here. Add here all the
+            information that can make you or your product create the first
+            impression.
+          </h4>
+          <br />
+        </div>
+      </div>
       <div class="main main-raised">
         <div>
           {isLoading ? (
             <LoaderSpinner />
           ) : (
             <>
-              {/* <div class="container">
-                <div class="row">
-                  <div class="col-2">
-                    
-                  </div>
-                  <div class="col-10">
-                    
-                  </div>
-                </div>
-              </div> */}
-              <div className="container">
+              <div className="container smooth_load">
                 <div class="row">
                   <div class="col-lg-2 col-sm-12 col-md-12">
                     <div style={{ marginTop: 23 }}>
@@ -60,8 +65,29 @@ const Products = () => {
                         <FaUndo />
                       </div>
                     </div>
-                    <Slider />
-                    <Range />
+                    <div>
+                      <form>
+                        <div class="form-row">
+                          <div class="col">
+                            <input
+                              type="text"
+                              class="form-control"
+                              placeholder="Search Here..."
+                            />
+                          </div>
+     
+                        </div>
+                      </form>
+                    </div>
+
+                    <div className="gap">
+                      <h6>Price Range</h6>
+                      <PriceSelect />
+                    </div>
+                    <div className="gap">
+                      <h6>Categories</h6>
+                      <CategoryList />
+                    </div>
                   </div>
                   <div class="col-lg-10 col-sm-12 col-md-10 ">
                     <div class="card-deck">
