@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import LoaderSpinner from "./../Comman/LoaderSpinner";
 import ProductCard from "./ProdcutCard";
 import { FaUndo } from "react-icons/fa";
-import Slider, { Range } from "rc-slider";
 import axios from "axios";
 import "rc-slider/assets/index.css";
 
@@ -89,7 +88,7 @@ const Products = () => {
                       <CategoryList />
                     </div>
                   </div>
-                  <div class="col-lg-10 col-sm-12 col-md-10 ">
+                  <div class="col-lg-10 col-sm-12 col-md-12">
                     <div class="card-deck">
                       {items.map((item) => {
                         return <ProductCard image={item.images[0]} />;

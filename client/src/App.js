@@ -8,6 +8,7 @@ import Footer from "./components/layout/Footer";
 import Login from "./components/Login/Login";
 import Contact from "./components/Contact/Contact";
 import Products from './components/Products/Products';
+import BuyItem from './components/BuyItem/BuyItem';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" exact component={Login} />
           <Route path="/contact" exact component={Contact}></Route>
           <Route path="/products" exact component={Products}></Route>
+          <Route path="/buy" exact component={BuyItem}></Route>
         </Switch>
         <Route path="/" exec component={Footer} />
       </div>

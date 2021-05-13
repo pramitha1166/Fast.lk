@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./../../styles/Product.css";
 
 const ProductCard = ({ image }) => {
@@ -21,10 +22,13 @@ const ProductCard = ({ image }) => {
             bulk of the card's content.
           </p>
           <div className="card_buttons">
-          <button class="btn btn-danger btn-round">
+              <Link to="/buy">
+              <button class="btn btn-danger btn-round">
             Add to cart {" "}<FaShoppingCart /> 
           </button>
           <button class="btn btn-danger btn-link" style={{fontWeight: "bold"}}>Rs 1200.00</button>
+          </Link>
+
           </div>
           
         </div>
