@@ -1,0 +1,14 @@
+.buyerButton {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.qtyButton {
+    font-size: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
