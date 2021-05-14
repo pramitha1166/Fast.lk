@@ -1,15 +1,21 @@
-import React from "react";
-import { Link } from 'react-router-dom';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./../../App.css";
-import "./Home.css"
+import "./Home.css";
 
 const Home = () => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  });
   return (
     <>
       <div
         className="page-header header-filter smooth_load"
         data-parallax="true"
-        style={{backgroundImage: "url('https://cdn.shopify.com/s/files/1/0437/0454/9536/files/slider_2000x.png?v=1595597573"}}
+        style={{
+          backgroundImage:
+            "url('https://cdn.shopify.com/s/files/1/0437/0454/9536/files/slider_2000x.png?v=1595597573",
+        }}
       >
         <div className="container">
           <div className="row">
@@ -23,14 +29,19 @@ const Home = () => {
               </h4>
               <br />
               <Link to="/products">
-              <a
-                href="!#"
-                target="_blank"
-                rel="noreferrer"
-                className="btn btn-danger btn-raised btn-lg"
-              >
-                <i style={{marginRight:'5px'}} class="fa fa-shopping-bag" aria-hidden="true"></i> Shop Now
-              </a>
+                <a
+                  href="!#"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-danger btn-raised btn-lg"
+                >
+                  <i
+                    style={{ marginRight: "5px" }}
+                    class="fa fa-shopping-bag"
+                    aria-hidden="true"
+                  ></i>{" "}
+                  Shop Now
+                </a>
               </Link>
             </div>
           </div>
@@ -39,7 +50,6 @@ const Home = () => {
       <div className="main main-raised">
         <div className="container">
           <div className="section text-center">
-
             <div className="best-selling">
               <div className="row">
                 <div className="col-md-6 img-section">
@@ -47,31 +57,43 @@ const Home = () => {
                 </div>
                 <div className="col-md-6 content">
                   <h4>Best Selling Product</h4>
-                  <h2>Nike Hyperdunk 2017 Men Basketball Shoes Royal Blue Gold</h2>
+                  <h2>
+                    Nike Hyperdunk 2017 Men Basketball Shoes Royal Blue Gold
+                  </h2>
                   <p>
-                    Sed viverra ipsum nunc aliquet bibendum. Viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper.
+                    Sed viverra ipsum nunc aliquet bibendum. Viverra ipsum nunc
+                    aliquet bibendum enim facilisis gravida neque. Imperdiet
+                    massa tincidunt nunc pulvinar sapien et ligula ullamcorper.
                   </p>
-                  <h3>100$<span class="badge badge-danger">10% off</span></h3>
+                  <h3>
+                    100$<span class="badge badge-danger">10% off</span>
+                  </h3>
                   <button className="btn btn-primary">Buy Now</button>
                 </div>
               </div>
             </div>
 
-            <div style={{marginTop: '150px'}} className="best-selling">
+            <div style={{ marginTop: "150px" }} className="best-selling">
               <div className="row">
-                  <div className="col-md-6 content">
-                    <h4>Featuring Product</h4>
-                    <h2>Nike Hyperdunk 2017 Men Basketball Shoes Royal Blue Gold</h2>
-                    <p>
-                      Sed viverra ipsum nunc aliquet bibendum. Viverra ipsum nunc aliquet bibendum enim facilisis gravida neque. Imperdiet massa tincidunt nunc pulvinar sapien et ligula ullamcorper.
-                    </p>
-                    <h3>100$<span class="badge badge-danger">10% off</span></h3>
-                    <button className="btn btn-primary">Buy Now</button>
-                  </div>
-                  <div className="col-md-6 img-section">
-                    <img src="https://n4.sdlcdn.com/imgs/a/m/h/Reebok-Brown-Sport-Shoes-SDL436874765-5-be26c.JPG" />
-                  </div>
+                <div className="col-md-6 content">
+                  <h4>Featuring Product</h4>
+                  <h2>
+                    Nike Hyperdunk 2017 Men Basketball Shoes Royal Blue Gold
+                  </h2>
+                  <p>
+                    Sed viverra ipsum nunc aliquet bibendum. Viverra ipsum nunc
+                    aliquet bibendum enim facilisis gravida neque. Imperdiet
+                    massa tincidunt nunc pulvinar sapien et ligula ullamcorper.
+                  </p>
+                  <h3>
+                    100$<span class="badge badge-danger">10% off</span>
+                  </h3>
+                  <button className="btn btn-primary">Buy Now</button>
                 </div>
+                <div className="col-md-6 img-section">
+                  <img src="https://n4.sdlcdn.com/imgs/a/m/h/Reebok-Brown-Sport-Shoes-SDL436874765-5-be26c.JPG" />
+                </div>
+              </div>
             </div>
 
             <div className="list-product-by">
@@ -79,32 +101,62 @@ const Home = () => {
                 <h2 className="title">Newst Arrival Products</h2>
                 <div className="row">
                   <div className="col-md-4 product">
-                    <div class="card" >
-                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" rel="nofollow" alt="Card image cap" />
-                      <div class="card-body">
-                      <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button href="javascript:;" class="btn btn-primary">Buy</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card" >
-                      <img class="card-img-top" src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw" rel="nofollow" alt="Card image cap" />
-                      <div class="card-body">
-                      <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button href="javascript:;" class="btn btn-primary">Buy</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card" >
-                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1" rel="nofollow" alt="Card image cap" />
+                    <div class="card">
+                      <img
+                        class="card-img-top"
+                        src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1"
+                        rel="nofollow"
+                        alt="Card image cap"
+                      />
                       <div class="card-body">
                         <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <button href="javascript:;" class="btn btn-primary">
+                          Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card">
+                      <img
+                        class="card-img-top"
+                        src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw"
+                        rel="nofollow"
+                        alt="Card image cap"
+                      />
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <button href="javascript:;" class="btn btn-primary">
+                          Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card">
+                      <img
+                        class="card-img-top"
+                        src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1"
+                        rel="nofollow"
+                        alt="Card image cap"
+                      />
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <button href="javascript:;" class="btn btn-primary">
+                          Buy
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -112,48 +164,79 @@ const Home = () => {
               </div>
             </div>
 
-            
-            <div className="list-product-by" style={{marginTop:'300px'}}>
+            <div className="list-product-by" style={{ marginTop: "300px" }}>
               <div>
                 <h2 className="title">Best Selling Products</h2>
                 <div className="row">
                   <div className="col-md-4 product">
-                    <div class="card" >
-                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" rel="nofollow" alt="Card image cap" />
-                      <div class="card-body">
-                      <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button href="javascript:;" class="btn btn-primary">Buy</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card" >
-                      <img class="card-img-top" src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw" rel="nofollow" alt="Card image cap" />
-                      <div class="card-body">
-                      <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button href="javascript:;" class="btn btn-primary">Buy</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card" >
-                      <img class="card-img-top" src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1" rel="nofollow" alt="Card image cap" />
+                    <div class="card">
+                      <img
+                        class="card-img-top"
+                        src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1"
+                        rel="nofollow"
+                        alt="Card image cap"
+                      />
                       <div class="card-body">
                         <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        <button href="javascript:;" class="btn btn-primary">Buy</button>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <button href="javascript:;" class="btn btn-primary">
+                          Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card">
+                      <img
+                        class="card-img-top"
+                        src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw"
+                        rel="nofollow"
+                        alt="Card image cap"
+                      />
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <button href="javascript:;" class="btn btn-primary">
+                          Buy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="col-md-4 product">
+                    <div class="card">
+                      <img
+                        class="card-img-top"
+                        src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1"
+                        rel="nofollow"
+                        alt="Card image cap"
+                      />
+                      <div class="card-body">
+                        <h4 class="card-title">Special title treatment</h4>
+                        <p class="card-text">
+                          Some quick example text to build on the card title and
+                          make up the bulk of the card's content.
+                        </p>
+                        <button href="javascript:;" class="btn btn-primary">
+                          Buy
+                        </button>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-
           </div>
-         
-          <div className="section section-contacts" style={{marginTop:'150px'}}>
+
+          <div
+            className="section section-contacts"
+            style={{ marginTop: "150px" }}
+          >
             <div className="row">
               <div className="col-md-8 ml-auto mr-auto">
                 <h2 className="text-center title">Contact us</h2>
@@ -179,7 +262,10 @@ const Home = () => {
                     </div>
                   </div>
                   <div className="form-group">
-                    <label htmlFor="exampleMessage" className="bmd-label-floating">
+                    <label
+                      htmlFor="exampleMessage"
+                      className="bmd-label-floating"
+                    >
                       Your Message
                     </label>
                     <textarea

@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Nevbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/layout/Footer";
 import Login from "./components/Login/Login";
+import Signup from "./components/Signup/Signup";
 import Contact from "./components/Contact/Contact";
 import Products from './components/Products/Products';
 import BuyItem from './components/BuyItem/BuyItem';
@@ -19,6 +20,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
           <Route path="/contact" exact component={Contact}></Route>
           <Route path="/products" exact component={Products}></Route>
           <Route path="/buy" exact component={BuyItem}></Route>

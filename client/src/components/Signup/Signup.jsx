@@ -2,13 +2,13 @@ import React from "react";
 
 import "./../../App.css";
 
-const Login = () => {
+const Signup = () => {
   return (
     <>
       <div
         class="page-header header-filter smooth_load"
         style={{
-          backgroundImage: "url('../assets/img/pexels-vlada-karpovich-4050388.jpg')",
+          backgroundImage: "url('../assets/img/pexels-andrea-piacquadio-974911.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
@@ -89,4 +89,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
