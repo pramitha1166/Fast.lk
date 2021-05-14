@@ -8,7 +8,7 @@ const Login = () => {
       <div
         class="page-header header-filter smooth_load"
         style={{
-          backgroundImage: "url('../assets/img/bg7.jpg')",
+          backgroundImage: "url('../assets/img/profile_city.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}

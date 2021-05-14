@@ -1,9 +1,10 @@
 import React from 'react'
 
-const PaymentForm = () => {
+const PaymentForm = ({shippingData,clientToken}) => {
     return (
         <div>
-            Payment Form
+            Payment Form<br/>
+            {JSON.stringify(shippingData)}
         </div>
     )
 }

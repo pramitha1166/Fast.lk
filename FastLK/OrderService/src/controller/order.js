@@ -78,3 +78,11 @@ exports.updateOrder = async (req, res) => {
     });
   }
 };
+
+exports.getPlaces = async() => {
+  try {
+    
+  } catch (err) {
+    
+  }
+}

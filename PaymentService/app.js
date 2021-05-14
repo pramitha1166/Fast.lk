@@ -2,8 +2,12 @@
 
 const express = require('express')
 require('dotenv').config()
+const CORS = require('cors')
+
 const app = express()
 
+/**app middlewares */
+app.use(CORS())
 
 const PORT = process.env.PORT | 5007
 
