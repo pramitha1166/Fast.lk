@@ -8,9 +8,12 @@ const {
   getSingleOrder,
   deleteOrder,
   updateOrder,
+  getPlaces
 } = require("../controller/order");
 
 router.get("/order", getAllOrders);
+router.get('/places', getPlaces);
+
 router.post("/order", validateToken, createOrder);
 router.get("/order/:orderId", validateToken, getSingleOrder);
 router.delete("/order/:orderId", validateToken, deleteOrder);

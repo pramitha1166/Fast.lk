@@ -83,9 +83,9 @@ const Navbar = ({ history }) => {
             })}
           </ul>
           <div className="cart-bottum">
-            <h4>Total {total}$</h4>
-            <button className="btn btn-warning">Clear</button>
-            <button className="btn btn-info">Checkout</button>
+              <h4>Total {total}$</h4>
+              <button className="btn btn-warning">Clear</button>
+              <button className="btn btn-info"><Link to="/checkout">Checkout</Link></button>
           </div>
         </div>
         <span>

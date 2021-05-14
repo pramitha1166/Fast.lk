@@ -9,6 +9,7 @@ import Login from "./components/Login/Login";
 import Signup from "./components/Signup/Signup";
 import Contact from "./components/Contact/Contact";
 import Products from './components/Products/Products';
+import Checkout from "./components/Checkout/Checkout";
 import BuyItem from './components/BuyItem/BuyItem';
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/signup" exact component={Signup} />
           <Route path="/contact" exact component={Contact}></Route>
           <Route path="/products" exact component={Products}></Route>
+          <Route path="/checkout" exact component={Checkout}></Route>
           <Route path="/buy" exact component={BuyItem}></Route>
         </Switch>
         <Route path="/" exec component={Footer} />
