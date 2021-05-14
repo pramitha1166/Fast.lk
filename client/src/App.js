@@ -1,5 +1,6 @@
 import "./App.css";
 
+import React, {useState} from 'react'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Navbar from "./components/layout/Nevbar";
@@ -10,10 +11,44 @@ import Contact from "./components/Contact/Contact";
 import Products from './components/Products/Products';
 import Checkout from "./components/Checkout/Checkout";
 import BuyItem from './components/BuyItem/BuyItem';
+import CartContextProvider from "./components/context/CartContextProvider";
 
 function App() {
+
+  const [cartItems, setCartItems] = useState([
+    {
+      _id: 1,
+      img: "https://th.bing.com/th/id/OIP.wycFRpdMjTifD1dm4v2S9wHaE8?w=277&h=185&c=7&o=5&pid=1.7",
+      price: 50,
+      quantity: 2,
+      name:'Adddas Shoes'
+    },
+    {
+      _id: 2,
+      img: "https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?w=249&h=191&c=7&o=5&pid=1.7",
+      price: 20,
+      quantity: 3,
+      name:'Adddas Cap'
+    },
+    {
+      _id: 3,
+      img: "https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7",
+      price: 40,
+      quantity: 5,
+      name:'Adddas Bag'
+    },
+    {
+      _id: 4,
+      img: "https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7",
+      price: 40,
+      quantity: 5,
+      name:'Adddas t-Shirt'
+    },
+  ]);
+
   return (
-    <Router>
+    <CartContextProvider cartData={cartItems}>
+      <Router>
       {" "}
       <div className="App">
         <Route path="/" exec component={Navbar} />
@@ -28,6 +63,7 @@ function App() {
         <Route path="/" exec component={Footer} />
       </div>
     </Router>
+    </CartContextProvider>
   );
 }
 

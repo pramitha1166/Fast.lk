@@ -3,8 +3,12 @@ import { Link, withRouter } from "react-router-dom";
 import { FaStoreAlt } from "react-icons/fa";
 
 import "./Navbar.css";
+import CartContextProvider, { CartContext } from "../context/CartContextProvider";
 
 const Navbar = ({ history }) => {
+
+  
+  const [cartData,setCartData] = useState([])
   const [showCart, setShowCart] = useState(false);
   const [cartItems, setCartItems] = useState([
     {
@@ -12,24 +16,28 @@ const Navbar = ({ history }) => {
       img: "https://th.bing.com/th/id/OIP.wycFRpdMjTifD1dm4v2S9wHaE8?w=277&h=185&c=7&o=5&pid=1.7",
       price: 50,
       quantity: 2,
+      name:'Adddas Shoes'
     },
     {
       _id: 2,
       img: "https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?w=249&h=191&c=7&o=5&pid=1.7",
       price: 20,
       quantity: 3,
+      name:'Adddas Cap'
     },
     {
       _id: 3,
       img: "https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7",
       price: 40,
       quantity: 5,
+      name:'Adddas Bag'
     },
     {
       _id: 4,
       img: "https://th.bing.com/th/id/OIP.sAetjRQQ8XKV2a2h2yTmsgHaJ-?w=182&h=245&c=7&o=5&pid=1.7",
       price: 40,
       quantity: 5,
+      name:'Adddas t-Shirt'
     },
   ]);
 
