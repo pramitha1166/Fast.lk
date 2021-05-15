@@ -20,7 +20,7 @@ const addBuyer = async (req, res) => {
       res.status(201).json({ msg: "added" });
     }
   } catch (error) {
-    res.status(409).json({ message: "Buyer Not Created!" });
+    res.status(400).json({ message: "Buyer Not Created!" });
   }
 };
 

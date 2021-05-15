@@ -4,7 +4,7 @@ const validateToken = require('./../util/validateToken');
 const { addBuyer, getBuyer, getAllBuyers, updateBuyer, deleteBuyer ,addToCart, removeFromCart } = require("../service/buyerService");
 
 router.post('/addBuyer', addBuyer);
-router.get('/getAllBuyers', validateToken ,getAllBuyers);
+router.get('/getAllBuyers', getAllBuyers);
 router.get('/getBuyer/:id', validateToken, getBuyer);
 router.put('/updateBuyer/:id', validateToken, updateBuyer);
 router.delete('/removeBuyer/:id', validateToken, deleteBuyer);
