@@ -4,13 +4,7 @@ const mongoose = require('mongoose')
 
 //buyer schema
 const buyer_Schema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true,
-    },
-    lastName: {
-        type: String,
-    },
+
     userName: {
         type: String,
         required: true
@@ -44,6 +38,10 @@ const buyer_Schema = new mongoose.Schema({
         required: true,
         min: 1,
         max: 10
+    },
+    profilePic: {
+        type: String,
+        required: false
     }
 }, {timestamps: true})
 
