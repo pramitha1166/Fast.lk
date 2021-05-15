@@ -1,13 +1,12 @@
 {
-    "firstName": "Tom",
-    "lastName": "Jon",
-    "username": "tomjon",
-    "password": "tom123",
-    "email": "tom@gmail.com",
-    "mobileNo": "0768812527",
+    "username": "jonTraffy",
+    "password": "jon123",
+    "email": "jontraf@gmail.com",
+    "mobileNo": "0798812527",
     "address": {
         "houseNumber": "45G",
         "streetName": "Abc",
         "city": "Ddddeg"
-    }
+    },
+    "profilePic": "sdfa5fasdf"
 }

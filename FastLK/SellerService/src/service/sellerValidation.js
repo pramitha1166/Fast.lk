@@ -1,12 +1,12 @@
 const Seller = require("../model/seller");
 
 const validateSeller = async (seller) => {
-    const { firstName, lastName, username, password, email, address, mobileNo } = seller;
+    const { username, password, email, address, mobileNo } = seller;
     const { houseNumber, streetName, city } = address;
 
     //validating if all fields are filled
-    if(!firstName || !lastName || !username || !password
-        || !email || !houseNumber || !streetName || !city || !mobileNo) {
+    if(!username || !password || !email || !houseNumber 
+        || !streetName || !city || !mobileNo) {
             return 0;
         }
     //checking for existing user
