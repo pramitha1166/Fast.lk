@@ -2,14 +2,7 @@
 const mongoose = require('mongoose');
 
 const sellerSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true
-    },
-    lastName: {
-        type: String,
-        required: true
-    },
+    
     username: {
         type: String,
         required: true,
@@ -49,6 +42,10 @@ const sellerSchema = new mongoose.Schema({
             required: true,
             min: 3
         }
+    }, 
+    profilePic: {
+        type: String,
+        require: false
     }
 }, {timestamps: true});
 
