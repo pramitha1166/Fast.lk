@@ -13,13 +13,13 @@ const Signup = () => {
           backgroundPosition: "top center",
         }}
       >
-        <div class="container">
+        <div class="container" style={{marginTop: 50}}>
           <div class="row">
-            <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+            <div class="col-lg-8 col-md-6 ml-auto mr-auto">
               <div class="card card-login">
                 <form class="form" method="" action="">
                   <div class="card-header card-header-danger text-center">
-                    <h4 class="card-title">Login</h4>
+                    <h4 class="card-title">Sign Up</h4>
                     <div class="social-line">
                       <a href="#pablo" class="btn btn-just-icon btn-link">
                         <i class="fa fa-facebook-square"></i>
@@ -35,6 +35,16 @@ const Signup = () => {
                   <p class="description text-center">Or Be Classical</p>
                   <div class="card-body">
                     <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">face</i>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="First Name..."
+                      />
                       <div class="input-group-prepend">
                         <span class="input-group-text">
                           <i class="material-icons">face</i>
@@ -65,11 +75,57 @@ const Signup = () => {
                         </span>
                       </div>
                       <input
-                        type="password"
+                        type="text"
                         class="form-control"
-                        placeholder="Password..."
+                        placeholder="Password"
+                      />
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">lock_outline</i>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Confirm Password"
                       />
                     </div>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">lock_outline</i>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Username"
+                      />
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">lock_outline</i>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Mobile Number"
+                      />
+                    </div>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <i class="material-icons">lock_outline</i>
+                        </span>
+                      </div>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Address..."
+                      />
+                    </div>
+                    
+
                   </div>
                   <div class="footer text-center">
                     <a
