@@ -45,13 +45,12 @@ const updateSeller = async (req, res) => {
     } else {
       const sellerToUpdate = await Seller.findById(req.params.id);
 
-      sellerToUpdate.firstName = req.body.firstName;
-      sellerToUpdate.lastName = req.body.lastName;
       sellerToUpdate.username = req.body.username;
       sellerToUpdate.password = bcrypt.hashSync(req.body.password, 10);
       sellerToUpdate.email = req.body.email;
       sellerToUpdate.mobileNo = req.body.mobileNo;
       sellerToUpdate.address = req.body.address;
+      sellerToUpdate.profilePic = req.body.profilePic;
 
       await sellerToUpdate.save();
       res.json({ msg: "Seller updated" });

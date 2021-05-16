@@ -7,16 +7,16 @@ const Footer = () => {
         <nav className="float-left">
           <ul>
             <li>
-              <a href="https://www.creative-tim.com/">Creative Tim</a>
+              <a href="#!">Fast.lk</a>
             </li>
             <li>
-              <a href="https://www.creative-tim.com/presentation">About Us</a>
+              <a href="#!">About Us</a>
             </li>
             <li>
-              <a href="https://www.creative-tim.com/blog">Blog</a>
+              <a href="#!">Blog</a>
             </li>
             <li>
-              <a href="https://www.creative-tim.com/license">Licenses</a>
+              <a href="#!">Licenses</a>
             </li>
           </ul>
         </nav>
@@ -24,10 +24,10 @@ const Footer = () => {
           &copy;
           <script>document.write(new Date().getFullYear())</script>, made with{" "}
           <i className="material-icons">favorite</i> by
-          <a href="https://www.creative-tim.com/">
-            Creative Tim
+          <a href="#!">
+            SLIIT 
           </a>{" "}
-          for a better web.
+          
         </div>
       </div>
     </footer>

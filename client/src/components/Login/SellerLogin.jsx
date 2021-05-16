@@ -6,7 +6,7 @@ import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
 import axios from "axios";
 
-const Login = () => {
+const SellerLogin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +18,7 @@ const Login = () => {
     if (validity) {
       setIsLoading(false);
       axios
-        .post("/api/buyerauth/login", {
+        .post("/api/sellerauth/login", {
           email: email,
           password: password,
         })
@@ -82,7 +82,7 @@ const Login = () => {
         class="page-header header-filter smooth_load"
         style={{
           backgroundImage:
-            "url('../assets/img/pexels-vlada-karpovich-4050388.jpg')",
+            "url('../assets/img/pexels-jopwell-1325735.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}
@@ -93,7 +93,7 @@ const Login = () => {
               <div class="card card-login">
                 <form class="form" method="" action="">
                   <div class="card-header card-header-danger text-center">
-                    <h4 class="card-title">Login</h4>
+                    <h4 class="card-title">Seller Login</h4>
                     <div class="social-line">
                       <a href="#pablo" class="btn btn-just-icon btn-link">
                         <i class="fa fa-facebook-square"></i>
@@ -168,14 +168,6 @@ const Login = () => {
                         >
                           Login
                         </button>
-                        <div class="footer text-center">
-                          <a
-                            href="#pablo"
-                            class="btn btn-danger btn-link btn-wd btn-lg"
-                          >
-                            Seller Login
-                          </a>
-                        </div>
                       </>
                     )}
                   </div>
@@ -189,4 +181,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SellerLogin;

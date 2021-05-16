@@ -11,7 +11,7 @@ const login = async (req, res) => {
 
   try {
     const getUser = await Buyer.find({ email: emailValue });
-    if (!getUser) {
+    if (getUser.length === 0) {
       res.send("Invalid email");
     }
 

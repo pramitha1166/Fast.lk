@@ -150,6 +150,17 @@ const Navbar = ({ history }) => {
                 </a>
               </li>
               </Link>
+              <Link to="/signup">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="https://www.creative-tim.com/product/material-kit-pro"
+                  target="_blank"
+                >
+                  Signup
+                </a>
+              </li>
+              </Link>
               <Link to="/products">
               <li class="nav-item">
                 <a

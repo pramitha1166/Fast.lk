@@ -20,7 +20,7 @@ const addBuyer = async (req, res) => {
       res.status(201).json({ msg: "added" });
     }
   } catch (error) {
-    res.status(409).json({ message: "Buyer Not Created!" });
+    res.status(400).json({ message: "Buyer Not Created!" });
   }
 };
 
@@ -55,13 +55,12 @@ const updateBuyer = async (req, res) => {
       throw new Error("Unauthorized access");
     } else {
       const currentBuyer = await Buyer.findById(req.params.id);
-      currentBuyer.firstName = req.body.firstName;
-      currentBuyer.lastName = req.body.lastName;
       currentBuyer.userName = req.body.userName;
       currentBuyer.email = req.body.email;
       currentBuyer.password = bcrypt.hashSync(req.body.password, 10);
       currentBuyer.phoneNumber = req.body.phoneNumber;
       currentBuyer.address = req.body.address;
+      currentBuyer.profilePic = req.body.profilePic;
       await currentBuyer.save();
       res.status(201).json(currentBuyer);
     }
@@ -103,10 +102,6 @@ const addToCart = async function (req, res) {
     } else {
       cart.items.push({ productId: product.productId, qty: 1 });
     }
-    // if (!cart.totalPrice) {
-    //     cart.totalPrice = 0;
-    // }
-    // cart.totalPrice += product.price;
     try {
       currentBuyer.save();
       res.status(201).json(currentBuyer);
