@@ -1,60 +1,76 @@
-import { Button, Grid, InputLabel, MenuItem, Paper, Select, TextField, Typography } from '@material-ui/core'
+import { Button, Grid, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, TextField, Typography } from '@material-ui/core'
 import React, {useState,useEffect} from 'react'
 
 import { Link } from 'react-router-dom'
 
 const AddressForm = ({next,cart_data}) => {
 
+
+
     const [data,setData] = useState({
-        firstName: '',
+        firstname: '',
         lastname: '',
         address: '',
         email: '',
         city: '',
-        zip: '',    
-        amount: 1000
+        zip: ''
     })
  
-    
-     
+   
+
     const handleForm = name => event => {
         setData({
             ...data, [name]: event.target.value
         })
     }
 
-
-    useEffect(()=> {
-   
-    })
-
-   
-
+  
     const submitForm = (event) => {
         event.preventDefault()
         next({...data})
     }
 
 
+    let total = 0;
+
     return (
 
         <div>
             <Typography variant="h6" gutterBottom>Order Summery</Typography>
             <Paper style={{marginBottom: '40px',marginTop: '20px'}}>
-                <Grid container spacing={3}>
-                    {JSON.stringify(cart_data)}
-                    {cart_data.map((data) => {
-                        return (
-                            <Grid item sm={6}>
-                                <Typography variant="overline" gutterBottom>{data.name}</Typography>
-                            </Grid>
-                        )
-                    })}
-                   
-                    <Grid item sm={6}>
-                        3
-                    </Grid>
-                </Grid>
+                <Table>
+                    <TableContainer>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Item</TableCell>
+                                <TableCell>Quantity</TableCell>
+                                <TableCell>Unit Price</TableCell>
+                                <TableCell>Amount</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                        {cart_data.map((data) => {
+                            total = total + data.quantity*data.price
+                            return(
+                                <TableRow>
+                                <TableCell>{data.name}</TableCell>
+                                <TableCell>{data.quantity}</TableCell>
+                                <TableCell>{data.price}</TableCell>
+                                <TableCell>{data.price*data.quantity}</TableCell>
+                                </TableRow>
+                            )
+                            
+                        })}
+                        </TableBody> 
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Total Amount</TableCell>
+                                <TableCell></TableCell>
+                                <TableCell>{total}</TableCell>
+                            </TableRow>
+                        </TableHead>
+                    </TableContainer>
+                </Table>
             </Paper>
 
            

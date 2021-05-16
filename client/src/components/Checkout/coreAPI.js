@@ -15,3 +15,26 @@ export const processPayment = (paymentData) => {
          return err.json()
     })
 }
+
+export const processOrder = (orderData) => {
+    return new Promise((resolve,reject) => {
+
+    
+        axios.post('/api/orders/order',
+         JSON.stringify(orderData),
+         {
+             headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+                token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDllMGNkYTE2M2RhMjNlOThmZWIwOGMiLCJlbWFpbCI6InByYW1pdGhhQGdtYWlsLmNvbSIsImlhdCI6MTYyMTE1NTY0MCwiZXhwIjoxNjIxMjQyMDQwfQ.sFr7jBKavIZpHzFJOE73hYYESkKt62o66gluzMeCTaY'
+             }
+         }   
+         ).then((res) => {
+             resolve(res)
+         }).catch((err) => {
+             reject(err)
+         })
+        
+    })
+
+}

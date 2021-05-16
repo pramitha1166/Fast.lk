@@ -16,7 +16,8 @@ const Checkout = () => {
 
     const classes = useStyles()
 
-    const [cart,setCart] = useState([])
+    let cartD = [] ;
+    
     const [loading, setLoading] = useState(false)
     const [activeStep,setActiveStep] = useState(0)
     const [shippingData,setShippingData] = useState({})
@@ -31,8 +32,8 @@ const Checkout = () => {
     }
 
     const Form = () => activeStep === 0 
-        ? <AddressForm next={next} cart_data={cart} />
-        : <PaymentForm shippingData={shippingData} clientToken={clientToken} />
+        ? <AddressForm next={next} cart_data={cartD} />
+        : <PaymentForm shippingData={shippingData} clientToken={clientToken} cart_data={cartD} />
 
     const Confirm = () => (
         <h2>Success</h2>
@@ -54,8 +55,7 @@ const Checkout = () => {
     return (
         <CartContext.Consumer>{(context) => {
              const {cartData} = context
-             console.log(cartData)
-             setCart(cartData)
+             cartD = cartData;
             return (
                 <Layout title="Checkout">
                     {loading ? (
