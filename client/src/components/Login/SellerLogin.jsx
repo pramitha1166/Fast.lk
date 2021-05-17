@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./../../App.css";
 import { FaRegUserCircle } from "react-icons/fa";
 import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
+import { LoginContext } from "./../../context/LoginContext";
 import axios from "axios";
 
-const SellerLogin = () => {
+const SellerLogin = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [password, setPassword] = useState("");
 
   const HandleLogin = (event) => {
@@ -24,7 +26,7 @@ const SellerLogin = () => {
         })
         .then((res) => {
           setIsLoading(true);
-
+          console.log(res.data)
           if (res.data == "Invalid password" || res.data == "Invalid email") {
             const credentialErrorLabel =
               document.querySelector(".credentials-error");
@@ -36,6 +38,13 @@ const SellerLogin = () => {
           } else {
             setEmail("");
             setPassword("");
+            localStorage.setItem("loginData", "seller");
+            localStorage.setItem("token", res.data);
+            setIslLoggedIn({
+              login: true,
+              status: "seller",
+            });
+            props.history.push("/");
           }
         })
         .catch((err) => setIsLoading(true));
@@ -81,8 +90,7 @@ const SellerLogin = () => {
       <div
         class="page-header header-filter smooth_load"
         style={{
-          backgroundImage:
-            "url('../assets/img/pexels-jopwell-1325735.jpg')",
+          backgroundImage: "url('../assets/img/pexels-jopwell-1325735.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "top center",
         }}

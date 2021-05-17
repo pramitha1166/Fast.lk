@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import SellerProfile from "./SellerProfile";
+import BuyerProfile from "./BuyerProfile";
+import { LoginContext } from "./../../context/LoginContext";
 
-const Profile = () => {
+const Profile = (props) => {
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
+
+  useEffect(() => {
+    if (islLoggedIn.login === false) {
+      props.history.push("/");
+    }
+  });
+
   return (
     <>
       <div
         class="page-header header-filter"
         data-parallax="true"
-        style={{ backgroundImage: "url('../assets/img/city-profile.jpg')" , height: 300}}
+        style={{
+          backgroundImage: "url('../assets/img/city-profile.jpg')",
+          height: 300,
+        }}
       ></div>
+
       <div class="">
         <div class="profile-content">
           <div class="container">
@@ -18,13 +33,15 @@ const Profile = () => {
                     <img
                       src="../assets/img/faces/christian.jpg"
                       alt="Circle Image"
-                      style={{height: 200, width: 200}}
+                      style={{ height: 200, width: 200 }}
                       class="img-raised rounded-circle img-fluid main main-raised"
                     />
                   </div>
                   <div class="name">
                     <h3 class="title">Christian Louboutin</h3>
                     <h6>Designer</h6>
+                    {islLoggedIn.status === "buyer" ? <BuyerProfile /> : null}
+                    {islLoggedIn.status === "seller" ? <SellerProfile /> : null}
                     <a
                       href="#pablo"
                       class="btn btn-just-icon btn-link btn-dribbble"
@@ -181,7 +198,6 @@ const Profile = () => {
           </div>
         </div>
       </div>
-   
     </>
   );
 };

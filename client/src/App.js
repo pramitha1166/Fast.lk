@@ -16,6 +16,7 @@ import Checkout from "./components/Checkout/Checkout";
 import BuyItem from "./components/BuyItem/BuyItem";
 
 import { LoginProvider } from "./context/LoginContext";
+import { CartProvider } from "./context/CartContext";
 
 function App() {
   return (
@@ -23,20 +24,22 @@ function App() {
       {" "}
       <div className="App">
         <LoginProvider>
-          <Route path="/" exec component={Navbar} />
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/login" exact component={Login} />
-            <Route path="/slogin" exact component={SellerLogin} />
-            <Route path="/profile" exact component={Profile} />
-            <Route path="/signup" exact component={Signup} />
-            <Route path="/ssignup" exact component={SellerSignup} />
-            <Route path="/contact" exact component={Contact}></Route>
-            <Route path="/products" exact component={Products}></Route>
-            <Route path="/checkout" exact component={Checkout}></Route>
-            <Route path="/buy" exact component={BuyItem}></Route>
-          </Switch>
-          <Route path="/" exec component={Footer} />
+          <CartProvider>
+            <Route path="/" exec component={Navbar} />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/login" exact component={Login} />
+              <Route path="/slogin" exact component={SellerLogin} />
+              <Route path="/profile" exact component={Profile} />
+              <Route path="/signup" exact component={Signup} />
+              <Route path="/ssignup" exact component={SellerSignup} />
+              <Route path="/contact" exact component={Contact}></Route>
+              <Route path="/products" exact component={Products}></Route>
+              <Route path="/checkout" exact component={Checkout}></Route>
+              <Route path="/buy" exact component={BuyItem}></Route>
+            </Switch>
+            <Route path="/" exec component={Footer} />
+          </CartProvider>
         </LoginProvider>
       </div>
     </Router>

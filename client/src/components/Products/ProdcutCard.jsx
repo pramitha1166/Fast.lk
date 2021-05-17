@@ -22,15 +22,18 @@ const ProductCard = ({ image }) => {
             bulk of the card's content.
           </p>
           <div className="card_buttons">
-              <Link to="/buy">
+            <Link to="/buy">
               <button class="btn btn-danger btn-round">
-            Add to cart {" "}<FaShoppingCart /> 
-          </button>
-          <button class="btn btn-danger btn-link" style={{fontWeight: "bold"}}>Rs 1200.00</button>
-          </Link>
-
+                Add to cart <FaShoppingCart />
+              </button>
+              <button
+                class="btn btn-danger btn-link"
+                style={{ fontWeight: "bold" }}
+              >
+                Rs 1200.00
+              </button>
+            </Link>
           </div>
-          
         </div>
       </div>
     </div>

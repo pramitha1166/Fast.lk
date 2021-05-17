@@ -5,6 +5,7 @@ import { FaRegUserCircle } from "react-icons/fa";
 import { LoginContext } from "./../../context/LoginContext";
 import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
+import {Link} from 'react-router-dom';
 import axios from "axios";
 
 const Login = (props) => {
@@ -38,8 +39,12 @@ const Login = (props) => {
           } else {
             setEmail("");
             setPassword("");
+            localStorage.setItem("loginData", "buyer");
             localStorage.setItem("token", res.data);
-            setIslLoggedIn(true);
+            setIslLoggedIn({
+              login: true,
+              status: "buyer",
+            });
             props.history.push("/");
           }
         })
@@ -173,6 +178,7 @@ const Login = (props) => {
                         >
                           Login
                         </button>
+                        <Link to="/slogin">
                         <div class="footer text-center">
                           <a
                             href="#pablo"
@@ -180,7 +186,8 @@ const Login = (props) => {
                           >
                             Seller Login
                           </a>
-                        </div>
+                        </div> 
+                        </Link>
                       </>
                     )}
                   </div>
