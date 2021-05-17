@@ -6,6 +6,7 @@ import Navbar from "./components/layout/Nevbar";
 import Home from "./components/Home/Home";
 import Footer from "./components/layout/Footer";
 import Login from "./components/Login/Login";
+import Profile from "./components/Profile/Profile";
 import SellerLogin from "./components/Login/SellerLogin";
 import Signup from "./components/Signup/Signup";
 import SellerSignup from "./components/Signup/SellerSignup";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
           <Route path="/slogin" exact component={SellerLogin} />
+          <Route path="/profile" exact component={Profile} />
           <Route path="/signup" exact component={Signup} />
           <Route path="/ssignup" exact component={SellerSignup} />
           <Route path="/contact" exact component={Contact}></Route>
