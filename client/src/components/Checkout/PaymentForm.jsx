@@ -92,12 +92,12 @@ const PaymentForm = ({shippingData,clientToken,cart_data}) => {
 
     const showDropIn = () => (
         <div>
-            {JSON.stringify(order)}
+            {/* {JSON.stringify(order)} */}
             <DropIn options={{
                 authorization: clientToken
             }} onInstance={instance => (data.instance=instance)} />
-            <button className="btn btn-success" onClick={buy}>Checkout</button>
-            <button onClick={test}>test</button>
+            <button className="btn btn-danger" onClick={buy}>Checkout</button>
+
         </div>
     )
 
@@ -107,9 +107,9 @@ const PaymentForm = ({shippingData,clientToken,cart_data}) => {
     })
 
     return (
-        <div>
+        <div >
             {showDropIn()}<br/>
-            {JSON.stringify(shippingData)}
+            {/* {JSON.stringify(shippingData)} */}
         </div>
     )
 }

@@ -36,7 +36,7 @@ const AddressForm = ({next,cart_data}) => {
     return (
 
         <div>
-            <Typography variant="h6" gutterBottom>Order Summery</Typography>
+            <h6 className="title">Order Summery</h6>
             <Paper style={{marginBottom: '40px',marginTop: '20px'}}>
                 <Table>
                     <TableContainer>
@@ -75,40 +75,58 @@ const AddressForm = ({next,cart_data}) => {
 
            
 
-            <Typography variant="h6" gutterBottom>Shipping Address</Typography>
+            <h6 className="title">Shipping Address</h6>
             
                 <form onSubmit={submitForm}>
                     <Grid container spacing={3}>
 
                         <Grid item xs={12} sm={6}>
-                            <TextField id="firstname" required  fullWidth label="First Name" onChange={handleForm('firstname')}  />   
-                            
+                            {/* <TextField id="firstname" required  fullWidth label="First Name" onChange={handleForm('firstname')}  />   
+                             */}
+                             <div className="form-group">
+                                 <input type="text" className="form-control" placeholder="First Name" onChange={handleForm('firstname')} />
+                             </div>
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <TextField id="lastname" required fullWidth label="Last Name" onChange={handleForm('lastname')} />   
+                            {/* <TextField id="lastname" required fullWidth label="Last Name" onChange={handleForm('lastname')} />    */}
+                            <div className="form-group">
+                                 <input type="text" className="form-control" placeholder="Last Name" onChange={handleForm('lastname')} />
+                             </div>
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <TextField id="address" required fullWidth label="Address"  onChange={handleForm('address')} />   
+                            {/* <TextField id="address" required fullWidth label="Address"  onChange={handleForm('address')} />    */}
+                            <div className="form-group">
+                                 <input type="text" className="form-control" placeholder="Address" onChange={handleForm('address')} />
+                             </div>
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <TextField id="email" required fullWidth label="Email" onChange={handleForm('email')}  />   
+                            {/* <TextField id="email" required fullWidth label="Email" onChange={handleForm('email')}  />    */}
+                            <div className="form-group">
+                                 <input type="text" className="form-control" placeholder="Email" onChange={handleForm('email')} />
+                             </div>
                         </Grid>
 
                         <Grid item xs={12} sm={6}>
-                            <TextField id="city" required fullWidth label="City" onChange={handleForm('city')} />   
+                            {/* <TextField id="city" required fullWidth label="City" onChange={handleForm('city')} />    */}
+                            <div className="form-group">
+                                 <input type="text" className="form-control" placeholder="City" onChange={handleForm('city')} />
+                             </div>
                         </Grid>
                         
                         <Grid item xs={12} sm={6}>
-                            <TextField id="zip" required fullWidth label="ZIP" onChange={handleForm('zip')}  />   
+                            {/* <TextField id="zip" required fullWidth label="ZIP" onChange={handleForm('zip')}  />    */}
+                            <div className="form-group">
+                                 <input type="text" className="form-control" placeholder="ZIP" onChange={handleForm('zip')} />
+                             </div>
                         </Grid>
 
                     </Grid>
                     <div style={{display: 'flex', justifyContent: 'space-between', marginTop: '60px'}}>
-                        <Button component={Link} to={'/'} color="action" variant="outlined">Back to Home</Button>
-                        <Button type="submit" color="primary" variant="contained">Next</Button>
+                        <button class="btn btn-default" variant="outlined"><Link to="/">Back to Home</Link></button>
+                        <button class="btn btn-danger" type="submit" color="primary" variant="contained">Next</button>
                     </div>
                 </form>
             

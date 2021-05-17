@@ -1,10 +1,13 @@
-import React, {useState, useEffect} from "react";
-import { Link } from 'react-router-dom';
 import ProductCard from "../Products/ProdcutCard";
+import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import {LoginContext} from "./../../context/LoginContext";
 import "./../../App.css";
 import "./Home.css";
 
 const Home = () => {
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
+
   useEffect(() => {
     window.scroll(0, 0);
   });
@@ -54,7 +57,7 @@ const Home = () => {
             <div className="best-selling">
               <div className="row">
                 <div className="col-md-6 img-section">
-                  <img src="https://th.bing.com/th/id/OIP.wycFRpdMjTifD1dm4v2S9wHaE8?w=277&h=185&c=7&o=5&pid=1.7" />
+                  <img src="https://n4.sdlcdn.com/imgs/a/m/h/Reebok-Brown-Sport-Shoes-SDL436874765-5-be26c.JPG" />
                 </div>
                 <div className="col-md-6 content">
                   <h4>Best Selling Product</h4>

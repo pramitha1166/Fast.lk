@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./../../App.css";
 import { FaRegUserCircle } from "react-icons/fa";
+import { LoginContext } from "./../../context/LoginContext";
 import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
+import {Link} from 'react-router-dom';
 import axios from "axios";
 import { isAuthenticated } from "../auth";
 //import {checkTokan} from '../auth/index'
 
-const Login = () => {
+const Login = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [password, setPassword] = useState("");
 
   const HandleLogin = (event) => {
@@ -41,6 +44,13 @@ const Login = () => {
             localStorage.setItem('token', res.data)
             setEmail("");
             setPassword("");
+            localStorage.setItem("loginData", "buyer");
+            localStorage.setItem("token", res.data);
+            setIslLoggedIn({
+              login: true,
+              status: "buyer",
+            });
+            props.history.push("/");
           }
         })
         .catch((err) => setIsLoading(true));
@@ -173,6 +183,7 @@ const Login = () => {
                         >
                           Login
                         </button>
+                        <Link to="/slogin">
                         <div class="footer text-center">
                           <a
                             href="#pablo"
@@ -180,7 +191,8 @@ const Login = () => {
                           >
                             Seller Login
                           </a>
-                        </div>
+                        </div> 
+                        </Link>
                       </>
                     )}
                   </div>

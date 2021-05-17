@@ -1,5 +1,5 @@
 import { Paper, Step, StepLabel, Stepper, Typography } from '@material-ui/core'
-import React, {useState,useEffect} from 'react'
+import React, {useState,useEffect, useContext} from 'react'
 import Layout from '../layout/Layout'
 import AddressForm from './AddressForm'
 import './Checkout.css'
@@ -8,7 +8,8 @@ import axios from 'axios'
 import useStyles from './CheckoutStyle'
 import PaymentForm from './PaymentForm'
 import LoaderSpinner from '../Comman/LoaderSpinner'
-import { CartContext } from '../context/CartContextProvider'
+import { CartContext } from "./../../context/CartContext";
+
 
 const steps = ['Shipping Address', 'Payment Details']
 
@@ -16,12 +17,14 @@ const Checkout = () => {
 
     const classes = useStyles()
 
+
     let cartD = [] ;
     
     const [loading, setLoading] = useState(false)
     const [activeStep,setActiveStep] = useState(0)
     const [shippingData,setShippingData] = useState({})
     const [clientToken, setClientToken] = useState(null)
+    const [cartData, setCartData] = useContext(CartContext)
 
     const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1)
     const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1)
@@ -32,8 +35,8 @@ const Checkout = () => {
     }
 
     const Form = () => activeStep === 0 
-        ? <AddressForm next={next} cart_data={cartD} />
-        : <PaymentForm shippingData={shippingData} clientToken={clientToken} cart_data={cartD} />
+        ? <AddressForm next={next} cart_data={cartData} />
+        : <PaymentForm shippingData={shippingData} clientToken={clientToken} cart_data={cartData} />
 
     const Confirm = () => (
         <h2>Success</h2>
@@ -53,18 +56,16 @@ const Checkout = () => {
     },[])
 
     return (
-        <CartContext.Consumer>{(context) => {
-             const {cartData} = context
-             cartD = cartData;
-            return (
+       
+            
                 <Layout title="Checkout">
                     {loading ? (
                         <LoaderSpinner/>
                     ) : (
-                        <>
+                        <div style={{display:'flex', justifyContent: 'center'}}>
                             <div className={classes.toolbar} />
-                            <main className={classes.layout}>
-                                <Paper className={classes.paper}>
+                            <main className="card" style={{width: '60%'}}>
+                                <div className='card-body'>
                                     <Stepper activeStep={activeStep} className={classes.stepper}>
                                         {steps.map((step) => (
                                             <Step key={step}>
@@ -73,16 +74,14 @@ const Checkout = () => {
                                         ))}
                                     </Stepper>
                                     {activeStep===steps.length ? <Confirm/> : <Form />}
-                                </Paper>
+                                </div>
                             </main>
-                        </>
+                        </div>
                     )}
                 
                 </Layout>
-            )
-        }}
-           
-        </CartContext.Consumer>
+         
+       
         
     )
 }

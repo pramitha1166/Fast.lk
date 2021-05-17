@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import * as EmailValidator from "email-validator";
 import { storageRef2 } from "./../../firebase";
 import Loader from "react-loader-spinner";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./../../App.css";
 
@@ -449,13 +450,26 @@ const Signup = () => {
                   ></h6>
                   <div class="footer text-center">
                     {!isLoading ? (
-                      <button
-                        onClick={handleSignUp}
-                        class="btn btn-danger btn-round"
-                        style={{ marginTop: 30, marginBottom: 30 }}
-                      >
-                        Signup
-                      </button>
+                      <>
+                        <button
+                          onClick={handleSignUp}
+                          class="btn btn-danger btn-round"
+                          style={{ marginTop: 30, marginBottom: 0 }}
+                        >
+                          Signup
+                        </button>
+                        <Link to="/ssignup">
+                          <div class="footer text-center">
+                            <a
+                              href="#pablo"
+                              class="btn btn-danger btn-link btn-wd btn-lg"
+                            ><h6>
+                             Join with us as a seller?.
+                            </h6>
+                            </a>
+                          </div>
+                        </Link>
+                      </>
                     ) : (
                       <Loader
                         type="ThreeDots"

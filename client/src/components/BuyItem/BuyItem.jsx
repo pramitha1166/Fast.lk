@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import LoaderSpinner from "./../Comman/LoaderSpinner";
+import { CartContext } from "./../../context/CartContext";
 import {
   AiOutlineArrowDown,
   AiFillPlusSquare,
@@ -16,9 +17,22 @@ import "./../../App.css";
 import "./../../styles/Buy.css";
 
 const BuyItem = () => {
-  useEffect( () => {
-    window.scroll(0,0);
-  },[]);
+  const [cartData, setCartData] = useContext(CartContext);
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
+  const addToCart = () => {
+    setCartData((previousCart) => [
+      ...previousCart,
+      {
+        _id: 2,
+        img: "https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?w=249&h=191&c=7&o=5&pid=1.7",
+        price: 20,
+        quantity: 3,
+      },
+    ]);
+  };
 
   return (
     <>
@@ -89,7 +103,7 @@ const BuyItem = () => {
                         </h4>
                         <AiFillPlusSquare />
                       </div>
-                      <button class="btn btn-danger">
+                      <button class="btn btn-danger" onClick={addToCart}>
                         Add to cart <FaShoppingCart />
                       </button>
                     </div>
