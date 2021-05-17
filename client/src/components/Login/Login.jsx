@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import "./../../App.css";
 import { FaRegUserCircle } from "react-icons/fa";
+import { LoginContext } from "./../../context/LoginContext";
 import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
 import axios from "axios";
 
-const Login = () => {
+const Login = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [email, setEmail] = useState("");
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [password, setPassword] = useState("");
 
   const HandleLogin = (event) => {
@@ -36,6 +38,9 @@ const Login = () => {
           } else {
             setEmail("");
             setPassword("");
+            localStorage.setItem("token", res.data);
+            setIslLoggedIn(true);
+            props.history.push("/");
           }
         })
         .catch((err) => setIsLoading(true));

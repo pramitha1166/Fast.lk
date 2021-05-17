@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
+import { LoginContext } from "./../../context/LoginContext";
 import { FaStoreAlt } from "react-icons/fa";
 
 import "./Navbar.css";
 
 const Navbar = ({ history }) => {
   const [showCart, setShowCart] = useState(false);
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [cartItems, setCartItems] = useState([
     {
       _id: 1,
@@ -83,9 +85,11 @@ const Navbar = ({ history }) => {
             })}
           </ul>
           <div className="cart-bottum">
-              <h4>Total {total}$</h4>
-              <button className="btn btn-warning">Clear</button>
-              <button className="btn btn-info"><Link to="/checkout">Checkout</Link></button>
+            <h4>Total {total}$</h4>
+            <button className="btn btn-warning">Clear</button>
+            <button className="btn btn-info">
+              <Link to="/checkout">Checkout</Link>
+            </button>
           </div>
         </div>
         <span>
@@ -108,13 +112,9 @@ const Navbar = ({ history }) => {
         <div class="container">
           <div class="navbar-translate">
             <Link to="/">
-            <a
-              class="navbar-brand"
-              href="!#"
-              style={{fontSize: 25}}
-            >
-              Fast.lk{" "}
-            </a>
+              <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>
+                Fast.lk{" "}
+              </a>
             </Link>
             <button
               class="navbar-toggler"
@@ -131,46 +131,71 @@ const Navbar = ({ history }) => {
           </div>
           <div class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-              <Link to="/login">
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="https://www.creative-tim.com/product/material-kit-pro"
-                  target="_blank"
-                >
-                  Login
-                </a>
-              </li>
-              </Link>
-              <Link to="/signup">
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="https://www.creative-tim.com/product/material-kit-pro"
-                  target="_blank"
-                >
-                  Signup
-                </a>
-              </li>
-              </Link>
               <Link to="/products">
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="https://www.creative-tim.com/product/material-kit-pro"
-                  target="_blank"
-                >
-                   Products
-                </a>
-              </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    href="https://www.creative-tim.com/product/material-kit-pro"
+                    target="_blank"
+                  >
+                    Products
+                  </a>
+                </li>
               </Link>
+              {!islLoggedIn ? (
+                <Link to="/login">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="https://www.creative-tim.com/product/material-kit-pro"
+                      target="_blank"
+                    >
+                      Login
+                    </a>
+                  </li>
+                </Link>
+              ) : (
+                <Link to="/login">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="https://www.creative-tim.com/product/material-kit-pro"
+                      target="_blank"
+                    >
+                      Account
+                    </a>
+                  </li>
+                </Link>
+              )}
+              {!islLoggedIn ? (
+                <Link to="/signup">
+                  <li class="nav-item">
+                    <a class="nav-link" href="!#" target="_blank">
+                      Signup
+                    </a>
+                  </li>
+                </Link>
+              ) : (
+                <li
+                  class="nav-item"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    localStorage.removeItem("token");
+                    setIslLoggedIn(false);
+                  }}
+                >
+                  <a class="nav-link" href="#!" target="_blank">
+                    Logout
+                  </a>
+                </li>
+              )}
+
               <li className="nav-item">
                 <a className="nav-link" onClick={buttonClickCart}>
                   <i className="fa fa-shopping-basket"></i>
                   <span class="badge badge-default">{total_items}</span>
                 </a>
               </li>
-              
             </ul>
           </div>
         </div>

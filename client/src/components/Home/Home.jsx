@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import {LoginContext} from "./../../context/LoginContext";
 import "./../../App.css";
 import "./Home.css";
 
 const Home = () => {
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
+
   useEffect(() => {
     window.scroll(0, 0);
   });
