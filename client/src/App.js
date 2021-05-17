@@ -15,6 +15,8 @@ import Products from './components/Products/Products';
 import Checkout from "./components/Checkout/Checkout";
 import BuyItem from './components/BuyItem/BuyItem';
 import CartContextProvider from "./components/context/CartContextProvider";
+import BuyerRoute from "./components/auth/BuyerRoute";
+import Dashboard from "./components/Seller/Dashboard";
 
 function App() {
 
@@ -65,6 +67,7 @@ function App() {
           <Route path="/products" exact component={Products}></Route>
           <Route path="/checkout" exact component={Checkout}></Route>
           <Route path="/buy" exact component={BuyItem}></Route>
+          <BuyerRoute path="/buyer" component={Dashboard}></BuyerRoute>
         </Switch>
         <Route path="/" exec component={Footer} />
       </div>

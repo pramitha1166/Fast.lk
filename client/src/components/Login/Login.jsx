@@ -5,6 +5,8 @@ import { FaRegUserCircle } from "react-icons/fa";
 import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
 import axios from "axios";
+import { isAuthenticated } from "../auth";
+//import {checkTokan} from '../auth/index'
 
 const Login = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,6 +15,8 @@ const Login = () => {
 
   const HandleLogin = (event) => {
     event.preventDefault();
+
+    console.log(isAuthenticated().role)
 
     const validity = validateInput();
     if (validity) {
@@ -34,6 +38,7 @@ const Login = () => {
               credentialErrorLabel.classList.add("hide");
             }, 2000);
           } else {
+            localStorage.setItem('token', res.data)
             setEmail("");
             setPassword("");
           }

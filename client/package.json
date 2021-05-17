@@ -14,6 +14,7 @@
     "braintree-web-drop-in-react": "^1.2.1",
     "email-validator": "^2.0.4",
     "firebase": "^8.6.1",
+    "jwt-decode": "^3.1.2",
     "nouislider": "^15.1.0",
     "places.js": "^1.19.0",
     "rc-slider": "^9.7.2",
