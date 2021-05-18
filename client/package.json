@@ -10,9 +10,11 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
+    "braintree-web": "^3.76.4",
     "braintree-web-drop-in-react": "^1.2.1",
     "email-validator": "^2.0.4",
     "firebase": "^8.6.1",
+    "jwt-decode": "^3.1.2",
     "nouislider": "^15.1.0",
     "places.js": "^1.19.0",
     "rc-slider": "^9.7.2",
@@ -26,7 +28,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "proxy": "http://192.168.8.101:8280",
+  "proxy": "http://192.168.1.101:8280",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

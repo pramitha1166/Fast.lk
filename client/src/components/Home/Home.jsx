@@ -1,3 +1,4 @@
+import ProductCard from "../Products/ProdcutCard";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {LoginContext} from "./../../context/LoginContext";
@@ -103,65 +104,10 @@ const Home = () => {
               <div>
                 <h2 className="title">Newst Arrival Products</h2>
                 <div className="row">
-                  <div className="col-md-4 product">
-                    <div class="card">
-                      <img
-                        class="card-img-top"
-                        src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1"
-                        rel="nofollow"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
-                        <button href="javascript:;" class="btn btn-primary">
-                          Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card">
-                      <img
-                        class="card-img-top"
-                        src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw"
-                        rel="nofollow"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
-                        <button href="javascript:;" class="btn btn-primary">
-                          Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card">
-                      <img
-                        class="card-img-top"
-                        src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1"
-                        rel="nofollow"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
-                        <button href="javascript:;" class="btn btn-primary">
-                          Buy
-                        </button>
-                      </div>
-                    </div>
+                  <div className="card-deck">
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
                   </div>
                 </div>
               </div>
@@ -171,65 +117,10 @@ const Home = () => {
               <div>
                 <h2 className="title">Best Selling Products</h2>
                 <div className="row">
-                  <div className="col-md-4 product">
-                    <div class="card">
-                      <img
-                        class="card-img-top"
-                        src="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1"
-                        rel="nofollow"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
-                        <button href="javascript:;" class="btn btn-primary">
-                          Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card">
-                      <img
-                        class="card-img-top"
-                        src="https://th.bing.com/th/id/R7b091a08530763ae93338f91ddc4e11f?rik=JU38EzVKHJ7tXA&pid=ImgRaw"
-                        rel="nofollow"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
-                        <button href="javascript:;" class="btn btn-primary">
-                          Buy
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-4 product">
-                    <div class="card">
-                      <img
-                        class="card-img-top"
-                        src="https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?pid=ImgDet&rs=1"
-                        rel="nofollow"
-                        alt="Card image cap"
-                      />
-                      <div class="card-body">
-                        <h4 class="card-title">Special title treatment</h4>
-                        <p class="card-text">
-                          Some quick example text to build on the card title and
-                          make up the bulk of the card's content.
-                        </p>
-                        <button href="javascript:;" class="btn btn-primary">
-                          Buy
-                        </button>
-                      </div>
-                    </div>
+                <div className="card-deck">
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
                   </div>
                 </div>
               </div>

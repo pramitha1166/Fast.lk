@@ -24,10 +24,11 @@ const PORT = process.env.PORT || 5003
 const order_api = require('./src/routes/order')
 
 /**app middlewares */
+app.use(CORS())
 app.use(morgan('dev'))
 app.use(bodyParser())
 app.use(cookieParser())
-app.use(CORS())
+
 
 /**routing mddlewares */
 app.use('/api/orders', order_api)

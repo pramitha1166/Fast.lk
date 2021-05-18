@@ -1,13 +1,13 @@
 import React from 'react'
 import './Layout.css'
 
-const Layout = ({title="title", children}) => {
+const Layout = ({title="title",img="https://cdn.shopify.com/s/files/1/0437/0454/9536/files/slider_2000x.png?v=1595597573", children}) => {
     return (
         <div>
             <div 
             className="page-header header-filter smooth_load layout-page-header"
             data-parallax="true"
-            style={{backgroundImage: "url('https://cdn.shopify.com/s/files/1/0437/0454/9536/files/slider_2000x.png?v=1595597573"}}>
+            style={{backgroundImage: `url('${img}')`}}>
                 <div className="container">
                     <div className="row">
                         <div className="col-md-4">
