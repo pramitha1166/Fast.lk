@@ -3,6 +3,8 @@ import SellerProfile from "./SellerProfile";
 import BuyerProfile from "./BuyerProfile";
 import { LoginContext } from "./../../context/LoginContext";
 
+import "./../../App.css";
+
 const Profile = (props) => {
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
 
@@ -15,7 +17,7 @@ const Profile = (props) => {
   return (
     <>
       <div
-        class="page-header header-filter"
+        class="page-header header-filter smooth_load"
         data-parallax="true"
         style={{
           backgroundImage: "url('../assets/img/city-profile.jpg')",
@@ -23,7 +25,7 @@ const Profile = (props) => {
         }}
       ></div>
 
-      <div class="">
+      <div class="smooth_load">
         <div class="profile-content">
           <div class="container">
             <div class="row">
