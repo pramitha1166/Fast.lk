@@ -15,12 +15,12 @@ import Contact from "./components/Contact/Contact";
 import Products from "./components/Products/Products";
 import Checkout from "./components/Checkout/Checkout";
 import BuyItem from './components/BuyItem/BuyItem';
-import BuyerRoute from "./components/auth/BuyerRoute";
 import Dashboard from "./components/Seller/Dashboard";
 
 
 import { LoginProvider } from "./context/LoginContext";
 import { CartProvider } from "./context/CartContext";
+import SellerRoute from "./components/auth/SellerRoute";
 
 function App() {
 
@@ -42,7 +42,7 @@ function App() {
               <Route path="/products" exact component={Products}></Route>
               <Route path="/checkout" exact component={Checkout}></Route>
               <Route path="/buy" exact component={BuyItem}></Route>
-              <BuyerRoute path="/buyer" component={Dashboard}></BuyerRoute>
+              <SellerRoute path="/seller" component={Dashboard}></SellerRoute>
             </Switch>
             <Route path="/" exec component={Footer} />
           </CartProvider>
