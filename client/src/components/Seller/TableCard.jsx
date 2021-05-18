@@ -3,7 +3,7 @@ import React from 'react'
 const TableCard = ({items, feilds, title, description, values, type}) => {
     return (
         <div className="row">
-                        <div className="col-sm-8">
+                        <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-header card-header-warning">
                                     <h4 className="card-title">
@@ -50,13 +50,7 @@ const TableCard = ({items, feilds, title, description, values, type}) => {
                             </div>
                             
                         </div>
-                        <div className="col-sm-4">
-                            <div className="card">
-                                <div className="card-body">
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
     )
 }

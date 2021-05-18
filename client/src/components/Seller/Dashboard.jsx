@@ -88,7 +88,7 @@ const Dashboard = () => {
                         <li className="nav-item">
                         <a
                             class="nav-link"
-                            href="#studio"
+                            href="#orders"
                             role="tab"
                             data-toggle="tab"
                         >
@@ -116,14 +116,22 @@ const Dashboard = () => {
                         ) : (
                             <TableCard title="All Products" type="product" items={products} feilds={['Name','Price','Category','Description']} description="Add, Delete, Update Products" />
                         )}
-                       {JSON.stringify(orders)}
                     </div>
+
+                    <div className="tab-pane text-center" id="orders">
+                        {orderLoading ? (
+                            <LoaderSpinner />
+                        ) : (
+                            <TableCard title="All Orders" type="order" items={orders} feilds={['Name','Price','Category','Description']} description="Add, Delete, Update Categories" />
+                        )}
+                        
+                    </div> 
 
                     <div className="tab-pane text-center" id="customers">
                         {orderLoading ? (
                             <LoaderSpinner />
                         ) : (
-                            <TableCard title="All Categories" type="order" items={orders} feilds={['Name','Price','Category','Description']} description="Add, Delete, Update Categories" />
+                            <TableCard title="All Customers" type="order" items={orders} feilds={['Name','Price','Category','Description']} description="Add, Delete, Update Categories" />
                         )}
                         
                     </div> 

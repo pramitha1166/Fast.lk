@@ -126,11 +126,17 @@ const Navbar = ({ history }) => {
       >
         <div class="container">
           <div class="navbar-translate">
-            <Link to="/">
-              <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>
-                Fast.lk{" "}
-              </a>
-            </Link>
+            
+              {islLoggedIn.status === 'seller' ? (
+                <Link to="/seller">
+                  <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>Fast.lk (seller)</a>
+                </Link>    
+              ) : (
+                <Link to="/">
+                <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>Fast.lk</a>
+              </Link>
+              )}
+              
             <button
               class="navbar-toggler"
               type="button"
@@ -174,7 +180,7 @@ const Navbar = ({ history }) => {
               ) : null}
 
               {islLoggedIn.status === "seller" ? (
-                <Link to="/products">
+                <Link to="/seller">
                   <li class="nav-item">
                     <a
                       class="nav-link"
