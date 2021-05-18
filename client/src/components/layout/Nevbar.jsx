@@ -10,6 +10,8 @@ import { FaStoreAlt } from "react-icons/fa";
 import "./Navbar.css";
 
 const Navbar = ({ history }) => {
+
+  
   const [showCart, setShowCart] = useState(false);
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [cartData, setCartData] = useContext(CartContext);

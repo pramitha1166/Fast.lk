@@ -9,13 +9,15 @@
   <name>FastLKServicesCompositeExporter</name>
   <description>FastLKServicesCompositeExporter</description>
   <properties>
+    <com.example.endpoint_._Payment>capp/EnterpriseServiceBus</com.example.endpoint_._Payment>
     <com.example.api_._LocationAPI>capp/EnterpriseServiceBus</com.example.api_._LocationAPI>
-    <com.example.endpoint_._FaskLKBackend>capp/EnterpriseServiceBus</com.example.endpoint_._FaskLKBackend>
-    <com.example.endpoint_._LocationService>capp/EnterpriseServiceBus</com.example.endpoint_._LocationService>
-    <com.example.api_._FastlkAPI>capp/EnterpriseServiceBus</com.example.api_._FastlkAPI>
-    <com.example.endpoint_._MessageService>capp/EnterpriseServiceBus</com.example.endpoint_._MessageService>
-    <com.example.api_._MessagingAPI>capp/EnterpriseServiceBus</com.example.api_._MessagingAPI>
     <artifact.types>jaggery/app=zip,synapse/priority-executor=xml,synapse/inbound-endpoint=xml,service/rule=aar,synapse/message-store=xml,event/stream=json,service/meta=xml,datasource/datasource=xml,synapse/proxy-service=xml,bpel/workflow=zip,synapse/sequence=xml,synapse/endpointTemplate=xml,carbon/application=car,wso2/gadget=dar,synapse/api=xml,synapse/event-source=xml,synapse/message-processors=xml,event/receiver=xml,lib/dataservice/validator=jar,synapse/template=xml,synapse/endpoint=xml,lib/carbon/ui=jar,lib/synapse/mediator=jar,event/publisher=xml,synapse/local-entry=xml,synapse/task=xml,webapp/jaxws=war,registry/resource=zip,synapse/configuration=xml,service/axis2=aar,synapse/lib=zip,synapse/sequenceTemplate=xml,event/execution-plan=siddhiql,service/dataservice=dbs,web/application=war,lib/library/bundle=jar</artifact.types>
+    <com.example.endpoint_._MessageService>capp/EnterpriseServiceBus</com.example.endpoint_._MessageService>
+    <com.example.api_._PaymentService>capp/EnterpriseServiceBus</com.example.api_._PaymentService>
+    <com.example.api_._FastlkAPI>capp/EnterpriseServiceBus</com.example.api_._FastlkAPI>
+    <com.example.api_._MessagingAPI>capp/EnterpriseServiceBus</com.example.api_._MessagingAPI>
+    <com.example.endpoint_._LocationService>capp/EnterpriseServiceBus</com.example.endpoint_._LocationService>
+    <com.example.endpoint_._FaskLKBackend>capp/EnterpriseServiceBus</com.example.endpoint_._FaskLKBackend>
   </properties>
   <dependencies>
     <dependency>
@@ -51,6 +53,18 @@
     <dependency>
       <groupId>com.example.endpoint</groupId>
       <artifactId>FaskLKBackend</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.api</groupId>
+      <artifactId>PaymentService</artifactId>
+      <version>1.0.0</version>
+      <type>xml</type>
+    </dependency>
+    <dependency>
+      <groupId>com.example.endpoint</groupId>
+      <artifactId>Payment</artifactId>
       <version>1.0.0</version>
       <type>xml</type>
     </dependency>

@@ -7,6 +7,8 @@ import Loader from "react-loader-spinner";
 import * as EmailValidator from "email-validator";
 import {Link} from 'react-router-dom';
 import axios from "axios";
+import { isAuthenticated } from "../auth";
+//import {checkTokan} from '../auth/index'
 
 const Login = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,6 +18,8 @@ const Login = (props) => {
 
   const HandleLogin = (event) => {
     event.preventDefault();
+
+    console.log(isAuthenticated().role)
 
     const validity = validateInput();
     if (validity) {
@@ -37,6 +41,7 @@ const Login = (props) => {
               credentialErrorLabel.classList.add("hide");
             }, 2000);
           } else {
+            localStorage.setItem('token', res.data)
             setEmail("");
             setPassword("");
             localStorage.setItem("loginData", "buyer");
