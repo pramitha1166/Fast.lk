@@ -1,14 +1,19 @@
 import React, {useState, useEffect} from 'react'
 import 'braintree-web'
 import DropIn from 'braintree-web-drop-in-react'
-
+import {useAlert} from 'react-alert'
 import {processPayment, processOrder} from './coreAPI'
+import LoaderSpinner from '../Comman/LoaderSpinner'
 
-const PaymentForm = ({shippingData,clientToken,cart_data}) => {
+const PaymentForm = ({shippingData,clientToken,cart_data,nextStep}) => {
+
+    const alert = useAlert()
 
     const [data,setData] = useState({
         instance: {}
     })
+
+    const [loading,setLoading] = useState(false)
 
     let tot = 0;
 
@@ -69,6 +74,8 @@ const PaymentForm = ({shippingData,clientToken,cart_data}) => {
                 console.log(data)
                 nonce = data.nonce
 
+                
+                
                 const paymentData = {
                     paymentMethodNonse: nonce,
                     amount: order.amount
@@ -76,16 +83,37 @@ const PaymentForm = ({shippingData,clientToken,cart_data}) => {
 
                 console.log(paymentData)
 
-                processPayment(paymentData)
-                    .then(res=>console.log(res))
-                    .catch(err=>console.log(err))
+                setLoading(true)
+                    processOrder(order)
+                    .then(res=>{
+                        alert.success('Order Place Successfully')
+                        console.log(res)
 
-                processOrder(order)
-                    .then(res=>console.log(res))
-                    .catch(err=>console.log(err))
+                        processPayment(paymentData)
+                        .then(res=>{
+                            setLoading(false)
+                            console.log(res)
+                            alert.success('Payment Success')
+                            //nextStep()
+                        })
+                        .catch(err=>{
+                            setLoading(false)
+                            console.log(err)
+                            alert.error('Error with making payment')
+                        })
+
+                    })
+                    .catch(err=>{
+                        setLoading(false)
+                        console.log(err)
+                        alert.error('Error With Placing Order')
+                    })
+
+                  
 
             })
             .catch(err=> {
+                setLoading(false)
                 console.log(err)
             })
     }
@@ -107,8 +135,14 @@ const PaymentForm = ({shippingData,clientToken,cart_data}) => {
     })
 
     return (
-        <div >
-            {showDropIn()}<br/>
+        <div className="container">
+             {loading ? (
+                <LoaderSpinner />
+            ) : (
+                showDropIn()
+                
+            )} 
+          <br/>
             {/* {JSON.stringify(shippingData)} */}
         </div>
     )

@@ -36,10 +36,10 @@ const Checkout = () => {
 
     const Form = () => activeStep === 0 
         ? <AddressForm next={next} cart_data={cartData} />
-        : <PaymentForm shippingData={shippingData} clientToken={clientToken} cart_data={cartData} />
+        : <PaymentForm shippingData={shippingData} clientToken={clientToken} cart_data={cartData} nextStep={nextStep}/>
 
     const Confirm = () => (
-        <h2>Success</h2>
+        <h2 style={{padding:'10px', borderRadius: '10px', backgroundColor: 'InfoBackground'}}>Success</h2>
     )
 
     useEffect(() => {
@@ -59,25 +59,37 @@ const Checkout = () => {
        
             
                 <Layout title="Checkout">
-                    {loading ? (
-                        <LoaderSpinner/>
+
+                    {activeStep===3 ? (
+                        <>
+                            {Confirm()}
+                        </>
                     ) : (
-                        <div style={{display:'flex', justifyContent: 'center'}}>
-                            <div className={classes.toolbar} />
-                            <main className="card" style={{width: '60%'}}>
-                                <div className='card-body'>
-                                    <Stepper activeStep={activeStep} className={classes.stepper}>
-                                        {steps.map((step) => (
-                                            <Step key={step}>
-                                                <StepLabel>{step}</StepLabel>
-                                            </Step>
-                                        ))}
-                                    </Stepper>
-                                    {activeStep===steps.length ? <Confirm/> : <Form />}
-                                </div>
-                            </main>
-                        </div>
+                        <div>
+                        {loading ? (
+                             <LoaderSpinner/>
+                         ) : (
+                             <div style={{display:'flex', justifyContent: 'center'}}>
+                                 <div className={classes.toolbar} />
+                                 <main className="card" style={{width: '60%'}}>
+                                     <div className='card-body'>
+                                         <Stepper activeStep={activeStep} className={classes.stepper}>
+                                             {steps.map((step) => (
+                                                 <Step key={step}>
+                                                     <StepLabel>{step}</StepLabel>
+                                                 </Step>
+                                             ))}
+                                         </Stepper>
+                                         {activeStep===steps.length ? <Confirm/> : <Form />}
+                                     </div>
+                                 </main>
+                             </div>
+                         )}
+                         </div>  
                     )}
+
+                  
+                   
                 
                 </Layout>
          
