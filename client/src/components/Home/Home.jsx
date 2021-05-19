@@ -105,9 +105,9 @@ const Home = () => {
                 <h2 className="title">Newst Arrival Products</h2>
                 <div className="row">
                   <div className="card-deck">
+                    {/* <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
                     <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
-                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
-                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" /> */}
                   </div>
                 </div>
               </div>
@@ -118,9 +118,9 @@ const Home = () => {
                 <h2 className="title">Best Selling Products</h2>
                 <div className="row">
                 <div className="card-deck">
+                    {/* <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
                     <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
-                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
-                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
+                    <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" /> */}
                   </div>
                 </div>
               </div>

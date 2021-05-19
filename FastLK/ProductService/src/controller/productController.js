@@ -24,7 +24,7 @@ const {
  * @urlparams {none}
  * @return {json} {Newly added product}
  */
-router.post("/add", validateToken, async (req, res) => {
+router.post("/add", async (req, res) => {
   try {
     const result = await addProduct(req.body);
     res.status(201).json({ result });

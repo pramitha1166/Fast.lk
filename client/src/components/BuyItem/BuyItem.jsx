@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import LoaderSpinner from "./../Comman/LoaderSpinner";
 import { CartContext } from "./../../context/CartContext";
+import { useAlert } from 'react-alert';
 import {
   AiOutlineArrowDown,
   AiFillPlusSquare,
@@ -18,21 +19,43 @@ import "./../../styles/Buy.css";
 
 const BuyItem = () => {
   const [cartData, setCartData] = useContext(CartContext);
+  const [buyDataState, setBuyDataState] = useState(undefined);
+  const [count, setCount] = useState(1);
+
+  const alert = useAlert();
+
   useEffect(() => {
     window.scroll(0, 0);
+    const buyData = JSON.parse(localStorage.getItem("buyingData"));
+    
+    console.log(buyData);
   }, []);
 
   const addToCart = () => {
     setCartData((previousCart) => [
       ...previousCart,
       {
-        _id: 2,
-        img: "https://th.bing.com/th/id/OIP.uPZMFcCEz61U_eD1eZcQoAAAAA?w=249&h=191&c=7&o=5&pid=1.7",
-        price: 20,
-        quantity: 3,
+        _id: new Date(),
+        img: JSON.parse(localStorage.getItem("buyingData")).images[0],
+        price: JSON.parse(localStorage.getItem("buyingData")).price,
+        quantity: count,
       },
     ]);
+    alert.success('Added to the cart!')
   };
+
+  const increment = () => {
+    setCount(previous => previous+1);
+  }
+
+  
+  const decrement = () => {
+    if(count > 1){
+      setCount(previous => previous-1);
+    }else{
+
+    }
+  }
 
   return (
     <>
@@ -62,14 +85,14 @@ const BuyItem = () => {
               <div class="row">
                 <div class="col-lg-6 col-sm-12 col-md-12">
                   <div style={{ padding: 50 }}>
-                    <ItemCarousel />
+                    <ItemCarousel images={JSON.parse(localStorage.getItem("buyingData")).images}/>
                   </div>
                 </div>
                 <div class="col-lg-6 col-sm-12 col-md-12">
                   <div style={{ marginTop: 23 }}>
-                    <h4 style={{ textAlign: "left" }}>Items Name</h4>
+                    <h4 style={{ textAlign: "left" }}>{JSON.parse(localStorage.getItem("buyingData")).name}</h4>
                     <div className="reset">
-                      <h3>Rs 1200.00</h3>
+                      <h3>Rs {JSON.parse(localStorage.getItem("buyingData")).price}</h3>
                     </div>
                   </div>
                   <div>
@@ -79,10 +102,7 @@ const BuyItem = () => {
                     </div>
                   </div>
                   <h5 style={{ textAlign: "left" }}>
-                    Every landing page needs a small description after the big
-                    bold title, that&apos;s why we added this text here. Add
-                    here all the information that can make you or your product
-                    create the first impression.
+                  {JSON.parse(localStorage.getItem("buyingData")).discription}
                   </h5>
                   <div>
                     <div className="reset">
@@ -91,7 +111,7 @@ const BuyItem = () => {
                     </div>
                     <div className="buyerButton">
                       <div className="qtyButton">
-                        <AiFillMinusSquare />
+                        <AiFillMinusSquare onClick={decrement}/>
                         <h4
                           style={{
                             fontWeight: "bold",
@@ -99,9 +119,9 @@ const BuyItem = () => {
                             marginRight: 10,
                           }}
                         >
-                          12
+                          {count}
                         </h4>
-                        <AiFillPlusSquare />
+                        <AiFillPlusSquare  onClick={increment}/>
                       </div>
                       <button class="btn btn-danger" onClick={addToCart}>
                         Add to cart <FaShoppingCart />

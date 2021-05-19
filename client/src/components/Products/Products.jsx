@@ -3,6 +3,7 @@ import LoaderSpinner from "./../Comman/LoaderSpinner";
 import ProductCard from "./ProdcutCard";
 import { FaUndo } from "react-icons/fa";
 import axios from "axios";
+import { useAlert } from 'react-alert';
 import "rc-slider/assets/index.css";
 
 import Pagination from "./../Comman/Pagination";
@@ -12,20 +13,42 @@ import CategoryList from "./CategoryList";
 import "./../../App.css";
 import "./../../styles/Product.css";
 
-const Products = () => {
+const Products = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [items, setItems] = useState([]);
+  const [startIndex, setStartIndex] = useState(1);
+  const [startLimit, setStartLimit] = useState(6);
+  const [hasNext, setHasNext] = useState(false);
+  const [hasPrevious, setHasPrevious] = useState(false);
+  const [isMoreDataLoading, setIsMoreDataLoading] = useState(false);
+
+  const alert = useAlert()
 
   useEffect(() => {
-    window.scroll(0,0);
+    window.scroll(0, 0);
+    loadInitialData();
+    alert.success('Oh look, an alert!')
+  }, []);
+
+  const loadMore = () => {
+    setStartLimit((previous) => previous + 3);
+    loadInitialData();
+  };
+
+  const loadInitialData = () => {
+    setIsMoreDataLoading(true);
     axios
-      .get("/api/products/view?page=1&limit=4")
+      .get(`/api/products/view?page=${startIndex}&limit=${startLimit}`)
       .then((res) => {
+        res.data.result.previous ? setHasPrevious(true) : setHasPrevious(false);
+        res.data.result.next ? setHasNext(true) : setHasNext(false);
+
         setItems(res.data.result.results);
         setIsLoading(false);
+        setIsMoreDataLoading(false);
       })
       .catch((err) => console.log(err));
-  }, []);
+  };
 
   return (
     <>
@@ -74,7 +97,6 @@ const Products = () => {
                               placeholder="Search Here..."
                             />
                           </div>
-     
                         </div>
                       </form>
                     </div>
@@ -91,10 +113,15 @@ const Products = () => {
                   <div class="col-lg-10 col-sm-12 col-md-12">
                     <div class="card-deck">
                       {items.map((item) => {
-                        return <ProductCard image={item.images[0]} />;
+                        return <ProductCard props={props} image={item.images[0]} itemData={item}/>;
                       })}
                     </div>
-                    <Pagination />
+                    <Pagination
+                      hasNext={hasNext}
+                      hasPrevious={hasPrevious}
+                      loadMore={loadMore}
+                      isMoreDataLoading={isMoreDataLoading}
+                    />
                   </div>
                 </div>
               </div>
