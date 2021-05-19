@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { LoginContext } from "./../../context/LoginContext";
 import { CartContext } from "./../../context/CartContext";
+import { ThemeContext } from "./../../context/ThemeContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRecycle } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
@@ -15,6 +16,7 @@ const Navbar = ({ history }) => {
   const [showCart, setShowCart] = useState(false);
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [cartData, setCartData] = useContext(CartContext);
+  //const [themeData,setThemeData] = useContext(ThemeContext)
 
   const buttonClickCart = () => {
     setShowCart(!showCart);
@@ -100,7 +102,7 @@ const Navbar = ({ history }) => {
               </button>
 
               <Link to="/checkout">
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" onClick={()=>{setShowCart(false)}}>
                   Checkout <FaShoppingCart />
                 </button>
               </Link>
@@ -244,12 +246,15 @@ const Navbar = ({ history }) => {
                 </li>
               )}
 
-              <li className="nav-item">
-                <a className="nav-link" onClick={buttonClickCart}>
-                  <i className="fa fa-shopping-basket"></i>
-                  <span class="badge badge-default">{cartData.length}</span>
-                </a>
-              </li>
+              {islLoggedIn.status === 'buyer' && (
+                 <li className="nav-item">
+                 <a className="nav-link" onClick={buttonClickCart}>
+                   <i className="fa fa-shopping-basket"></i>
+                   <span class="badge badge-default">{cartData.length}</span>
+                 </a>
+               </li>
+              )}
+             
             </ul>
           </div>
         </div>
