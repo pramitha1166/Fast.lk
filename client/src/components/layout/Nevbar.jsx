@@ -5,6 +5,7 @@ import { CartContext } from "./../../context/CartContext";
 import { ThemeContext } from "./../../context/ThemeContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRecycle } from "react-icons/fa";
+import { useAlert } from 'react-alert';
 import { MdDeleteForever } from "react-icons/md";
 import { FaStoreAlt } from "react-icons/fa";
 
@@ -17,6 +18,8 @@ const Navbar = ({ history }) => {
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [cartData, setCartData] = useContext(CartContext);
   //const [themeData,setThemeData] = useContext(ThemeContext)
+
+  const alert = useAlert();
 
   const buttonClickCart = () => {
     setShowCart(!showCart);
@@ -44,6 +47,7 @@ const Navbar = ({ history }) => {
       setCartData((previousData) => [
         ...previousData.filter((cartData) => cartData._id != removedItemId),
       ]);
+    alert.success('Succesfully removed!')
     }
   };
 

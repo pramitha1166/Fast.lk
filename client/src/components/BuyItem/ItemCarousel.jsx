@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
-const ItemCarousel = () => {
+const ItemCarousel = ({ images }) => {
+  console.log(images);
   return (
     <>
       <div
@@ -20,28 +21,23 @@ const ItemCarousel = () => {
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img
-              class="d-block w-100"
-              src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/suit-4.jpg"
+              class="d-block auto"
+              src={images[images.length-1]}
               alt="First slide"
-              style={{height: 400}}
+              style={{ height: 400 }}
             />
           </div>
-          <div class="carousel-item">
-            <img
-              class="d-block w-100"
-              src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/suit-3.jpg"
-              alt="Second slide"
-              style={{height: 400}}
-            />
-          </div>
-          <div class="carousel-item">
-            <img
-              class="d-block w-100"
-              src="https://demos.creative-tim.com/material-kit-pro/assets/img/examples/suit-6.jpg"
-              alt="Third slide"
-              style={{height: 400}}
-            />
-          </div>
+
+          {images.map((imageData) => (
+            <div class="carousel-item">
+              <img
+                class="d-block w-100"
+                src={imageData}
+                alt="Second slide"
+                style={{ height: 400 }}
+              />
+            </div>
+          ))}
         </div>
         <a
           class="carousel-control-prev"

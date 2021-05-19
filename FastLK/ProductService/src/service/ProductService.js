@@ -15,24 +15,25 @@ const { paginationControl } = require("./../util/paginationControl");
  * @params {payload - payload given by the JWT vertification}
  * @return {promise} {resolve upon successfull product add or reject if there is any error}
  */
-const addProduct = (productData, payload) => {
+const addProduct = (productData) => {
   return new Promise(async (resolve, reject) => {
     //validate inputs
-    const validate = productValidateAdd(productData);
-    if (validate.error !== undefined) {
-      reject(validate.error.details[0].message); //reject if there is any validation error
-    }
+    // const validate = productValidateAdd(productData);
+    // if (validate.error !== undefined) {
+    //   reject(validate.error.details[0].message); //reject if there is any validation error
+    // }
 
     try {
-      const itemData = await Product.find({ _id: itemId });
-      if (itemData[0].ownerRef !== payload._id) {
-        reject("unauthorized access");
-      } else {
+     // const itemData = await Product.find({ _id: itemId });
+      // if (itemData[0].ownerRef !== payload._id) {
+      //   reject("unauthorized access");
+      // } else {
         const product = new Product(productData);
         const savedData = await product.save();
         resolve(savedData);
-      }
+     // }
     } catch (err) {
+      console.log(err)
       reject(err);
     }
   });
