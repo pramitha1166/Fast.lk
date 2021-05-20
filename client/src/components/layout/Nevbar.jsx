@@ -4,15 +4,15 @@ import { LoginContext } from "./../../context/LoginContext";
 import { CartContext } from "./../../context/CartContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRecycle } from "react-icons/fa";
-import { useAlert } from 'react-alert';
+import { useAlert } from "react-alert";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { MdDeleteForever } from "react-icons/md";
 import { FaStoreAlt } from "react-icons/fa";
 
 import "./Navbar.css";
 
 const Navbar = ({ history }) => {
-
-  
   const [showCart, setShowCart] = useState(false);
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [cartData, setCartData] = useContext(CartContext);
@@ -45,13 +45,37 @@ const Navbar = ({ history }) => {
       setCartData((previousData) => [
         ...previousData.filter((cartData) => cartData._id != removedItemId),
       ]);
-    alert.success('Succesfully removed!')
+      alert.success("Succesfully removed!");
     }
   };
 
   const clearCart = () => {
     setCartData([]);
-  }
+  };
+
+  const deleteItem = (e) => {
+    e.preventDefault();
+    confirmAlert({
+      title: "Confirm logout",
+      message: "Are you sure want to logout?",
+      buttons: [
+        {
+          label: "Yes",
+          onClick: () => {
+            localStorage.clear();
+            setIslLoggedIn({
+              login: false,
+              status: undefined,
+            });
+          },
+        },
+        {
+          label: "No",
+          onClick: () => {},
+        },
+      ],
+    });
+  };
 
   let total = 0;
   let total_items = 0;
@@ -88,11 +112,15 @@ const Navbar = ({ history }) => {
                         {item.quantity * item.price}${" "}
                       </p>
                     </div>
-      
-                    <button class="btn btn-danger btn-round" id={item._id} style={{padding: 5, marginTop: -5, fontSize: 8}} onClick={removeFromCart}>
-                remove
-              </button>
-                
+
+                    <button
+                      class="btn btn-danger btn-round"
+                      id={item._id}
+                      style={{ padding: 5, marginTop: -5, fontSize: 8 }}
+                      onClick={removeFromCart}
+                    >
+                      remove
+                    </button>
                   </li>
                 );
               })}
@@ -178,7 +206,7 @@ const Navbar = ({ history }) => {
               ) : null}
 
               {islLoggedIn.status === "seller" ? (
-                <Link to="/products">
+                <Link to="/addproduct">
                   <li class="nav-item">
                     <a
                       class="nav-link"
@@ -227,14 +255,7 @@ const Navbar = ({ history }) => {
               ) : (
                 <li
                   class="nav-item"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    localStorage.clear();
-                    setIslLoggedIn({
-                      login: false,
-                      status: undefined,
-                    });
-                  }}
+                  onClick={deleteItem}
                 >
                   <a class="nav-link" href="#!" target="_blank">
                     Logout
