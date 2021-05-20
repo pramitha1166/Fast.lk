@@ -49,4 +49,7 @@ export default makeStyles((theme) => ({
       justifyContent: 'center',
       alignItems: 'center',
     },
+    stepIcon: {
+      color: 'red'
+    }
   }));
