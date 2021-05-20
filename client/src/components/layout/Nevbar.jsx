@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { Link, withRouter } from "react-router-dom";
 import { LoginContext } from "./../../context/LoginContext";
 import { CartContext } from "./../../context/CartContext";
+import { ThemeContext } from "./../../context/ThemeContext";
 import { FaShoppingCart } from "react-icons/fa";
 import { FaRecycle } from "react-icons/fa";
 import { useAlert } from 'react-alert';
@@ -16,6 +17,7 @@ const Navbar = ({ history }) => {
   const [showCart, setShowCart] = useState(false);
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [cartData, setCartData] = useContext(CartContext);
+  //const [themeData,setThemeData] = useContext(ThemeContext)
 
   const alert = useAlert();
 
@@ -104,7 +106,7 @@ const Navbar = ({ history }) => {
               </button>
 
               <Link to="/checkout">
-                <button class="btn btn-danger">
+                <button class="btn btn-danger" onClick={()=>{setShowCart(false)}}>
                   Checkout <FaShoppingCart />
                 </button>
               </Link>
@@ -130,11 +132,17 @@ const Navbar = ({ history }) => {
       >
         <div class="container">
           <div class="navbar-translate">
-            <Link to="/">
-              <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>
-                Fast.lk{" "}
-              </a>
-            </Link>
+            
+              {islLoggedIn.status === 'seller' ? (
+                <Link to="/seller">
+                  <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>Fast.lk (seller)</a>
+                </Link>    
+              ) : (
+                <Link to="/">
+                <a class="navbar-brand" href="!#" style={{ fontSize: 25 }}>Fast.lk</a>
+              </Link>
+              )}
+              
             <button
               class="navbar-toggler"
               type="button"
@@ -178,7 +186,7 @@ const Navbar = ({ history }) => {
               ) : null}
 
               {islLoggedIn.status === "seller" ? (
-                <Link to="/products">
+                <Link to="/seller">
                   <li class="nav-item">
                     <a
                       class="nav-link"
@@ -242,12 +250,15 @@ const Navbar = ({ history }) => {
                 </li>
               )}
 
-              <li className="nav-item">
-                <a className="nav-link" onClick={buttonClickCart}>
-                  <i className="fa fa-shopping-basket"></i>
-                  <span class="badge badge-default">{cartData.length}</span>
-                </a>
-              </li>
+              {islLoggedIn.status === 'buyer' && (
+                 <li className="nav-item">
+                 <a className="nav-link" onClick={buttonClickCart}>
+                   <i className="fa fa-shopping-basket"></i>
+                   <span class="badge badge-default">{cartData.length}</span>
+                 </a>
+               </li>
+              )}
+             
             </ul>
           </div>
         </div>
