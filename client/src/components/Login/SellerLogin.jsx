@@ -44,7 +44,7 @@ const SellerLogin = (props) => {
               login: true,
               status: "seller",
             });
-            props.history.push("/seller");
+            props.history.push("/profile");
           }
         })
         .catch((err) => setIsLoading(true));

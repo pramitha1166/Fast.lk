@@ -5,6 +5,7 @@ import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useAlert } from "react-alert";
+import jwt_decode from "jwt-decode";
 import "./../../App.css";
 
 const AddProduct = (props) => {
@@ -196,6 +197,8 @@ const AddProduct = (props) => {
   //post data to server
   const postProductData = (images) => {
     const token = localStorage.getItem("token");
+    const decodeData = jwt_decode(token);
+
     return new Promise((resolve, reject) => {
       axios
         .post(
@@ -207,8 +210,8 @@ const AddProduct = (props) => {
             category: "Fashion",
             quantity: productCount,
             price: productPrice,
-            addedAt: "Wed May 19 2021 08:13:47",
-            ownerRef: "60a1d0913876443954025c33",
+            addedAt: (new Date()).toString().substring(0,24),
+            ownerRef: decodeData._id,
           },
           {
             headers: {
