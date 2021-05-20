@@ -22,6 +22,8 @@ import AddProduct from "./components/AddProduct/AddProduct";
 import { LoginProvider } from "./context/LoginContext";
 import { CartProvider } from "./context/CartContext";
 import SellerRoute from "./components/auth/SellerRoute";
+import BuyerRoute from "./components/auth/BuyerRoute";
+//import {ThemeProvider} from "./context/ThemeContext";
 
 function App() {
 
@@ -29,6 +31,7 @@ function App() {
       <Router>
       {" "}
       <div className="App">
+        {/* <ThemeProvider> */}
         <LoginProvider>
           <CartProvider>
             <Route path="/" exec component={Navbar} />
@@ -42,13 +45,14 @@ function App() {
               <Route path="/ssignup" exact component={SellerSignup} />
               <Route path="/contact" exact component={Contact}></Route>
               <Route path="/products" exact component={Products}></Route>
-              <Route path="/checkout" exact component={Checkout}></Route>
+              <BuyerRoute path="/checkout" exact component={Checkout}></BuyerRoute>
               <Route path="/buy" exact component={BuyItem}></Route>
               <SellerRoute path="/seller" component={Dashboard}></SellerRoute>
             </Switch>
             <Route path="/" exec component={Footer} />
           </CartProvider>
         </LoginProvider>
+        {/* </ThemeProvider> */}
       </div>
     </Router>
   );

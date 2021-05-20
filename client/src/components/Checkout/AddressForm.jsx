@@ -1,11 +1,14 @@
 import { Button, Grid, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableFooter, TableHead, TableRow, TextField, Typography } from '@material-ui/core'
 import React, {useState,useEffect} from 'react'
+import { useAlert } from 'react-alert'
 
 import { Link } from 'react-router-dom'
+import { isAuthenticated } from '../auth'
 
 const AddressForm = ({next,cart_data}) => {
 
 
+    const alert = useAlert()
 
     const [data,setData] = useState({
         firstname: '',
@@ -16,18 +19,41 @@ const AddressForm = ({next,cart_data}) => {
         zip: ''
     })
  
+    const [error,setError] = useState([])
    
 
     const handleForm = name => event => {
-        setData({
-            ...data, [name]: event.target.value
-        })
+
+        if(name==='email') {
+            if(event.target.value!==isAuthenticated().email) {
+                //alert.error('Please Enter Your LogedIn Email')
+                setError(['Please Enter Your LogedIn Email'])
+            }else {
+                setData({
+                    ...data, email: event.target.value
+                })
+                setError([])
+            }
+        }else {
+            setData({
+                ...data, [name]: event.target.value
+            })
+        }
+
+        
     }
 
   
     const submitForm = (event) => {
         event.preventDefault()
-        next({...data})
+        console.log(error.length)
+        if(error.length>0) {
+            error.forEach((err) => {
+                alert.error(err)
+            })
+        }else { 
+            next({...data})
+        }
     }
 
 
@@ -107,6 +133,7 @@ const AddressForm = ({next,cart_data}) => {
                             <div className="form-group">
                                  <input type="text" className="form-control" placeholder="Email" onChange={handleForm('email')} />
                              </div>
+                            
                         </Grid>
 
                         <Grid item xs={12} sm={6}>

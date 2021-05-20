@@ -26,7 +26,7 @@ export const processOrder = (orderData) => {
              headers: {
                 Accept: "application/json",
                 "Content-Type": "application/json",
-                token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDllMGNkYTE2M2RhMjNlOThmZWIwOGMiLCJlbWFpbCI6InByYW1pdGhhQGdtYWlsLmNvbSIsImlhdCI6MTYyMTE1NTY0MCwiZXhwIjoxNjIxMjQyMDQwfQ.sFr7jBKavIZpHzFJOE73hYYESkKt62o66gluzMeCTaY'
+                token: localStorage.getItem('token')
              }
          }   
          ).then((res) => {
