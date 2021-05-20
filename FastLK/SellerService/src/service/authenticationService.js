@@ -19,6 +19,7 @@ const login = async (req, res) => {
           process.env.TOKENSCRET,
           { expiresIn: "24h" }
         );
+        console.log(token)
         res.send(token);
       } else {
         res.send("Invalid password");

@@ -45,7 +45,7 @@ function App() {
               <Route path="/ssignup" exact component={SellerSignup} />
               <Route path="/contact" exact component={Contact}></Route>
               <Route path="/products" exact component={Products}></Route>
-              <BuyerRoute path="/checkout" exact component={Checkout}></BuyerRoute>
+              <Route path="/checkout" exact component={Checkout}></Route>
               <Route path="/buy" exact component={BuyItem}></Route>
               <SellerRoute path="/seller" component={Dashboard}></SellerRoute>
             </Switch>
