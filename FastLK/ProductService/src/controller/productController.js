@@ -24,11 +24,12 @@ const {
  * @urlparams {none}
  * @return {json} {Newly added product}
  */
-router.post("/add", async (req, res) => {
+router.post("/add", validateToken, async (req, res) => {
   try {
-    const result = await addProduct(req.body);
+    const result = await addProduct(req.body, req.data);
     res.status(201).json({ result });
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });

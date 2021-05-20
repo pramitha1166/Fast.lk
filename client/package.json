@@ -21,6 +21,7 @@
     "react": "^17.0.2",
     "react-alert": "^7.0.3",
     "react-alert-template-basic": "^1.0.2",
+    "react-confirm-alert": "^2.7.0",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.5.2",
     "react-icons": "^4.2.0",
@@ -30,7 +31,7 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "proxy": "http://192.168.1.101:8280",
+  "proxy": "http://192.168.8.101:8280",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -3,7 +3,6 @@ import LoaderSpinner from "./../Comman/LoaderSpinner";
 import ProductCard from "./ProdcutCard";
 import { FaUndo } from "react-icons/fa";
 import axios from "axios";
-import { useAlert } from 'react-alert';
 import "rc-slider/assets/index.css";
 
 import Pagination from "./../Comman/Pagination";
@@ -22,12 +21,10 @@ const Products = (props) => {
   const [hasPrevious, setHasPrevious] = useState(false);
   const [isMoreDataLoading, setIsMoreDataLoading] = useState(false);
 
-  const alert = useAlert()
 
   useEffect(() => {
     window.scroll(0, 0);
     loadInitialData();
-    alert.success('Oh look, an alert!')
   }, []);
 
   const loadMore = () => {

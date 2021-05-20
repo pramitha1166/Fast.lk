@@ -4,18 +4,18 @@ const validateToken = async (req, res, next) => {
   const token = req.headers.token;
   if (!token) {
     res.send("Token not provided");
-  }
-
-  try {
-    const result = await callSellerAPI(token);
-    if(result.status === 200){
+  } else {
+    try {
+      const result = await callSellerAPI(token);
+      if (result.status === 200) {
         req.data = result.data;
         next();
-    }else if(result.status === 403){
+      } else if (result.status === 403) {
         res.status(403).send("Invlaid token");
+      }
+    } catch (err) {
+      res.status(403).send("Token virtification failed");
     }
-  } catch (err) {
-    res.status(403).send("Token virtification failed");
   }
 };
 

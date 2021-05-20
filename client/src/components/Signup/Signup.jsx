@@ -195,7 +195,6 @@ const Signup = () => {
     ) {
       if (e.target.files[0]) {
         setImage(e.target.files[0]);
-        console.log(e.target.files[0].type);
       }
     } else {
       const imageErrorLabel = document.getElementById("signupimageerror");

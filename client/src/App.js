@@ -16,6 +16,7 @@ import Products from "./components/Products/Products";
 import Checkout from "./components/Checkout/Checkout";
 import BuyItem from './components/BuyItem/BuyItem';
 import Dashboard from "./components/Seller/Dashboard";
+import AddProduct from "./components/AddProduct/AddProduct";
 
 
 import { LoginProvider } from "./context/LoginContext";
@@ -40,6 +41,7 @@ function App() {
               <Route path="/slogin" exact component={SellerLogin} />
               <Route path="/profile" exact component={Profile} />
               <Route path="/signup" exact component={Signup} />
+              <Route path="/addproduct" exact component={AddProduct} />
               <Route path="/ssignup" exact component={SellerSignup} />
               <Route path="/contact" exact component={Contact}></Route>
               <Route path="/products" exact component={Products}></Route>
