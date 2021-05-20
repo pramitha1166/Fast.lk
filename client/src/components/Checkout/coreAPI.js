@@ -38,3 +38,19 @@ export const processOrder = (orderData) => {
     })
 
 }
+
+export const sendEmail = (emailData) => {
+    return new Promise((resolve,reject) => {
+        axios.post('/api/messaging/email/sendemail', 
+            JSON.stringify(emailData), {
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                }
+            }).then(res=> {
+                resolve(res)
+            }).catch(err=> {
+                reject(err)
+            })
+    })
+}

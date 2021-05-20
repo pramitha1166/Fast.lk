@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import 'braintree-web'
 import DropIn from 'braintree-web-drop-in-react'
 import {useAlert} from 'react-alert'
-import {processPayment, processOrder} from './coreAPI'
+import {processPayment, processOrder, sendEmail} from './coreAPI'
 import LoaderSpinner from '../Comman/LoaderSpinner'
 
 const PaymentForm = ({shippingData,clientToken,cart_data,nextStep}) => {
@@ -95,6 +95,17 @@ const PaymentForm = ({shippingData,clientToken,cart_data,nextStep}) => {
                             console.log(res)
                             alert.success('Payment Success')
                             //nextStep()
+
+                            let emailData = {
+                                receiver: order.customer.email,
+                                title: "Order Confirmation",
+                                subject: "Your Order Confirmation Details",
+                                details: `Your order has been reveived successfully, Amount: ${order.amount}`
+                            }
+
+                            sendEmail(emailData)
+                                .then(res=>console.log(res))
+                                .catch(err=>console.log(err))
                         })
                         .catch(err=>{
                             setLoading(false)

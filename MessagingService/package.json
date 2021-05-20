@@ -4,7 +4,7 @@
   "description": "servie to confirm payments by email and sms",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ChandulaM",
