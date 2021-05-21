@@ -53,7 +53,7 @@ const Navbar = ({ history }) => {
     setCartData([]);
   };
 
-  const deleteItem = (e) => {
+  const Logout = (e) => {
     e.preventDefault();
     confirmAlert({
       title: "Confirm logout",
@@ -67,6 +67,7 @@ const Navbar = ({ history }) => {
               login: false,
               status: undefined,
             });
+            history.push("/");
           },
         },
         {
@@ -109,7 +110,7 @@ const Navbar = ({ history }) => {
                     <div>
                       <p>
                         Item name | {item.quantity} item |{" "}
-                        {item.quantity * item.price}${" "}
+                        Rs.{" "}{item.quantity * item.price} 
                       </p>
                     </div>
 
@@ -126,7 +127,7 @@ const Navbar = ({ history }) => {
               })}
             </ul>
             <div className="cart-bottum">
-              <h4>Total {total}$</h4>
+              <h4>Total Rs. {" "}{total}</h4>
               <button class="btn btn-danger" onClick={clearCart}>
                 Clear <FaRecycle />
               </button>
@@ -253,23 +254,21 @@ const Navbar = ({ history }) => {
                   </li>
                 </Link>
               ) : (
-                <li
-                  class="nav-item"
-                  onClick={deleteItem}
-                >
+                <li class="nav-item" onClick={Logout}>
                   <a class="nav-link" href="#!" target="_blank">
                     Logout
                   </a>
                 </li>
               )}
 
-              
-              <li className="nav-item">
-                <a className="nav-link" onClick={buttonClickCart}>
-                  <i className="fa fa-shopping-basket"></i>
-                  <span class="badge badge-default">{cartData.length}</span>
-                </a>
-              </li>
+              {islLoggedIn.status === "buyer" ? (
+                <li className="nav-item">
+                  <a className="nav-link" onClick={buttonClickCart}>
+                    <i className="fa fa-shopping-basket"></i>
+                    <span class="badge badge-default">{cartData.length}</span>
+                  </a>
+                </li>
+              ) : null}
             </ul>
           </div>
         </div>

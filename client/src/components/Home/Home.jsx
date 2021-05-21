@@ -1,7 +1,7 @@
 import ProductCard from "../Products/ProdcutCard";
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import {LoginContext} from "./../../context/LoginContext";
+import { LoginContext } from "./../../context/LoginContext";
 import "./../../App.css";
 import "./Home.css";
 
@@ -32,21 +32,41 @@ const Home = () => {
                 impression.
               </h4>
               <br />
-              <Link to="/products">
-                <a
-                  href="!#"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn btn-danger btn-raised btn-lg"
-                >
-                  <i
-                    style={{ marginRight: "5px" }}
-                    class="fa fa-shopping-bag"
-                    aria-hidden="true"
-                  ></i>{" "}
-                  Shop Now
-                </a>
-              </Link>
+              {islLoggedIn.status !== "seller" ? (
+                <Link to="/products">
+                  <a
+                    href="!#"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-danger btn-raised btn-lg"
+                  >
+                    <i
+                      style={{ marginRight: "5px" }}
+                      class="fa fa-shopping-bag"
+                      aria-hidden="true"
+                    ></i>{" "}
+                    Shop Now
+                  </a>
+                </Link>
+              ) : null}
+
+              {islLoggedIn.status === "seller" ? (
+                <Link to="/addproduct">
+                  <a
+                    href="!#"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="btn btn-danger btn-raised btn-lg"
+                  >
+                    <i
+                      style={{ marginRight: "5px" }}
+                      class="fa fa-shopping-bag"
+                      aria-hidden="true"
+                    ></i>{" "}
+                    Sell Now
+                  </a>
+                </Link>
+              ) : null}
             </div>
           </div>
         </div>
@@ -117,7 +137,7 @@ const Home = () => {
               <div>
                 <h2 className="title">Best Selling Products</h2>
                 <div className="row">
-                <div className="card-deck">
+                  <div className="card-deck">
                     {/* <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
                     <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" />
                     <ProductCard image="https://th.bing.com/th/id/OIP.1aX6C11_GuvcmJImgq5yIgHaHa?pid=ImgDet&w=1200&h=1200&rs=1" /> */}

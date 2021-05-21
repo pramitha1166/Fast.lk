@@ -6,6 +6,8 @@ import { LoginContext } from "./../../context/LoginContext";
 import SellerItemTable from "./SellerItemData";
 import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
+import jwt_decode from "jwt-decode";
+import BuyerOrderData from "./BuyerOrderData";
 
 import "./../../App.css";
 import { useAlert } from "react-alert";
@@ -16,21 +18,36 @@ const Profile = (props) => {
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [sellerProducts, setSellerProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [buyerOrders, setBuyerOrders] = useState([]);
 
   useEffect(() => {
     if (islLoggedIn.login === false) {
       props.history.push("/");
     }
-  });
+  }, []);
 
   const alert = useAlert();
 
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
     axios
-      .get(`/api/products/view/60a1d0913876443954025c33?page=1&limit=10`)
+      .get(`/api/products/view/${decoded._id}?page=1&limit=100`)
       .then((res) => {
         setSellerProducts(res.data.result.results);
         setIsLoading(false);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+    axios
+      .get(`/api/orders/order`)
+      .then((res) => {
+        const modifiedArray = res.data.filter((data) => data.customer.email === decoded.email)
+        setBuyerOrders(modifiedArray);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -75,7 +92,7 @@ const Profile = (props) => {
       })
       .catch((err) => {
         alert.error("Something went wrong");
-        console.log(err)
+        console.log(err);
         setIsLoading(true);
       });
   };
@@ -121,40 +138,12 @@ const Profile = (props) => {
                       />
                     </div>
                     <div class="name">
-                      <h3 class="title">Christian Louboutin</h3>
-                      <h6>Designer</h6>
-                      {islLoggedIn.status === "buyer" ? <BuyerProfile /> : null}
-
-                      <a
-                        href="#pablo"
-                        class="btn btn-just-icon btn-link btn-dribbble"
-                      >
-                        <i class="fa fa-dribbble"></i>
-                      </a>
-                      <a
-                        href="#pablo"
-                        class="btn btn-just-icon btn-link btn-twitter"
-                      >
-                        <i class="fa fa-twitter"></i>
-                      </a>
-                      <a
-                        href="#pablo"
-                        class="btn btn-just-icon btn-link btn-pinterest"
-                      >
-                        <i class="fa fa-pinterest"></i>
-                      </a>
+                      <h3>Shihara Dilshan</h3>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="description text-center">
-                <p>
-                  An artist of considerable range, Chet Faker &#x2014; the name
-                  taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014;
-                  writes, performs and records all of his own music, giving it a
-                  warm, intimate feel with a solid groove structure.{" "}
-                </p>
-              </div>
+
               <div class="row">
                 <div class="col-md-6 ml-auto mr-auto">
                   <div class="profile-tabs">
@@ -162,46 +151,56 @@ const Profile = (props) => {
                       class="nav nav-pills nav-pills-icons justify-content-center"
                       role="tablist"
                     >
-                      <li class="nav-item">
-                        <a
-                          class="nav-link active"
-                          href="#studio"
-                          role="tab"
-                          data-toggle="tab"
-                        >
-                          <i class="material-icons">camera</i> Items
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="#works"
-                          role="tab"
-                          data-toggle="tab"
-                        >
-                          <i class="material-icons">palette</i> Orders
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a
-                          class="nav-link"
-                          href="#favorite"
-                          role="tab"
-                          data-toggle="tab"
-                        >
-                          <i class="material-icons">favorite</i> Favorite
-                        </a>
-                      </li>
+                      {islLoggedIn.status === "seller" ? (
+                        <>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link active"
+                              href="#studio"
+                              role="tab"
+                              data-toggle="tab"
+                            >
+                              <i class="material-icons">camera</i> Items
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link"
+                              href="#works"
+                              role="tab"
+                              data-toggle="tab"
+                            >
+                              <i class="material-icons">palette</i> Orders
+                            </a>
+                          </li>
+                        </>
+                      ) : null}
+                      {islLoggedIn.status === "buyer" ? (
+                        <>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link active"
+                              href="#studio"
+                              role="tab"
+                              data-toggle="tab"
+                            >
+                              <i class="material-icons">camera</i> Orders
+                            </a>
+                          </li>
+                        </>
+                      ) : null}
                     </ul>
                   </div>
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
-                <Link to="/addproduct">
-                <button class="btn" style={{ padding: 10 }}>
-                  Add New Product
-                </button>
-                </Link>
+                {islLoggedIn.status === "seller" ? (
+                  <Link to="/addproduct">
+                    <button class="btn" style={{ padding: 10 }}>
+                      Add New Product
+                    </button>
+                  </Link>
+                ) : null}
               </div>
               <div class="tab-content tab-space">
                 <div class="tab-pane active text-center gallery" id="studio">
@@ -211,7 +210,9 @@ const Profile = (props) => {
                         sellerProducts={sellerProducts}
                         deleteItem={deleteItem}
                       />
-                    ) : null}
+                    ) : (
+                      <BuyerOrderData buyerOrders={buyerOrders} />
+                    )}
                   </div>
                 </div>
                 <div class="tab-pane text-center gallery" id="works">
@@ -223,9 +224,6 @@ const Profile = (props) => {
                       />
                     ) : null}
                   </div>
-                </div>
-                <div class="tab-pane text-center gallery" id="favorite">
-                  <div class="row">dsdsdsdsd</div>
                 </div>
               </div>
             </div>

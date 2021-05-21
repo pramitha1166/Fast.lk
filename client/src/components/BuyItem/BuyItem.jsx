@@ -12,14 +12,16 @@ import axios from "axios";
 import "rc-slider/assets/index.css";
 
 import Pagination from "./../Comman/Pagination";
+import { LoginContext } from "./../../context/LoginContext";
 import ItemCarousel from "./ItemCarousel";
 
 import "./../../App.css";
 import "./../../styles/Buy.css";
 
-const BuyItem = () => {
+const BuyItem = (props) => {
   const [cartData, setCartData] = useContext(CartContext);
   const [buyDataState, setBuyDataState] = useState(undefined);
+  const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
   const [count, setCount] = useState(1);
 
   const alert = useAlert();
@@ -28,7 +30,9 @@ const BuyItem = () => {
     window.scroll(0, 0);
     const buyData = JSON.parse(localStorage.getItem("buyingData"));
     
-    console.log(buyData);
+    if(islLoggedIn.status !== "buyer"){
+      props.history.push("/login");
+    }
   }, []);
 
   const addToCart = () => {

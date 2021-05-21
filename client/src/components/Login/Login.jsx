@@ -19,8 +19,6 @@ const Login = (props) => {
   const HandleLogin = (event) => {
     event.preventDefault();
 
-    console.log(isAuthenticated().role)
-
     const validity = validateInput();
     if (validity) {
       setIsLoading(false);
@@ -42,6 +40,7 @@ const Login = (props) => {
             }, 2000);
           } else {
             localStorage.setItem('token', res.data)
+            console.log(res.data)
             setEmail("");
             setPassword("");
             localStorage.setItem("loginData", "buyer");
