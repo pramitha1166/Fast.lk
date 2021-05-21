@@ -3,8 +3,6 @@
 const Order = require("../model/order");
 const { validateOrder } = require("../validation/index");
 
-
-
 exports.createOrderService = (order_item, payload) => {
   return new Promise((resolve, reject) => {
     const order = new Order(order_item);
@@ -13,10 +11,12 @@ exports.createOrderService = (order_item, payload) => {
     } else {
       const validate = validateOrder(order);
       if (validate.error !== undefined) {
+        console.log("v error");
         reject(validate.error.details[0].message);
       }
       order.save((err, order) => {
         if (err) {
+          console.log(err);
           reject(err);
         } else {
           resolve(order);

@@ -110,7 +110,7 @@ const Navbar = ({ history }) => {
                     <div>
                       <p>
                         Item name | {item.quantity} item |{" "}
-                        {item.quantity * item.price}${" "}
+                        Rs.{" "}{item.quantity * item.price} 
                       </p>
                     </div>
 
@@ -127,7 +127,7 @@ const Navbar = ({ history }) => {
               })}
             </ul>
             <div className="cart-bottum">
-              <h4>Total {total}$</h4>
+              <h4>Total Rs. {" "}{total}</h4>
               <button class="btn btn-danger" onClick={clearCart}>
                 Clear <FaRecycle />
               </button>
