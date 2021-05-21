@@ -263,6 +263,7 @@ const Navbar = ({ history }) => {
                 </li>
               )}
 
+              
               <li className="nav-item">
                 <a className="nav-link" onClick={buttonClickCart}>
                   <i className="fa fa-shopping-basket"></i>
