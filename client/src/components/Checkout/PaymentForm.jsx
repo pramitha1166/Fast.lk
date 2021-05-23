@@ -5,6 +5,7 @@ import { useAlert } from "react-alert";
 import { CartContext } from "./../../context/CartContext";
 import { processPayment, processOrder, sendEmail } from "./coreAPI";
 import LoaderSpinner from "../Comman/LoaderSpinner";
+import jwt_decode from 'jwt-decode'
 
 const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }) => {
   const alert = useAlert();
@@ -14,9 +15,10 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
   cartData.forEach((cartData) => {
     total = total + (cartData.price + cartData.quantity);
     let temp = {
-      name: cartData.cartData,
+      name: cartData.name,
       quantity: cartData.quantity,
-      price: cartData.cartData,
+      price: cartData.price,
+      img: cartData.img
     };
 
     newData.push(temp);
@@ -60,6 +62,7 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
 
   const [order, setOrder] = useState({
     customer: {
+      _id: jwt_decode(localStorage.getItem('token'))._id,
       firstname: shippingData.firstname,
       lastname: shippingData.lastname,
       email: shippingData.email,
@@ -103,7 +106,6 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
           .then((res) => {
             alert.success("Order Place Successfully");
             console.log(res);
-
             processPayment(paymentData)
               .then((res) => {
                 setLoading(false);

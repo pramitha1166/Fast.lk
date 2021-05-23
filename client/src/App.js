@@ -23,7 +23,7 @@ import { LoginProvider } from "./context/LoginContext";
 import { CartProvider } from "./context/CartContext";
 import SellerRoute from "./components/auth/SellerRoute";
 import BuyerRoute from "./components/auth/BuyerRoute";
-//import {ThemeProvider} from "./context/ThemeContext";
+import {ThemeProvider} from "./context/ThemeContext";
 
 function App() {
 
@@ -31,7 +31,7 @@ function App() {
       <Router>
       {" "}
       <div className="App">
-        {/* <ThemeProvider> */}
+        <ThemeProvider> 
         <LoginProvider>
           <CartProvider>
             <Route path="/" exec component={Navbar} />
@@ -52,7 +52,7 @@ function App() {
             <Route path="/" exec component={Footer} />
           </CartProvider>
         </LoginProvider>
-        {/* </ThemeProvider> */}
+        </ThemeProvider>
       </div>
     </Router>
   );

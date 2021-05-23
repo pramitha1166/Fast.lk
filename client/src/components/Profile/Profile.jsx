@@ -3,6 +3,7 @@ import SellerProfile from "./SellerProfile";
 import BuyerProfile from "./BuyerProfile";
 import { confirmAlert } from "react-confirm-alert";
 import { LoginContext } from "./../../context/LoginContext";
+import { ThemeContext } from "./../../context/ThemeContext";
 import SellerItemTable from "./SellerItemData";
 import Loader from "react-loader-spinner";
 import { Link } from "react-router-dom";
@@ -16,6 +17,7 @@ import axios from "axios";
 
 const Profile = (props) => {
   const [islLoggedIn, setIslLoggedIn] = useContext(LoginContext);
+  const [themeData, setThemeData] = useContext(ThemeContext);
   const [sellerProducts, setSellerProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [buyerOrders, setBuyerOrders] = useState([]);
@@ -27,6 +29,31 @@ const Profile = (props) => {
   }, []);
 
   const alert = useAlert();
+
+  /**
+   * get user data by user id
+   */
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    const decoded = jwt_decode(token);
+    const id = decoded._id
+
+    var config = {
+      method: 'get',
+      url: `/api/buyers/getBuyer/${id}`,
+      headers: { 
+        'token': token
+      }
+    };
+
+    axios(config).then(res=> {
+      setThemeData({...themeData, user: res.data})
+      console.log(themeData)
+    }).catch(err=> {
+      console.log(err)
+    })
+
+  },[])
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -103,6 +130,8 @@ const Profile = (props) => {
     ]);
   };
 
+  const {showCart, user} = themeData;
+
   return (
     <>
       <div
@@ -131,14 +160,14 @@ const Profile = (props) => {
                   <div class="profile">
                     <div class="avatar ">
                       <img
-                        src="../assets/img/faces/christian.jpg"
+                        src={user.profilePic}
                         alt="Circle Image"
                         style={{ height: 200, width: 200 }}
                         class="img-raised rounded-circle img-fluid main main-raised"
                       />
                     </div>
                     <div class="name">
-                      <h3>Shihara Dilshan</h3>
+                      <h3>{user.userName}</h3>
                     </div>
                   </div>
                 </div>

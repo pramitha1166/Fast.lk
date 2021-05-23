@@ -2,8 +2,13 @@
 
 const mongoose = require('mongoose')
 
+
 const Order_Schema = new mongoose.Schema({
     customer: {
+        _id: {
+            type: String,
+            required: true
+        },
         firstname:  {
             type: String,
             required: true
@@ -35,6 +40,9 @@ const Order_Schema = new mongoose.Schema({
             },
             price: {
                 type: Number
+            },
+            img: {
+                type: String
             }
         }
     ],

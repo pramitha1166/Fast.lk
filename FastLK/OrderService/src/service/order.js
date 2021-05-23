@@ -3,6 +3,11 @@
 const Order = require("../model/order");
 const { validateOrder } = require("../validation/index");
 
+/**
+ * @param  {} order_item
+ * @param  {} payload
+ */
+
 exports.createOrderService = (order_item, payload) => {
   return new Promise((resolve, reject) => {
     const order = new Order(order_item);
