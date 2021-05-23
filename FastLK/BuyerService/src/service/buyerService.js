@@ -41,7 +41,7 @@ const getBuyer = async (req, res) => {
       throw new Error("Unauthorized access");
     } else {
       const currentBuyer = await Buyer.findById(req.params.id);
-      res.json(currentBuyer);
+      res.json({currentBuyer});
     }
   } catch (error) {
     res.status(400).json({ message: error.message });

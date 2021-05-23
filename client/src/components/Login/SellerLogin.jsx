@@ -26,7 +26,6 @@ const SellerLogin = (props) => {
         })
         .then((res) => {
           setIsLoading(true);
-          console.log(res.data)
           if (res.data == "Invalid password" || res.data == "Invalid email") {
             const credentialErrorLabel =
               document.querySelector(".credentials-error");

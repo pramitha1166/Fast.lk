@@ -24,8 +24,6 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
     newData.push(temp);
   });
 
-  console.log(cartData)
-
   const [data, setData] = useState({
     instance: {},
   });
@@ -55,7 +53,6 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
     cart_data.map((data) => {
       cart_array.push(data);
     });
-    console.log(cart_array);
     return cart_array;
     //setOrder({...order, items: cart_array})
   };
@@ -85,13 +82,11 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
   };
 
   const buy = () => {
-    console.log(order);
+    return;
     let nonce;
     let getNonse = data.instance
       .requestPaymentMethod()
       .then((data) => {
-        console.log(order);
-        console.log(data);
         nonce = data.nonce;
 
         const paymentData = {
@@ -99,17 +94,18 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
           amount: order.amount,
         };
 
-        console.log(paymentData);
-
         setLoading(true);
         processOrder(order)
           .then((res) => {
             alert.success("Order Place Successfully");
+<<<<<<< HEAD
             console.log(res);
+=======
+
+>>>>>>> upstream/main
             processPayment(paymentData)
               .then((res) => {
                 setLoading(false);
-                console.log(res);
                 alert.success("Payment Success");
                 history.push("/");
                 setCartData([]);

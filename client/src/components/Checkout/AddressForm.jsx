@@ -57,7 +57,6 @@ const AddressForm = ({ next, cart_data }) => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    console.log(error.length);
     if (error.length > 0) {
       error.forEach((err) => {
         alert.error(err);

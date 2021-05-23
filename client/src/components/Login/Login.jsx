@@ -40,7 +40,6 @@ const Login = (props) => {
             }, 2000);
           } else {
             localStorage.setItem('token', res.data)
-            console.log(res.data)
             setEmail("");
             setPassword("");
             localStorage.setItem("loginData", "buyer");

@@ -109,7 +109,7 @@ const Navbar = ({ history }) => {
 
                     <div>
                       <p>
-                        Item name | {item.quantity} item |{" "}
+                      {item.name} | {item.quantity} item |{" "}
                         Rs.{" "}{item.quantity * item.price} 
                       </p>
                     </div>
@@ -132,8 +132,8 @@ const Navbar = ({ history }) => {
                 Clear <FaRecycle />
               </button>
 
-              <Link to="/checkout">
-                <button class="btn btn-danger">
+              <Link to={cartData.length > 0 ? "/checkout" : "/products"}>
+                <button class="btn btn-danger" onClick={buttonClickCart}>
                   Checkout <FaShoppingCart />
                 </button>
               </Link>
@@ -265,7 +265,7 @@ const Navbar = ({ history }) => {
                 <li className="nav-item">
                   <a className="nav-link" onClick={buttonClickCart}>
                     <i className="fa fa-shopping-basket"></i>
-                    <span class="badge badge-default">{cartData.length}</span>
+                    <span class="badge badge-danger">{cartData.length}</span>
                   </a>
                 </li>
               ) : null}

@@ -21,7 +21,6 @@ const Dashboard = () => {
                 // if(props==keys[0]) {
 
                 // }
-                console.log(props)
             })
         })
     }

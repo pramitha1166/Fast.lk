@@ -42,6 +42,7 @@ const BuyItem = (props) => {
         _id: new Date(),
         img: JSON.parse(localStorage.getItem("buyingData")).images[0],
         price: JSON.parse(localStorage.getItem("buyingData")).price,
+        name: JSON.parse(localStorage.getItem("buyingData")).name,
         quantity: count,
       },
     ]);
