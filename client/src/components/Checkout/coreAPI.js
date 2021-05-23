@@ -18,13 +18,14 @@ export const processPayment = (paymentData) => {
 };
 
 export const processOrder = (orderData) => {
+  const token = localStorage.getItem("token");
   return new Promise((resolve, reject) => {
     axios
       .post("/api/orders/order", JSON.stringify(orderData), {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
-          token: localStorage.getItem("token"),
+          token: token,
         },
       })
       .then((res) => {

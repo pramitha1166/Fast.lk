@@ -82,7 +82,7 @@ exports.getAllOrdersService = (query) => {
   return new Promise((resolve, reject) => {
     let sortBy = query.sortBy ? query.sortBy : "_id";
     let orderBy = query.orderBy ? query.orderBy : "asc";
-    let limit = query.limit ? query.limit : 10;
+    let limit = query.limit ? query.limit : 100;
 
     Order.find()
       .limit(limit)

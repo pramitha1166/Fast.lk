@@ -17,6 +17,7 @@ import Checkout from "./components/Checkout/Checkout";
 import BuyItem from './components/BuyItem/BuyItem';
 import Dashboard from "./components/Seller/Dashboard";
 import AddProduct from "./components/AddProduct/AddProduct";
+import UpdateProduct from "./components/UpdateProduct/UpdateProduct";
 
 
 import { LoginProvider } from "./context/LoginContext";
@@ -42,6 +43,7 @@ function App() {
               <Route path="/profile" exact component={Profile} />
               <Route path="/signup" exact component={Signup} />
               <Route path="/addproduct" exact component={AddProduct} />
+              <Route path="/updateproduct" exact component={UpdateProduct} />
               <Route path="/ssignup" exact component={SellerSignup} />
               <Route path="/contact" exact component={Contact}></Route>
               <Route path="/products" exact component={Products}></Route>

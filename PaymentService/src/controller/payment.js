@@ -13,7 +13,6 @@ exports.generateClientToken = async(req,res) => {
 
 exports.makePayment = async(req,res) => {
     try {
-        console.log('payment data'+req.body)
         const payment = {
             nonse: req.body.paymentMethodNonse,
             amount: req.body.amount

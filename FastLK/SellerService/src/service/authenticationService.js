@@ -4,10 +4,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const login = async (req, res) => {
-  console.log(3333333333333)
   const emailValue = req.body.email;
   const password = req.body.password;
-  console.log(emailValue)
 
   try {
     const getUser = await seller.find({ email: emailValue });

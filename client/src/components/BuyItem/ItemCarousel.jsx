@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 const ItemCarousel = ({ images }) => {
-  console.log(images);
   return (
     <>
       <div

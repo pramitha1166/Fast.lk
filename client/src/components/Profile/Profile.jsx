@@ -19,6 +19,10 @@ const Profile = (props) => {
   const [sellerProducts, setSellerProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [buyerOrders, setBuyerOrders] = useState([]);
+  const [name, setName] = useState("Loading...");
+  const [DP, setDP] = useState(
+    "https://firebasestorage.googleapis.com/v0/b/fastlk.appspot.com/o/images%2Ffacebook-default-no-profile-pic.jpg?alt=media&token=74e058b8-fd91-4799-b6cd-fdde9619b35d"
+  );
 
   useEffect(() => {
     if (islLoggedIn.login === false) {
@@ -46,7 +50,9 @@ const Profile = (props) => {
     axios
       .get(`/api/orders/order`)
       .then((res) => {
-        const modifiedArray = res.data.filter((data) => data.customer.email === decoded.email)
+        const modifiedArray = res.data.filter(
+          (data) => data.customer.email === decoded.email
+        );
         setBuyerOrders(modifiedArray);
       })
       .catch((err) => console.log(err));
@@ -73,6 +79,43 @@ const Profile = (props) => {
       ],
     });
   };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const decoded = jwt_decode(token);
+
+    if (token === undefined || token === null) {
+      props.history.push("/login");
+    } else {
+      if (islLoggedIn.status === "seller") {
+        axios
+          .get(`/api/sellers/view/${decoded._id}`, {
+            headers: {
+              token: token,
+            },
+          })
+          .then((res) => {
+            setName(res.data.email);
+            setDP(res.data.profilePic);
+          })
+          .catch((err) => console.log(err));
+      }
+
+      if (islLoggedIn.status === "buyer") {
+        axios
+          .get(`/api/buyers/getBuyer/${decoded._id}`, {
+            headers: {
+              token: token,
+            },
+          })
+          .then((res) => {
+            setName(res.data.currentBuyer.email);
+            setDP(res.data.currentBuyer.profilePic);
+          })
+          .catch((err) => console.log(err));
+      }
+    }
+  });
 
   const makeDeleteRequest = (deleteItemId, token) => {
     axios
@@ -131,14 +174,14 @@ const Profile = (props) => {
                   <div class="profile">
                     <div class="avatar ">
                       <img
-                        src="../assets/img/faces/christian.jpg"
+                        src={DP}
                         alt="Circle Image"
                         style={{ height: 200, width: 200 }}
                         class="img-raised rounded-circle img-fluid main main-raised"
                       />
                     </div>
                     <div class="name">
-                      <h3>Shihara Dilshan</h3>
+                      <h5>{name}</h5>
                     </div>
                   </div>
                 </div>
@@ -155,7 +198,7 @@ const Profile = (props) => {
                         <>
                           <li class="nav-item">
                             <a
-                              class="nav-link active"
+                              class="nav-link active bg-success"
                               href="#studio"
                               role="tab"
                               data-toggle="tab"
@@ -196,7 +239,7 @@ const Profile = (props) => {
               <div style={{ display: "flex", justifyContent: "flex-end" }}>
                 {islLoggedIn.status === "seller" ? (
                   <Link to="/addproduct">
-                    <button class="btn" style={{ padding: 10 }}>
+                    <button class="btn btn-outline-success" style={{ padding: 10 }}>
                       Add New Product
                     </button>
                   </Link>
@@ -209,6 +252,7 @@ const Profile = (props) => {
                       <SellerItemTable
                         sellerProducts={sellerProducts}
                         deleteItem={deleteItem}
+                        history={props.history}
                       />
                     ) : (
                       <BuyerOrderData buyerOrders={buyerOrders} />

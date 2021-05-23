@@ -19,7 +19,6 @@ const sendSMS = (smsObj, res) => {
             to: messageRecipient
         })
         .then(message => {
-            console.log(message.sid);
             res.status(202).json({ msg: "Message sent" });
         })
         .catch(error => {

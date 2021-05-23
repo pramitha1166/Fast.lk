@@ -34,7 +34,7 @@
     "react-stripe-checkout": "^2.6.3",
     "web-vitals": "^1.0.1"
   },
-  "proxy": "http://192.168.8.102:8280",
+  "proxy": "http://192.168.8.101:8280",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

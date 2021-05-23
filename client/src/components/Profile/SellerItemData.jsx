@@ -1,6 +1,11 @@
 import React, { Component } from "react";
 
-const SellerItemData = ({sellerProducts, deleteItem}) => {
+const SellerItemData = ({ sellerProducts, deleteItem, history }) => {
+  const saveDataTemp = (product) => {
+    localStorage.setItem("tempUpdateData", JSON.stringify(product));
+    history.push("/updateproduct");
+  };
+
   return (
     <table class="table table-striped">
       <thead>
@@ -23,17 +28,21 @@ const SellerItemData = ({sellerProducts, deleteItem}) => {
             <td>{product.quantity}</td>
             <td>{product.price}</td>
             <td>
-              <button class="btn" style={{ padding: 10 }}>
+              <button class="btn btn-outline-success" style={{ padding: 10 }}>
                 Edit Images
               </button>
             </td>
             <td style={{ display: "flex" }}>
-              <button class="btn" style={{ padding: 10 }}>
+              <button
+                class="btn btn-outline-success"
+                style={{ padding: 10 }}
+                onClick={() => saveDataTemp(product)}
+              >
                 Update
               </button>
               <button
-                class="btn"
-                style={{ padding: 10 }}
+                class="btn btn-outline-danger"
+                style={{ padding: 10, marginLeft: 10 }}
                 onClick={deleteItem}
                 id={product._id}
               >
