@@ -4,6 +4,11 @@ const mongoose = require('mongoose')
 
 
 const Order_Schema = new mongoose.Schema({
+    seller: {
+        _id: {
+            type: String
+        }
+    },
     customer: {
         _id: {
             type: String,

@@ -25,6 +25,7 @@ import { CartProvider } from "./context/CartContext";
 import SellerRoute from "./components/auth/SellerRoute";
 import BuyerRoute from "./components/auth/BuyerRoute";
 import {ThemeProvider} from "./context/ThemeContext";
+import SelectSeller from "./components/Checkout/SelectSeller";
 
 function App() {
 
@@ -49,6 +50,7 @@ function App() {
               <Route path="/products" exact component={Products}></Route>
               <Route path="/checkout" exact component={Checkout}></Route>
               <Route path="/buy" exact component={BuyItem}></Route>
+              <Route path="/order" exact component={SelectSeller}></Route>
               <SellerRoute path="/seller" component={Dashboard}></SellerRoute>
             </Switch>
             <Route path="/" exec component={Footer} />

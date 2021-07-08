@@ -122,6 +122,12 @@ const Navbar = ({ history }) => {
                     >
                       remove
                     </button>
+                    <Link to="/order">
+                    <button>
+                      test
+                    </button>
+                    </Link>
+                  
                   </li>
                 );
               })}

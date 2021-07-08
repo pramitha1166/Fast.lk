@@ -14,3 +14,9 @@ const AuthSchema = mongoose.Schema({
 });
 
 module.exports = mongoose.model("Auth", AuthSchema)
+
+/**
+ * these are these are two factors
+ * might know power p
+ * 
+ */

@@ -82,13 +82,13 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
   };
 
   const buy = () => {
-    return;
+    //return;
     let nonce;
     let getNonse = data.instance
       .requestPaymentMethod()
       .then((data) => {
         nonce = data.nonce;
-
+        console.log(nonce)
         const paymentData = {
           paymentMethodNonse: nonce,
           amount: order.amount,
@@ -98,11 +98,6 @@ const PaymentForm = ({ shippingData, clientToken, cart_data, nextStep, history }
         processOrder(order)
           .then((res) => {
             alert.success("Order Place Successfully");
-<<<<<<< HEAD
-            console.log(res);
-=======
-
->>>>>>> upstream/main
             processPayment(paymentData)
               .then((res) => {
                 setLoading(false);

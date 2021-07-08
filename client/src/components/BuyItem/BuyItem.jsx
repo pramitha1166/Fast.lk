@@ -44,6 +44,7 @@ const BuyItem = (props) => {
         price: JSON.parse(localStorage.getItem("buyingData")).price,
         name: JSON.parse(localStorage.getItem("buyingData")).name,
         quantity: count,
+        owner: JSON.parse(localStorage.getItem("buyingData")).ownerRef,
       },
     ]);
     alert.success('Added to the cart!')

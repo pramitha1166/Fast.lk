@@ -203,22 +203,14 @@ const Profile = (props) => {
                   <div class="profile">
                     <div class="avatar ">
                       <img
-<<<<<<< HEAD
-                        src={user.profilePic}
-=======
                         src={DP}
->>>>>>> upstream/main
                         alt="Circle Image"
                         style={{ height: 200, width: 200 }}
                         class="img-raised rounded-circle img-fluid main main-raised"
                       />
                     </div>
                     <div class="name">
-<<<<<<< HEAD
-                      <h3>{user.userName}</h3>
-=======
                       <h5>{name}</h5>
->>>>>>> upstream/main
                     </div>
                   </div>
                 </div>
@@ -267,6 +259,16 @@ const Profile = (props) => {
                               <i class="material-icons">camera</i> Orders
                             </a>
                           </li>
+                          <li class="nav-item">
+                            <a
+                              class="nav-link "
+                              href="#update-profile"
+                              role="tab"
+                              data-toggle="tab"
+                            >
+                              <i class="material-icons">update</i> Update Profile
+                            </a>
+                          </li>
                         </>
                       ) : null}
                     </ul>
@@ -283,6 +285,11 @@ const Profile = (props) => {
                 ) : null}
               </div>
               <div class="tab-content tab-space">
+              <div class="tab-pane text-center" id="update-profile">
+                  <div className="row">
+                    update data
+                  </div>
+              </div>
                 <div class="tab-pane active text-center gallery" id="studio">
                   <div class="row">
                     {islLoggedIn.status === "seller" ? (

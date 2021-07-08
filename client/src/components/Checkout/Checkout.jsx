@@ -9,6 +9,7 @@ import useStyles from "./CheckoutStyle";
 import PaymentForm from "./PaymentForm";
 import LoaderSpinner from "../Comman/LoaderSpinner";
 import { CartContext } from "./../../context/CartContext";
+import SelectSeller from "./SelectSeller";
 
 const steps = ["Shipping Address", "Payment Details"];
 
@@ -31,18 +32,19 @@ const Checkout = (props) => {
     nextStep();
   };
 
-  const Form = () =>
-    activeStep === 0 ? (
-      <AddressForm next={next} cart_data={cartData} />
-    ) : (
-      <PaymentForm
-        shippingData={shippingData}
-        clientToken={clientToken}
-        cart_data={cartData}
-        nextStep={nextStep}
-        history={props.history}
-      />
-    );
+
+   const Form = () =>
+     activeStep === 0 ? (
+       <AddressForm next={next} cart_data={cartData} />
+     ) : (
+       <PaymentForm
+         shippingData={shippingData}
+         clientToken={clientToken}
+         cart_data={cartData}
+         nextStep={nextStep}
+         history={props.history}
+       />
+     );
 
   const Confirm = () => (
     <h2
